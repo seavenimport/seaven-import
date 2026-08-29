@@ -33,6 +33,7 @@
                     <li><a href="#club-seaven">Club VIP</a></li>
                     <li><a href="#tarifas-de-envios">Tarifas de envíos</a></li>
                     <li><a href="#registro-casillero">Casillero</a></li>
+                    <li><a href="#calculadora">Calculadora</a></li>
                     <li><a href="#faq">FAQ</a></li>
                     <li><a href="https://wa.me/584225007780" class="btn-nav-contact" target="_blank">Contactar</a></li>
                 </ul>
@@ -267,6 +268,264 @@
             </div>
         </div>
     </section>
+    
+    <!-- Sección Calculadora Marítima -->
+<section id="calculadora" style="padding: 60px 0; background-color: #f4f8fd;">
+    <div class="container">
+        <h2 class="section-title">Calcula tu envío marítimo</h2>
+        <p class="section-subtitle">Ingresa las medidas de tu caja y obtén un estimado al instante.</p>
+        
+        <div style="max-width: 600px; margin: 0 auto; background: #fff; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+            
+            <p style="font-size: 11px; color: #5a7a99; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;">Dimensiones de la caja</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 4px;">
+                <!-- Largo -->
+                <div style="display:flex; flex-direction:column; gap:3px;">
+                    <div style="display:flex; align-items:center; border:1px solid #c8ddf0; border-radius:8px; overflow:hidden; background:#fff;">
+                        <input type="number" id="largo" min="0" step="0.1" placeholder="0" oninput="calcular()" style="border:none; background:transparent; padding:9px 10px; font-size:15px; color:#1a1a2e; width:100%; outline:none; text-align:center;">
+                        <span style="padding:0 9px; font-size:12px; color:#5a7a99; border-left:1px solid #c8ddf0; height:100%; display:flex; align-items:center; background:#f4f8fd;">cm</span>
+                    </div>
+                    <span style="font-size:11px; color:#5a7a99; text-align:center; margin-top:3px;">Largo</span>
+                </div>
+                <!-- Alto -->
+                <div style="display:flex; flex-direction:column; gap:3px;">
+                    <div style="display:flex; align-items:center; border:1px solid #c8ddf0; border-radius:8px; overflow:hidden; background:#fff;">
+                        <input type="number" id="alto" min="0" step="0.1" placeholder="0" oninput="calcular()" style="border:none; background:transparent; padding:9px 10px; font-size:15px; color:#1a1a2e; width:100%; outline:none; text-align:center;">
+                        <span style="padding:0 9px; font-size:12px; color:#5a7a99; border-left:1px solid #c8ddf0; height:100%; display:flex; align-items:center; background:#f4f8fd;">cm</span>
+                    </div>
+                    <span style="font-size:11px; color:#5a7a99; text-align:center; margin-top:3px;">Alto</span>
+                </div>
+                <!-- Ancho -->
+                <div style="display:flex; flex-direction:column; gap:3px;">
+                    <div style="display:flex; align-items:center; border:1px solid #c8ddf0; border-radius:8px; overflow:hidden; background:#fff;">
+                        <input type="number" id="ancho" min="0" step="0.1" placeholder="0" oninput="calcular()" style="border:none; background:transparent; padding:9px 10px; font-size:15px; color:#1a1a2e; width:100%; outline:none; text-align:center;">
+                        <span style="padding:0 9px; font-size:12px; color:#5a7a99; border-left:1px solid #c8ddf0; height:100%; display:flex; align-items:center; background:#f4f8fd;">cm</span>
+                    </div>
+                    <span style="font-size:11px; color:#5a7a99; text-align:center; margin-top:3px;">Ancho</span>
+                </div>
+            </div>
+            
+            <div id="err-dims" style="font-size:12px; color:#e05c5c; margin-top:4px; min-height:16px;"></div>
+            
+            <hr style="border:none; border-top:1px solid #c8ddf0; margin:1.25rem 0;">
+            
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:1.25rem;">
+                <div>
+                    <p style="font-size:11px; color:#5a7a99; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:6px;">Tipo de carga</p>
+                    <div style="display:flex; border:1px solid #c8ddf0; border-radius:8px; overflow:hidden;">
+                        <button id="btn-comun" onclick="setCarga('comun')" style="flex:1; padding:9px 4px; font-size:13px; border:none; background:#0b2545; color:#fff; cursor:pointer; font-weight:600; border-right:1px solid #c8ddf0;">Común</button>
+                        <button id="btn-especial" onclick="setCarga('especial')" style="flex:1; padding:9px 4px; font-size:13px; border:none; background:#fff; color:#5a7a99; cursor:pointer;">Especial</button>
+                    </div>
+                </div>
+                <div>
+                    <p style="font-size:11px; color:#5a7a99; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:6px;">Número de cajas</p>
+                    <div style="display:flex; align-items:center; border:1px solid #c8ddf0; border-radius:8px; overflow:hidden; background:#fff;">
+                        <input type="number" id="cajas" min="1" step="1" value="1" placeholder="1" oninput="calcular()" style="border:none; background:transparent; padding:9px 10px; font-size:15px; color:#1a1a2e; width:100%; outline:none;">
+                        <span style="padding:0 9px; font-size:12px; color:#5a7a99; border-left:1px solid #c8ddf0; height:100%; display:flex; align-items:center; background:#f4f8fd; white-space:nowrap;">cajas</span>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="font-size:11px; color:#5a7a99; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:8px;">Ciudad de entrega</p>
+            
+            <div id="city-grid" style="display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-bottom:1.5rem;">
+                <button class="sv-city" onclick="setCity(this,900,'Caracas')" style="padding:10px; font-size:13px; border:1px solid #0b2545; border-radius:8px; background:#eef4fb; color:#0b2545; cursor:pointer; text-align:left; font-weight:600;">
+                    Caracas <div style="font-size:11px; color:#1a6fbb; font-weight:400; margin-top:2px;">$900 / CBM</div>
+                </button>
+                <button class="sv-city" onclick="setCity(this,950,'Maracay / Valencia')" style="padding:10px; font-size:13px; border:1px solid #c8ddf0; border-radius:8px; background:#fff; color:#1a1a2e; cursor:pointer; text-align:left; font-weight:500;">
+                    Maracay / Valencia <div style="font-size:11px; color:#5a7a99; font-weight:400; margin-top:2px;">$950 / CBM</div>
+                </button>
+                <button class="sv-city" onclick="setCity(this,1200,'Resto del país')" style="padding:10px; font-size:13px; border:1px solid #c8ddf0; border-radius:8px; background:#fff; color:#1a1a2e; cursor:pointer; text-align:left; font-weight:500;">
+                    Resto del país <div style="font-size:11px; color:#5a7a99; font-weight:400; margin-top:2px;">$1.200 / CBM</div>
+                </button>
+                <button class="sv-city" id="btn-ciudad-especial" onclick="setCity(this,1500,'Especial')" style="display:none; padding:10px; font-size:13px; border:1px solid #c8ddf0; border-radius:8px; background:#fff; color:#1a1a2e; cursor:pointer; text-align:left; font-weight:500;">
+                    Especial (cualquier destino) <div style="font-size:11px; color:#5a7a99; font-weight:400; margin-top:2px;">$1.500 / CBM</div>
+                </button>
+            </div>
+            
+            <div id="result-box" style="display:none; background:#0b2545; border-radius:12px; padding:1.25rem 1.5rem;">
+                <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.1);">
+                    <span style="font-size:13px; color:rgba(255,255,255,0.6);">Volumen por caja</span>
+                    <span style="font-size:13px; color:rgba(255,255,255,0.9); font-weight:500;" id="res-cbm-unit">—</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.1);">
+                    <span style="font-size:13px; color:rgba(255,255,255,0.6);">Volumen total</span>
+                    <span style="font-size:13px; color:rgba(255,255,255,0.9); font-weight:500;" id="res-cbm-total">—</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.1);">
+                    <span style="font-size:13px; color:rgba(255,255,255,0.6);">Tarifa aplicada</span>
+                    <span style="font-size:13px; color:rgba(255,255,255,0.9); font-weight:500;" id="res-tarifa">—</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; padding:6px 0;">
+                    <span style="font-size:13px; color:rgba(255,255,255,0.6);">Ciudad de entrega</span>
+                    <span style="font-size:13px; color:rgba(255,255,255,0.9); font-weight:500;" id="res-ciudad">—</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1rem; padding-top:1rem; border-top:1px solid rgba(255,255,255,0.2);">
+                    <span style="font-size:14px; font-weight:500; color:rgba(255,255,255,0.8);">Estimado total</span>
+                    <span style="font-size:32px; font-weight:700; color:#fff;" id="res-total">$0</span>
+                </div>
+                <div id="note-min" style="display:none; font-size:11px; color:rgba(255,255,255,0.5); margin-top:8px; line-height:1.5;">
+                    ⚠ Se aplica tarifa mínima de $30 para envíos pequeños.
+                </div>
+                <div style="font-size:11px; color:rgba(255,255,255,0.5); margin-top:6px; line-height:1.5;">
+                    ⚠ Estimación referencial. El flete terrestre nacional está incluido en envíos a partir de 0.1 CBM.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    var svCityRate = 900;
+    var svCityName = 'Caracas';
+    
+    function setCarga(tipo) {
+        var btnC = document.getElementById('btn-comun');
+        var btnE = document.getElementById('btn-especial');
+        var btnEsp = document.getElementById('btn-ciudad-especial');
+        var btns = document.querySelectorAll('.sv-city:not(#btn-ciudad-especial)');
+        
+        if (tipo === 'comun') {
+            btnC.style.background = '#0b2545'; btnC.style.color = '#fff'; btnC.style.fontWeight = '600';
+            btnE.style.background = '#fff'; btnE.style.color = '#5a7a99'; btnE.style.fontWeight = '400';
+            btns.forEach(function(b){ b.style.display = ''; });
+            btnEsp.style.display = 'none';
+            setCity(document.querySelector('.sv-city:not(#btn-ciudad-especial)'), 900, 'Caracas');
+        } else {
+            btnE.style.background = '#0b2545'; btnE.style.color = '#fff'; btnE.style.fontWeight = '600';
+            btnC.style.background = '#fff'; btnC.style.color = '#5a7a99'; btnC.style.fontWeight = '400';
+            btns.forEach(function(b){ b.style.display = 'none'; });
+            btnEsp.style.display = '';
+            setCity(btnEsp, 1500, 'Especial');
+        }
+        calcular();
+    }
+    
+    function setCity(el, rate, name) {
+        document.querySelectorAll('.sv-city').forEach(function(b){
+            b.style.border = '1px solid #c8ddf0';
+            b.style.background = '#fff';
+            b.style.color = '#1a1a2e';
+            b.style.fontWeight = '500';
+        });
+        el.style.border = '1px solid #0b2545';
+        el.style.background = '#eef4fb';
+        el.style.color = '#0b2545';
+        el.style.fontWeight = '600';
+        svCityRate = rate;
+        svCityName = name;
+        calcular();
+    }
+    
+    function calcular() {
+        var largo = parseFloat(document.getElementById('largo').value) || 0;
+        var alto = parseFloat(document.getElementById('alto').value) || 0;
+        var ancho = parseFloat(document.getElementById('ancho').value) || 0;
+        var cajas = parseInt(document.getElementById('cajas').value) || 1;
+        var errEl = document.getElementById('err-dims');
+        var resBox = document.getElementById('result-box');
+        
+        if (largo <= 0 || alto <= 0 || ancho <= 0) {
+            resBox.style.display = 'none';
+            errEl.textContent = (largo > 0 || alto > 0 || ancho > 0) ? 'Completa las tres dimensiones.' : '';
+            return;
+        }
+        
+        errEl.textContent = '';
+        var cbmUnit = (largo * alto * ancho) / 1000000;
+        var cbmTotal = cbmUnit * cajas;
+        var costo = cbmTotal * svCityRate;
+        var minimo = false;
+        
+        if (costo < 30) { costo = 30; minimo = true; }
+        
+        document.getElementById('res-cbm-unit').textContent = cbmUnit.toFixed(4) + ' CBM / caja';
+        document.getElementById('res-cbm-total').textContent = cbmTotal.toFixed(4) + ' CBM';
+        document.getElementById('res-tarifa').textContent = '$' + svCityRate.toLocaleString() + ' / CBM';
+        document.getElementById('res-ciudad').textContent = svCityName;
+        document.getElementById('res-total').textContent = '$' + costo.toFixed(2);
+        document.getElementById('note-min').style.display = minimo ? 'block' : 'none';
+        resBox.style.display = 'block';
+    }
+</script>
+    
+    <!-- Sección Calculadora Marítima -->
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    var svCityRate = 900;
+    var svCityName = 'Caracas';
+
+    function setCarga(tipo) {
+        var btnC = document.getElementById('btn-comun');
+        var btnE = document.getElementById('btn-especial');
+        var btnEsp = document.getElementById('btn-ciudad-especial');
+        var btns = document.querySelectorAll('.sv-city:not(#btn-ciudad-especial)');
+        if (tipo === 'comun') {
+            btnC.style.background = '#0b2545'; btnC.style.color = '#fff'; btnC.style.fontWeight = '600';
+            btnE.style.background = '#fff'; btnE.style.color = '#5a7a99'; btnE.style.fontWeight = '400';
+            btns.forEach(function(b){ b.style.display = ''; });
+            btnEsp.style.display = 'none';
+            setCity(document.querySelector('.sv-city:not(#btn-ciudad-especial)'), 900, 'Caracas');
+        } else {
+            btnE.style.background = '#0b2545'; btnE.style.color = '#fff'; btnE.style.fontWeight = '600';
+            btnC.style.background = '#fff'; btnC.style.color = '#5a7a99'; btnC.style.fontWeight = '400';
+            btns.forEach(function(b){ b.style.display = 'none'; });
+            btnEsp.style.display = '';
+            setCity(btnEsp, 1500, 'Especial');
+        }
+        calcular();
+    }
+
+    function setCity(el, rate, name) {
+        document.querySelectorAll('.sv-city').forEach(function(b){
+            b.style.border = '1px solid #c8ddf0';
+            b.style.background = '#fff';
+            b.style.color = '#1a1a2e';
+            b.style.fontWeight = '500';
+        });
+        el.style.border = '1px solid #0b2545';
+        el.style.background = '#eef4fb';
+        el.style.color = '#0b2545';
+        el.style.fontWeight = '600';
+        svCityRate = rate;
+        svCityName = name;
+        calcular();
+    }
+
+    function calcular() {
+        var largo = parseFloat(document.getElementById('largo').value) || 0;
+        var alto = parseFloat(document.getElementById('alto').value) || 0;
+        var ancho = parseFloat(document.getElementById('ancho').value) || 0;
+        var cajas = parseInt(document.getElementById('cajas').value) || 1;
+        var errEl = document.getElementById('err-dims');
+        var resBox = document.getElementById('result-box');
+        if (largo <= 0 || alto <= 0 || ancho <= 0) {
+            resBox.style.display = 'none';
+            errEl.textContent = (largo > 0 || alto > 0 || ancho > 0) ? 'Completa las tres dimensiones.' : '';
+            return;
+        }
+        errEl.textContent = '';
+        var cbmUnit = (largo * alto * ancho) / 1000000;
+        var cbmTotal = cbmUnit * cajas;
+        var costo = cbmTotal * svCityRate;
+        var minimo = false;
+        if (costo < 30) { costo = 30; minimo = true; }
+        document.getElementById('res-cbm-unit').textContent = cbmUnit.toFixed(4) + ' CBM / caja';
+        document.getElementById('res-cbm-total').textContent = cbmTotal.toFixed(4) + ' CBM';
+        document.getElementById('res-tarifa').textContent = '$' + svCityRate.toLocaleString() + ' / CBM';
+        document.getElementById('res-ciudad').textContent = svCityName;
+        document.getElementById('res-total').textContent = '$' + costo.toFixed(2);
+        document.getElementById('note-min').style.display = minimo ? 'block' : 'none';
+        resBox.style.display = 'block';
+    }
+</script>
 
     <!-- Sección de Logotipos / Aliados -->
     <section class="trust-logos">
