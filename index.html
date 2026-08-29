@@ -229,57 +229,17 @@
             </form>
         </div>
     </section>
-
-    <!-- Sección de Preguntas Frecuentes (FAQ) -->
-    <section id="faq" class="faq-section">
-        <div class="container">
-            <h2>Preguntas Frecuentes</h2>
-            
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <h3>¿Cómo obtengo mi código de casillero?</h3>
-                    <p>Regístrate en nuestra plataforma y te lo asignamos de inmediato.</p>
-                </div>
-                
-                <div class="faq-item">
-                    <h3>¿Cuánto tiempo tarda la carga en llegar a Venezuela?</h3>
-                    <p>El servicio aéreo toma de 25 a 35 días hábiles y el marítimo de 60 a 90 días aproximadamente.</p>
-                </div>
-                
-                <div class="faq-item">
-                    <h3>¿Qué métodos de pago aceptan?</h3>
-                    <p>Recibimos pago móvil, divisas, Binance P2P y Zinli.</p>
-                </div>
-                
-                <div class="faq-item">
-                    <h3>¿Cómo sé dónde está mi paquete?</h3>
-                    <p>Te ofrecemos seguimiento directo y te notificamos en cada etapa clave de la ruta.</p>
-                </div>
-                
-                <div class="faq-item">
-                    <h3>¿Qué necesito para empezar a importar si no sé nada?</h3>
-                    <p>Nuestras asesorías desde cero te guían paso a paso para hacer tus compras de forma segura.</p>
-                </div>
-                
-                <div class="faq-item">
-                    <h3>¿Cómo puedo empezar a importar hoy mismo?</h3>
-                    <p>Escríbenos directamente a nuestro WhatsApp para evaluar tu caso y darte la asesoría de tu preferencia.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Sección Calculadora Marítima -->
-    <section id="calculadora" style="padding-top: 20px; padding-bottom: 60px; background-color: #f4f8fd;">
-        <div class="container" style="padding-top: 0;">
-            <h2 class="section-title" style="text-align: center; margin-top: 0 !important; padding-top: 0 !important;">Calcula tu envío marítimo</h2>
-            <p class="section-subtitle" style="text-align: center; margin-bottom: 30px; margin-top: 5px;">Ingresa las medidas de tu caja y obtén un estimado al instante.</p>
+<!-- Sección Calculadora Marítima -->
+<section id="calculadora" style="padding-top: 20px; padding-bottom: 60px; background-color: #f4f8fd;">
+    <div class="container" style="padding-top: 0;">
+        <h2 class="section-title" style="text-align: center; margin-top: 0 !important; padding-top: 0 !important;">Calcula tu envío marítimo</h2>
+        <p class="section-subtitle" style="text-align: center; margin-bottom: 30px; margin-top: 5px;">Ingresa las medidas de tu caja y obtén un estimado al instante.</p>
         
         <div style="max-width: 600px; margin: 0 auto; background: #fff; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
             
             <p style="font-size: 11px; color: #5a7a99; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;">Dimensiones de la caja</p>
             
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 4px;">
-                <!-- Largo -->
                 <div style="display:flex; flex-direction:column; gap:3px;">
                     <div style="display:flex; align-items:center; border:1px solid #c8ddf0; border-radius:8px; overflow:hidden; background:#fff;">
                         <input type="number" id="largo" min="0" step="0.1" placeholder="0" oninput="calcular()" style="border:none; background:transparent; padding:9px 10px; font-size:15px; color:#1a1a2e; width:100%; outline:none; text-align:center;">
@@ -287,7 +247,6 @@
                     </div>
                     <span style="font-size:11px; color:#5a7a99; text-align:center; margin-top:3px;">Largo</span>
                 </div>
-                <!-- Alto -->
                 <div style="display:flex; flex-direction:column; gap:3px;">
                     <div style="display:flex; align-items:center; border:1px solid #c8ddf0; border-radius:8px; overflow:hidden; background:#fff;">
                         <input type="number" id="alto" min="0" step="0.1" placeholder="0" oninput="calcular()" style="border:none; background:transparent; padding:9px 10px; font-size:15px; color:#1a1a2e; width:100%; outline:none; text-align:center;">
@@ -295,7 +254,6 @@
                     </div>
                     <span style="font-size:11px; color:#5a7a99; text-align:center; margin-top:3px;">Alto</span>
                 </div>
-                <!-- Ancho -->
                 <div style="display:flex; flex-direction:column; gap:3px;">
                     <div style="display:flex; align-items:center; border:1px solid #c8ddf0; border-radius:8px; overflow:hidden; background:#fff;">
                         <input type="number" id="ancho" min="0" step="0.1" placeholder="0" oninput="calcular()" style="border:none; background:transparent; padding:9px 10px; font-size:15px; color:#1a1a2e; width:100%; outline:none; text-align:center;">
@@ -353,7 +311,6 @@
                     <span style="font-size:13px; color:rgba(255,255,255,0.9); font-weight:500;" id="res-cbm-total">—</span>
                 </div>
                 <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.1);">
-                    <span style="font-size:13px; color:rgba(255,255,255,0.6);">Tarifa aplicada</span>
                     <span style="font-size:13px; color:rgba(255,255,255,0.9); font-weight:500;" id="res-tarifa">—</span>
                 </div>
                 <div style="display:flex; justify-content:space-between; padding:6px 0;">
@@ -448,83 +405,44 @@
         resBox.style.display = 'block';
     }
 </script>
-    
-    <!-- Sección Calculadora Marítima -->
-
+    <!-- Sección de Preguntas Frecuentes (FAQ) -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <h2>Preguntas Frecuentes</h2>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>¿Cómo obtengo mi código de casillero?</h3>
+                    <p>Regístrate en nuestra plataforma y te lo asignamos de inmediato.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>¿Cuánto tiempo tarda la carga en llegar a Venezuela?</h3>
+                    <p>El servicio aéreo toma de 25 a 35 días hábiles y el marítimo de 60 a 90 días aproximadamente.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>¿Qué métodos de pago aceptan?</h3>
+                    <p>Recibimos pago móvil, divisas, Binance P2P y Zinli.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>¿Cómo sé dónde está mi paquete?</h3>
+                    <p>Te ofrecemos seguimiento directo y te notificamos en cada etapa clave de la ruta.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>¿Qué necesito para empezar a importar si no sé nada?</h3>
+                    <p>Nuestras asesorías desde cero te guían paso a paso para hacer tus compras de forma segura.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>¿Cómo puedo empezar a importar hoy mismo?</h3>
+                    <p>Escríbenos directamente a nuestro WhatsApp para evaluar tu caso y darte la asesoría de tu preferencia.</p>
+                </div>
             </div>
-
         </div>
-    </div>
-</section>
-
-<script>
-    var svCityRate = 900;
-    var svCityName = 'Caracas';
-
-    function setCarga(tipo) {
-        var btnC = document.getElementById('btn-comun');
-        var btnE = document.getElementById('btn-especial');
-        var btnEsp = document.getElementById('btn-ciudad-especial');
-        var btns = document.querySelectorAll('.sv-city:not(#btn-ciudad-especial)');
-        if (tipo === 'comun') {
-            btnC.style.background = '#0b2545'; btnC.style.color = '#fff'; btnC.style.fontWeight = '600';
-            btnE.style.background = '#fff'; btnE.style.color = '#5a7a99'; btnE.style.fontWeight = '400';
-            btns.forEach(function(b){ b.style.display = ''; });
-            btnEsp.style.display = 'none';
-            setCity(document.querySelector('.sv-city:not(#btn-ciudad-especial)'), 900, 'Caracas');
-        } else {
-            btnE.style.background = '#0b2545'; btnE.style.color = '#fff'; btnE.style.fontWeight = '600';
-            btnC.style.background = '#fff'; btnC.style.color = '#5a7a99'; btnC.style.fontWeight = '400';
-            btns.forEach(function(b){ b.style.display = 'none'; });
-            btnEsp.style.display = '';
-            setCity(btnEsp, 1500, 'Especial');
-        }
-        calcular();
-    }
-
-    function setCity(el, rate, name) {
-        document.querySelectorAll('.sv-city').forEach(function(b){
-            b.style.border = '1px solid #c8ddf0';
-            b.style.background = '#fff';
-            b.style.color = '#1a1a2e';
-            b.style.fontWeight = '500';
-        });
-        el.style.border = '1px solid #0b2545';
-        el.style.background = '#eef4fb';
-        el.style.color = '#0b2545';
-        el.style.fontWeight = '600';
-        svCityRate = rate;
-        svCityName = name;
-        calcular();
-    }
-
-    function calcular() {
-        var largo = parseFloat(document.getElementById('largo').value) || 0;
-        var alto = parseFloat(document.getElementById('alto').value) || 0;
-        var ancho = parseFloat(document.getElementById('ancho').value) || 0;
-        var cajas = parseInt(document.getElementById('cajas').value) || 1;
-        var errEl = document.getElementById('err-dims');
-        var resBox = document.getElementById('result-box');
-        if (largo <= 0 || alto <= 0 || ancho <= 0) {
-            resBox.style.display = 'none';
-            errEl.textContent = (largo > 0 || alto > 0 || ancho > 0) ? 'Completa las tres dimensiones.' : '';
-            return;
-        }
-        errEl.textContent = '';
-        var cbmUnit = (largo * alto * ancho) / 1000000;
-        var cbmTotal = cbmUnit * cajas;
-        var costo = cbmTotal * svCityRate;
-        var minimo = false;
-        if (costo < 30) { costo = 30; minimo = true; }
-        document.getElementById('res-cbm-unit').textContent = cbmUnit.toFixed(4) + ' CBM / caja';
-        document.getElementById('res-cbm-total').textContent = cbmTotal.toFixed(4) + ' CBM';
-        document.getElementById('res-tarifa').textContent = '$' + svCityRate.toLocaleString() + ' / CBM';
-        document.getElementById('res-ciudad').textContent = svCityName;
-        document.getElementById('res-total').textContent = '$' + costo.toFixed(2);
-        document.getElementById('note-min').style.display = minimo ? 'block' : 'none';
-        resBox.style.display = 'block';
-    }
-</script>
+    </section>
 
     <!-- Sección de Logotipos / Aliados -->
     <section class="trust-logos">
