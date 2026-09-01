@@ -104,7 +104,7 @@ nav ul li a:hover {
     background-position: center;
     background-repeat: no-repeat;
     color: #ffffff;
-    padding: 80px 0;
+    padding: 50px 0;
     text-align: center;
 }
 
@@ -121,7 +121,7 @@ nav ul li a:hover {
 
 /* --- Sección de Servicios y Asesorías --- */
 .services-section {
-    padding: 60px 0;
+    padding: 40px 0;
     text-align: center;
     background: var(--accent-color);
 }
@@ -199,7 +199,7 @@ nav ul li a:hover {
 
 /* --- Sección Tarifas (Casillero) --- */
 .pricing-section {
-    padding: 60px 0;
+    padding: 40px 0;
     background: var(--light-color);
 }
 
@@ -271,7 +271,7 @@ nav ul li a:hover {
 
 /* --- Sección de Preguntas Frecuentes (FAQ) --- */
 .faq-section {
-    padding: 60px 20px;
+    padding: 40px 20px;
     background-color: #f9f9f9;
     text-align: center;
 }
@@ -328,7 +328,7 @@ nav ul li a:hover {
 
 /* --- Sección de Contacto Inferior (CTA) --- */
 .cta-section {
-    padding: 60px 0;
+    padding: 40px 0;
     background-color: var(--light-color);
     text-align: center;
 }
@@ -384,7 +384,7 @@ footer {
 .vip-club-section {
     background-color: var(--primary-color);
     color: var(--light-color);
-    padding: 70px 0;
+    padding: 50px 0;
     text-align: center;
 }
 
