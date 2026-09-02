@@ -271,7 +271,7 @@ background: var(--light-color);
 
 /* --- Sección de Preguntas Frecuentes (FAQ) --- */
 .faq-section {
-    padding: 25px 20px;
+    padding: 15px 20px 25px 20px;
 background-color: #f9f9f9;
     text-align: center;
 }
@@ -314,8 +314,8 @@ background-color: #f9f9f9;
 
 /* --- Sección de Logotipos / Aliados --- */
 .trust-logos {
-    padding: 30px 20px;
-    background-color: #fff;
+    padding: 15px 20px;
+background-color: #fff;
     text-align: center;
     border-top: 1px solid #eee;
 }
@@ -328,7 +328,7 @@ background-color: #f9f9f9;
 
 /* --- Sección de Contacto Inferior (CTA) --- */
 .cta-section {
-    padding: 15px 0;
+    padding: 10px 0 20px 0;
 background-color: var(--light-color);
 text-align: center;
 }
