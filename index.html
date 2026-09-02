@@ -166,14 +166,14 @@
         <h2 class="section-title" style="text-align: center; margin-top: 0 !important; padding-top: 0 !important;">Calcula tu envío marítimo</h2>
         <p class="section-subtitle" style="text-align: center; margin-bottom: 30px; margin-top: 5px;">Ingresa las medidas de tu caja y obtén un estimado al instante.</p>
         
-        <div style="max-width: 600px; margin: 0 auto; background: #fff; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <div style="max-width: 680px; margin: 0 auto; background: #fff; border-radius: 16px; padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
             
-            <p style="font-size: 13px; color: #5a7a99; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;">Dimensiones de la caja</p>
+            <p style="font-size: 14px; color: #5a7a99; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;">Dimensiones de la caja</p>
             
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 4px;">
                 <div style="display:flex; flex-direction:column; gap:3px;">
                     <div style="display:flex; align-items:center; border:1px solid #c8ddf0; border-radius:8px; overflow:hidden; background:#fff;">
-                        <input type="number" id="largo" min="0" step="0.1" placeholder="0" oninput="calcular()" style="border:none; background:transparent; padding:9px 10px; font-size:15px; color:#1a1a2e; width:100%; outline:none; text-align:center;">
+                        <input type="number" id="largo" min="0" step="0.1" placeholder="0" oninput="calcular()" style="border:none; background:transparent; padding:11px 10px; font-size:16px; color:#1a1a2e; width:100%; outline:none; text-align:center;">
                         <span style="padding:0 9px; font-size:12px; color:#5a7a99; border-left:1px solid #c8ddf0; height:100%; display:flex; align-items:center; background:#f4f8fd;">cm</span>
                     </div>
                     <span style="font-size:11px; color:#5a7a99; text-align:center; margin-top:3px;">Largo</span>
@@ -202,7 +202,7 @@
                 <div>
                     <p style="font-size:11px; color:#5a7a99; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:6px;">Tipo de carga</p>
                     <div style="display:flex; border:1px solid #c8ddf0; border-radius:8px; overflow:hidden;">
-                        <button id="btn-comun" onclick="setCarga('comun')" style="flex:1; padding:9px 4px; font-size:13px; border:none; background:#0b2545; color:#fff; cursor:pointer; font-weight:600; border-right:1px solid #c8ddf0;">Común</button>
+                        <button id="btn-comun" onclick="setCarga('comun')" style="flex:1; padding:11px 4px; font-size:14px; border:none; background:#0b2545; color:#fff; cursor:pointer; font-weight:600; border-right:1px solid #c8ddf0;">Común</button>
                         <button id="btn-especial" onclick="setCarga('especial')" style="flex:1; padding:9px 4px; font-size:13px; border:none; background:#fff; color:#5a7a99; cursor:pointer;">Especial</button>
                     </div>
                 </div>
@@ -218,7 +218,7 @@
             <p style="font-size:11px; color:#5a7a99; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:8px;">Ciudad de entrega</p>
             
             <div id="city-grid" style="display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-bottom:1.5rem;">
-                <button class="sv-city" onclick="setCity(this,900,'Caracas')" style="padding:10px; font-size:13px; border:1px solid #0b2545; border-radius:8px; background:#eef4fb; color:#0b2545; cursor:pointer; text-align:left; font-weight:600;">
+                <button class="sv-city" onclick="setCity(this,900,'Caracas')" style="padding:14px; font-size:14px; border:1px solid #0b2545; border-radius:8px; background:#eef4fb; color:#0b2545; cursor:pointer; text-align:left; font-weight:600;">
                     Caracas <div style="font-size:11px; color:#1a6fbb; font-weight:400; margin-top:3px;">$900 / CBM</div>
                 </button>
                 <button class="sv-city" onclick="setCity(this,950,'Maracay / Valencia')" style="padding:10px; font-size:13px; border:1px solid #c8ddf0; border-radius:8px; background:#fff; color:#1a1a2e; cursor:pointer; text-align:left; font-weight:500;">
