@@ -141,7 +141,7 @@ nav ul li a:hover {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    margin-top: 40px;
+    margin-top: 10px;
 }
 
 .service-card {
@@ -271,8 +271,8 @@ nav ul li a:hover {
 
 /* --- Sección de Preguntas Frecuentes (FAQ) --- */
 .faq-section {
-    padding: 40px 20px;
-    background-color: #f9f9f9;
+    padding: 25px 20px;
+background-color: #f9f9f9;
     text-align: center;
 }
 
@@ -328,9 +328,9 @@ nav ul li a:hover {
 
 /* --- Sección de Contacto Inferior (CTA) --- */
 .cta-section {
-    padding: 40px 0;
-    background-color: var(--light-color);
-    text-align: center;
+    padding: 25px 0;
+background-color: var(--light-color);
+text-align: center;
 }
 
 .btn {
@@ -359,7 +359,7 @@ footer {
     color: #fff;
     text-align: center;
     padding: 20px 0;
-    margin-top: 40px;
+    margin-top: 10px;
 }
 
 /* --- Responsive (Móviles) --- */
