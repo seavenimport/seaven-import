@@ -205,7 +205,6 @@
                     <p style="font-size:11px; color:#5a7a99; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:6px;">Tipo de carga</p>
                     <div style="display:flex; border:1px solid #c8ddf0; border-radius:8px; overflow:hidden;">
                         <button id="btn-comun" onclick="setCarga('comun')" style="flex:1; padding:11px 4px; font-size:14px; border:none; background:#0b2545; color:#fff; cursor:pointer; font-weight:600; border-right:1px solid #c8ddf0;">Común</button>
-                        <button id="btn-especial" onclick="setCarga('especial')" style="flex:1; padding:9px 4px; font-size:13px; border:none; background:#fff; color:#5a7a99; cursor:pointer;">Especial</button>
                     </div>
                 </div>
                 <div>
@@ -220,17 +219,11 @@
             <p style="font-size:11px; color:#5a7a99; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:8px;">Ciudad de entrega</p>
             
             <div id="city-grid" style="display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-bottom:1.5rem;">
-                <button class="sv-city" onclick="setCity(this,900,'Caracas')" style="padding:14px; font-size:14px; border:1px solid #0b2545; border-radius:8px; background:#eef4fb; color:#0b2545; cursor:pointer; text-align:left; font-weight:600;">
-                    Caracas <div style="font-size:11px; color:#1a6fbb; font-weight:400; margin-top:3px;">$900 / CBM</div>
+                <button class="sv-city" onclick="setCity(this,900,'Caracas / Valencia / Maracay')" style="padding:14px; font-size:14px; border:1px solid #0b2545; border-radius:8px; background:#eef4fb; color:#0b2545; cursor:pointer; text-align:left; font-weight:600;">
+                    Caracas / Valencia / Maracay <div style="font-size:11px; color:#1a6fbb; font-weight:400; margin-top:3px;">$900 / CBM</div>
                 </button>
-                <button class="sv-city" onclick="setCity(this,950,'Maracay / Valencia')" style="padding:10px; font-size:13px; border:1px solid #c8ddf0; border-radius:8px; background:#fff; color:#1a1a2e; cursor:pointer; text-align:left; font-weight:500;">
-                    Maracay / Valencia <div style="font-size:11px; color:#5a7a99; font-weight:400; margin-top:3px;">$950 / CBM</div>
-                </button>
-                <button class="sv-city" onclick="setCity(this,1200,'Resto del país')" style="padding:10px; font-size:13px; border:1px solid #c8ddf0; border-radius:8px; background:#fff; color:#1a1a2e; cursor:pointer; text-align:left; font-weight:500;">
+                <button class="sv-city" onclick="setCity(this,1200,'Resto del país')" style="padding:14px; font-size:14px; border:1px solid #c8ddf0; border-radius:8px; background:#fff; color:#1a1a2e; cursor:pointer; text-align:left; font-weight:500;">
                     Resto del país <div style="font-size:11px; color:#5a7a99; font-weight:400; margin-top:3px;">$1.200 / CBM</div>
-                </button>
-                <button class="sv-city" id="btn-ciudad-especial" onclick="setCity(this,1500,'Especial')" style="display:none; padding:10px; font-size:13px; border:1px solid #c8ddf0; border-radius:8px; background:#fff; color:#1a1a2e; cursor:pointer; text-align:left; font-weight:500;">
-                    Especial (cualquier destino) <div style="font-size:11px; color:#5a7a99; font-weight:400; margin-top:2px;">$1.500 / CBM</div>
                 </button>
             </div>
             
@@ -267,29 +260,7 @@
 
 <script>
     var svCityRate = 900;
-    var svCityName = 'Caracas';
-    
-    function setCarga(tipo) {
-        var btnC = document.getElementById('btn-comun');
-        var btnE = document.getElementById('btn-especial');
-        var btnEsp = document.getElementById('btn-ciudad-especial');
-        var btns = document.querySelectorAll('.sv-city:not(#btn-ciudad-especial)');
-        
-        if (tipo === 'comun') {
-            btnC.style.background = '#0b2545'; btnC.style.color = '#fff'; btnC.style.fontWeight = '600';
-            btnE.style.background = '#fff'; btnE.style.color = '#5a7a99'; btnE.style.fontWeight = '400';
-            btns.forEach(function(b){ b.style.display = ''; });
-            btnEsp.style.display = 'none';
-            setCity(document.querySelector('.sv-city:not(#btn-ciudad-especial)'), 900, 'Caracas');
-        } else {
-            btnE.style.background = '#0b2545'; btnE.style.color = '#fff'; btnE.style.fontWeight = '600';
-            btnC.style.background = '#fff'; btnC.style.color = '#5a7a99'; btnC.style.fontWeight = '400';
-            btns.forEach(function(b){ b.style.display = 'none'; });
-            btnEsp.style.display = '';
-            setCity(btnEsp, 1500, 'Especial');
-        }
-        calcular();
-    }
+    var svCityName = 'Caracas / Valencia / Maracay';
     
     function setCity(el, rate, name) {
         document.querySelectorAll('.sv-city').forEach(function(b){
