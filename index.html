@@ -380,36 +380,36 @@
         </div>
     </section>
 
-    <!-- Sección Rastreo de Envío -->
-<section style="padding: 40px 0; background-color: #ffffff; text-align: center;">
+   <!-- Sección Rastreo de Envío -->
+<section id="rastreo" class="rastreo-section">
     <div class="container">
         <h2 class="section-title">¿Dónde está tu paquete?</h2>
-        <p class="section-subtitle" style="margin-bottom: 25px;">Rastrea tu envío en cualquier etapa del proceso, desde China hasta Venezuela.</p>
-        <button onclick="document.getElementById('modal-rastreo').style.display='flex'" style="background-color: #0b2545; color: #fff; padding: 15px 35px; border: none; border-radius: 30px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: background-color 0.3s;">
-            <i class="fas fa-magnifying-glass" style="margin-right: 8px;"></i> Rastrear mi paquete
+        <p class="section-subtitle">Rastrea tu envío en cualquier etapa del proceso, desde China hasta Venezuela.</p>
+        <button class="btn-rastreo" onclick="document.getElementById('modal-rastreo').style.display='flex'">
+            <i class="fas fa-magnifying-glass"></i> Rastrear mi paquete
         </button>
     </div>
 </section>
 
 <!-- Modal de Rastreo -->
-<div id="modal-rastreo" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center;">
-    <div style="background:#fff; border-radius:16px; padding:40px 30px; max-width:480px; width:90%; text-align:center; box-shadow: 0 10px 40px rgba(0,0,0,0.2);">
-        <h3 style="color:#0b2545; font-size:1.4rem; margin-bottom:10px;">Rastrear mi envío</h3>
-        <p style="color:#666; font-size:0.95rem; margin-bottom:30px;">Selecciona la opción según la etapa en que se encuentra tu paquete.</p>
+<div id="modal-rastreo" class="modal-rastreo-overlay">
+    <div class="modal-rastreo-box">
+        <h3>Rastrear mi envío</h3>
+        <p>Selecciona la opción según la etapa en que se encuentra tu paquete.</p>
         
-        <a href="https://www.17track.net/" target="_blank" style="display:block; background:#0b2545; color:#fff; padding:15px 20px; border-radius:10px; text-decoration:none; font-weight:bold; font-size:1rem; margin-bottom:15px;">
-            <i class="fas fa-box" style="margin-right:8px;"></i> Rastrear en China
-            <div style="font-size:0.8rem; font-weight:normal; margin-top:4px; opacity:0.8;">Para paquetes que aún están en China</div>
+        <a href="https://www.17track.net/" target="_blank" class="btn-rastreo-china">
+            <i class="fas fa-box"></i> Rastrear en China
+            <div class="btn-rastreo-sub">Para paquetes que aún están en China</div>
         </a>
         
-        <a href="https://www.cma-cgm.com/ebusiness/tracking" target="_blank" style="display:block; background:#134074; color:#fff; padding:15px 20px; border-radius:10px; text-decoration:none; font-weight:bold; font-size:1rem; margin-bottom:25px;">
-            <i class="fas fa-anchor" style="margin-right:8px;"></i> Rastrear Envío Internacional
-            <div style="font-size:0.8rem; font-weight:normal; margin-top:4px; opacity:0.8;">Para paquetes en tránsito o llegando a Venezuela</div>
+        <a href="https://www.cma-cgm.com/ebusiness/tracking" target="_blank" class="btn-rastreo-internacional">
+            <i class="fas fa-anchor"></i> Rastrear Envío Internacional
+            <div class="btn-rastreo-sub">Para paquetes en tránsito o llegando a Venezuela</div>
         </a>
 
-        <p style="font-size:0.85rem; color:#999; margin-bottom:20px;">¿No tienes tu número de seguimiento? <a href="https://wa.me/584225007780" target="_blank" style="color:#0b2545; font-weight:bold;">Escríbenos por WhatsApp</a></p>
+        <p class="modal-rastreo-nota">¿No tienes tu número de seguimiento? <a href="https://wa.me/584225007780" target="_blank">Escríbenos por WhatsApp</a></p>
         
-        <button onclick="document.getElementById('modal-rastreo').style.display='none'" style="background:none; border:1px solid #ccc; color:#666; padding:10px 25px; border-radius:20px; cursor:pointer; font-size:0.9rem;">
+        <button class="btn-cerrar-modal" onclick="document.getElementById('modal-rastreo').style.display='none'">
             Cerrar
         </button>
     </div>
