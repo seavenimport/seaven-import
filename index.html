@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SeaVen Import | Logística, Casillero y Asesorías</title>
+    <title>SeaVen Import | Logística y Casillero Internacional</title>
     <link rel="icon" type="image/jpg" href="logo.jpg">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <meta name="description" content="SeaVen Import: Importa desde China a Venezuela con asesorías presenciales y online, casillero internacional aéreo y marítimo. Barquisimeto y todo el país.">
-    <meta property="og:title" content="SeaVen Import | Logística, Casillero y Asesorías">
-    <meta property="og:description" content="Importa desde China a Venezuela con asesoría personalizada y casillero aéreo o marítimo.">
+    <meta name="description" content="SeaVen Import: Importa desde China a Venezuela con casillero internacional marítimo. Barquisimeto y todo el país.">
+    <meta property="og:title" content="SeaVen Import | Logística y Casillero Internacional">
+    <meta property="og:description" content="Importa desde China a Venezuela con casillero marítimo confiable.">
     <meta property="og:image" content="https://seavenimport.com/logo.jpg">
     <meta property="og:url" content="https://seavenimport.com">
     <meta property="og:type" content="website">
@@ -41,7 +41,7 @@
     <section id="inicio" class="hero">
         <div class="container">
             <h1>Importa desde China a Venezuela sin complicaciones</h1>
-            <p>Logística confiable, casillero internacional y asesoría personalizada en un solo lugar.</p>
+            <p>Logística confiable y casillero internacional en un solo lugar.</p>
             <button class="btn btn-primary" onclick="document.getElementById('calculadora').scrollIntoView({behavior:'smooth'})">
                 Calcula tu envío
             </button>
@@ -62,11 +62,6 @@
                     <i class="fas fa-ship"></i>
                     <h3>Envío Marítimo</h3>
                     <p>Tarifas económicas para carga pesada. Entregas en 60 a 90 días.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-plane"></i>
-                    <h3>Envío Aéreo</h3>
-                    <p>Envíos rápidos para mercancía urgente. Entregas en 7 a 15 días.</p>
                 </div>
             </div>
         </div>
@@ -228,18 +223,13 @@
                 <input type="hidden" name="_next" value="https://seavenimport.com/gracias.html">
 
                 <div class="form-group">
-                    <label for="nombre">👤 Nombre</label>
-                    <input type="text" id="nombre" name="Nombre" placeholder="Ej. Diana" required>
+                    <label for="nombre">👤 Nombre y Apellido</label>
+                    <input type="text" id="nombre" name="Nombre y Apellido" placeholder="Ej. Diana Pérez" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="apellido">👤 Apellido</label>
-                    <input type="text" id="apellido" name="Apellido" placeholder="Ej. Pérez" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">📧 Correo Electrónico</label>
-                    <input type="email" id="email" name="Correo" placeholder="ejemplo@correo.com" required>
+                    <label for="documento">📋 Documento de Identidad</label>
+                    <input type="text" id="documento" name="Documento de Identidad" placeholder="Ej. V-12345678" required>
                 </div>
 
                 <div class="form-group">
@@ -248,13 +238,18 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="estado">📍 Estado / Provincia</label>
-                    <input type="text" id="estado" name="Estado" placeholder="Tu estado de residencia" required>
+                    <label for="ciudad">📍 Ciudad</label>
+                    <input type="text" id="ciudad" name="Ciudad" placeholder="Ej. Barquisimeto" required>
                 </div>
 
                 <div class="form-group">
                     <label for="direccion">📍 Dirección de residencia</label>
                     <input type="text" id="direccion" name="Dirección" placeholder="Ej. Calle 20 entre Carreras 15 y 16" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">📧 Correo Electrónico</label>
+                    <input type="email" id="email" name="Correo" placeholder="ejemplo@correo.com" required>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Solicitar mi Casillero</button>
@@ -268,16 +263,28 @@
             <h2 class="section-title">Preguntas Frecuentes</h2>
             <div class="faq-grid">
                 <div class="faq-item">
-                    <h3>¿Cómo sé dónde está mi paquete?</h3>
-                    <p>Te ofrecemos seguimiento directo y te notificamos en cada etapa clave de la ruta.</p>
+                    <h3>¿Cuánto tiempo tarda el envío marítimo?</h3>
+                    <p>El envío marítimo tiene un tiempo estimado de 60 a 90 días desde que sale de China hasta que llega a Venezuela, sujeto a procesos aduanales.</p>
                 </div>
                 <div class="faq-item">
-                    <h3>¿Qué necesito para importar si no sé nada?</h3>
-                    <p>Nuestras asesorías desde cero te guían paso a paso para hacer tus compras de forma segura.</p>
+                    <h3>¿Puedo enviar cualquier tipo de mercancía?</h3>
+                    <p>Trabajamos únicamente con mercancía común: ropa, calzado, accesorios, juguetes y productos del hogar. No manejamos réplicas, productos de maquillaje ni artículos con batería.</p>
                 </div>
                 <div class="faq-item">
-                    <h3>¿Cómo puedo empezar a importar hoy mismo?</h3>
-                    <p>Escríbenos directamente a nuestro WhatsApp para evaluar tu caso y darte la asesoría de tu preferencia.</p>
+                    <h3>¿Cómo sé dónde está mi paquete durante el envío?</h3>
+                    <p>Te ofrecemos un sistema de rastreo en tiempo real. Ingresa tu código de rastreo en nuestra web y podrás ver el estado de tu envío en cada etapa del proceso.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>¿Qué incluye el precio del flete marítimo?</h3>
+                    <p>El precio por CBM ya incluye el traslado interno hasta tu ciudad de destino. Solo aplica tarifa adicional para envíos menores a 0.15 CBM hacia el interior del país.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>¿Puedo consolidar múltiples compras en un solo envío?</h3>
+                    <p>Sí, ese es el propósito del casillero. Recibimos todas tus compras de diferentes proveedores en nuestro almacén en China y las consolidamos en un único envío marítimo.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>¿Qué documentos necesito para retirar mi paquete?</h3>
+                    <p>Te notificaremos cuando tu mercancía llegue a Venezuela. Coordinaremos contigo el pago pendiente y los detalles para retirar tu paquete en nuestras instalaciones.</p>
                 </div>
             </div>
         </div>
@@ -299,8 +306,8 @@
     <!-- CTA Section -->
     <section style="padding: 10px 0 20px 0; background-color: #fff; text-align: center;">
         <div class="container">
-            <h2 style="font-size: 1.8rem; margin-bottom: 15px; color: #0b2545;">¿Listo para empezar a comprar en China?</h2>
-            <p style="font-size: 1rem; color: #666; margin-bottom: 20px;">Agenda tu asesoría o solicita una cotización personalizada hoy mismo.</p>
+            <h2 style="font-size: 1.8rem; margin-bottom: 15px; color: #0b2545;">¿Listo para empezar a importar desde China?</h2>
+            <p style="font-size: 1rem; color: #666; margin-bottom: 20px;">Contacta con nosotros para solicitar tu casillero o una cotización personalizada.</p>
             <a href="https://wa.me/584225007780" class="btn btn-primary" style="display: inline-block;">
                 <i class="fab fa-whatsapp"></i> Contáctanos por WhatsApp
             </a>
