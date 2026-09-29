@@ -3,188 +3,466 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SeaVen Import | Casillero Internacional China - Venezuela</title>
-    
-    <!-- SEO y Metadatos -->
-    <meta name="description" content="Abre tu casillero internacional gratis con SeaVen Import. Importa desde China a Venezuela con envíos marítimos y aéreos garantizados.">
-    <meta property="og:title" content="SeaVen Import | Casillero y Logística">
-    <meta property="og:description" content="Importa desde China a Venezuela. Casillero internacional, tarifas competitivas y calculador de envíos.">
-    <meta property="og:image" content="https://seavenimport.com/logo.jpg">
-    
-    <!-- Recursos externos -->
-    <link rel="stylesheet" href="styles.css">
+    <title>SeaVen Import | Logística, Casillero y Asesorías</title>
     <link rel="icon" type="image/jpg" href="logo.jpg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="description" content="SeaVen Import: Importa desde China a Venezuela con asesorías presenciales y online, casillero internacional aéreo y marítimo. Barquisimeto y todo el país.">
+    <meta property="og:title" content="SeaVen Import | Logística, Casillero y Asesorías">
+    <meta property="og:description" content="Importa desde China a Venezuela con asesoría personalizada y casillero aéreo o marítimo.">
+    <meta property="og:image" content="https://seavenimport.com/logo.jpg">
+    <meta property="og:url" content="https://seavenimport.com">
+    <meta property="og:type" content="website">
+    <meta name="google-site-verification" content="EqwwIpV5yya1Dh4OZ9y9pfdZykm7unchaN1n2m0zY" />
 </head>
 <body>
-
-    <!-- Navegación -->
-    <header style="background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100;">
-        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px;">
-            <div style="display: flex; align-items: center; gap: 12px;">
-                <img src="logo.jpg" alt="SeaVen Import Logo" style="height: 50px; border-radius: 4px;">
-                <span style="font-size: 1.5rem; font-weight: bold; color: #0b2545;">SeaVen Import</span>
+    <!-- Header / Navegación -->
+    <header class="header">
+        <div class="container header-flex">
+            <div class="logo">
+                <img src="logo.jpg" alt="SeaVen Import Logo" style="height: auto; border-radius: 8px; width: 50px;">
+                <span>SeaVen Import</span>
             </div>
-            <nav style="display: flex; gap: 20px; align-items: center;">
-                <a href="#tarifas" style="text-decoration: none; color: #1a1a2e; font-weight: 500;">Tarifas</a>
-                <a href="#calculadora" style="text-decoration: none; color: #1a1a2e; font-weight: 500;">Calculadora</a>
-                <a href="#registro" style="background: #0b2545; color: #fff; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">Abrir Casillero</a>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#tarifas">Tarifas de envíos</a></li>
+                    <li><a href="#calculadora">Calculadora</a></li>
+                    <li><a href="#rastreo">Rastreo</a></li>
+                    <li><a href="#casillero">Casillero</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
             </nav>
+            <button class="btn btn-primary" onclick="window.location.href='https://wa.me/584225007780'">Contactar</button>
         </div>
     </header>
 
-    <!-- Hero / Principal -->
-    <section style="background: linear-gradient(135deg, #0b2545 0%, #1a4a7b 100%); color: #fff; padding: 80px 20px; text-align: center;">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h1 style="font-size: 2.8rem; margin-bottom: 20px;">Tu Casillero Virtual en China</h1>
-            <p style="font-size: 1.2rem; margin-bottom: 40px; color: #c8ddf0;">Consolida tus compras de Alibaba, 1688 y Shein. Envíos marítimos y aéreos seguros hasta Venezuela.</p>
-            <a href="#registro" style="background: #00d26a; color: #0b2545; padding: 15px 30px; font-size: 1.2rem; font-weight: bold; border-radius: 8px; text-decoration: none; display: inline-block;">Registrarme Gratis Ahora</a>
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h1>Importa desde China a Venezuela sin complicaciones</h1>
+            <p>Logística confiable, casillero internacional y asesoría personalizada en un solo lugar.</p>
+            <button class="btn btn-primary" onclick="document.getElementById('calculadora').scrollIntoView({behavior:'smooth'})">
+                Calcula tu envío
+            </button>
         </div>
     </section>
 
-    <!-- Tarifas -->
-    <section id="tarifas" style="padding: 60px 20px; background: #f4f8fd;">
-        <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
-            <h2 style="color: #0b2545; font-size: 2rem; margin-bottom: 40px;">Nuestras Tarifas</h2>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                <!-- Tarifa Marítima -->
-                <div style="background: #fff; border-radius: 12px; padding: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-                    <i class="fa-solid fa-ship" style="font-size: 40px; color: #0b2545; margin-bottom: 20px;"></i>
-                    <h3 style="font-size: 1.5rem; color: #0b2545;">Envío Marítimo</h3>
-                    <p style="color: #5a7a99; margin-bottom: 20px;">Entrega en 60 a 90 días</p>
-                    <div style="font-size: 2.5rem; font-weight: bold; color: #0b2545; margin-bottom: 20px;">Desde $900 <span style="font-size: 1rem; color: #5a7a99;">/ CBM</span></div>
-                    <ul style="list-style: none; padding: 0; text-align: left; margin: 0 auto; max-width: 200px;">
-                        <li style="margin-bottom: 10px;"><i class="fa-solid fa-check" style="color:#00d26a; margin-right:8px;"></i> Salidas semanales</li>
-                        <li style="margin-bottom: 10px;"><i class="fa-solid fa-check" style="color:#00d26a; margin-right:8px;"></i> Ideal para carga pesada</li>
-                        <li><i class="fa-solid fa-check" style="color:#00d26a; margin-right:8px;"></i> Sin límite de peso</li>
-                    </ul>
+    <!-- Sección Servicios -->
+    <section class="services-section">
+        <div class="container">
+            <h2 class="section-title">¿Qué ofrecemos?</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-cube"></i>
+                    <h3>Casillero Internacional</h3>
+                    <p>Recibe tus compras de China en nuestro almacén y consolidamos en un solo envío.</p>
                 </div>
-                
-                <!-- Tarifa Aérea (Referencial) -->
-                <div style="background: #fff; border-radius: 12px; padding: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-                    <i class="fa-solid fa-plane" style="font-size: 40px; color: #0b2545; margin-bottom: 20px;"></i>
-                    <h3 style="font-size: 1.5rem; color: #0b2545;">Envío Aéreo</h3>
-                    <p style="color: #5a7a99; margin-bottom: 20px;">Entrega en 15 a 20 días</p>
-                    <div style="font-size: 2.5rem; font-weight: bold; color: #0b2545; margin-bottom: 20px;">Contáctanos <span style="font-size: 1rem; color: #5a7a99;">/ KG</span></div>
-                    <ul style="list-style: none; padding: 0; text-align: left; margin: 0 auto; max-width: 200px;">
-                        <li style="margin-bottom: 10px;"><i class="fa-solid fa-check" style="color:#00d26a; margin-right:8px;"></i> Rapidez máxima</li>
-                        <li style="margin-bottom: 10px;"><i class="fa-solid fa-check" style="color:#00d26a; margin-right:8px;"></i> Carga ligera o urgente</li>
-                        <li><i class="fa-solid fa-check" style="color:#00d26a; margin-right:8px;"></i> Manejo seguro</li>
-                    </ul>
+                <div class="service-card">
+                    <i class="fas fa-ship"></i>
+                    <h3>Envío Marítimo</h3>
+                    <p>Tarifas económicas para carga pesada. Entregas en 60 a 90 días.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-plane"></i>
+                    <h3>Envío Aéreo</h3>
+                    <p>Envíos rápidos para mercancía urgente. Entregas en 7 a 15 días.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Calculadora (Integrada) -->
-    <section id="calculadora" style="padding: 60px 20px; background: #fff;">
-        <div style="max-width: 680px; margin: 0 auto;">
-            <h2 style="text-align: center; color: #0b2545; font-size: 2rem; margin-bottom: 10px;">Calculadora Marítima</h2>
-            <p style="text-align: center; color: #5a7a99; margin-bottom: 30px;">Estima el costo de tu envío por volumen.</p>
+    <!-- Sección Tarifas -->
+    <section id="tarifas" class="pricing-section">
+        <div class="container" style="max-width: 600px; margin: 0 auto; background: #fcfdfe; border: 2px solid #0b2545; border-radius: 16px; padding: 40px; text-align: center;">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 40px; color: #0b2545;">Tarifas de envíos</h2>
             
-            <div style="background: #f4f8fd; border-radius: 16px; padding: 35px; border: 1px solid #c8ddf0;">
-                <p style="font-size: 12px; color: #5a7a99; font-weight: bold; text-transform: uppercase; margin-bottom: 10px;">Dimensiones (cm)</p>
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 20px;">
-                    <input type="number" id="largo" placeholder="Largo" oninput="calcular()" style="padding: 12px; border: 1px solid #c8ddf0; border-radius: 8px; text-align: center;">
-                    <input type="number" id="alto" placeholder="Alto" oninput="calcular()" style="padding: 12px; border: 1px solid #c8ddf0; border-radius: 8px; text-align: center;">
-                    <input type="number" id="ancho" placeholder="Ancho" oninput="calcular()" style="padding: 12px; border: 1px solid #c8ddf0; border-radius: 8px; text-align: center;">
-                </div>
+            <div style="background: linear-gradient(135deg, #0b2545 0%, #134074 100%); border-radius: 12px; padding: 40px; text-align: center; margin-bottom: 30px;">
+                <i class="fas fa-anchor" style="font-size: 55px; color: #ffffff; margin-bottom: 15px; display: block;"></i>
+                <h3 style="font-size: 26px; color: #ffffff; margin-bottom: 5px;">Envío Marítimo</h3>
+                <p style="font-size: 14px; color: rgba(255,255,255,0.7); margin-bottom: 20px;">Entrega en 60 a 90 días</p>
                 
-                <div style="margin-bottom: 20px;">
-                    <p style="font-size: 12px; color: #5a7a99; font-weight: bold; text-transform: uppercase; margin-bottom: 10px;">Cantidad de Cajas</p>
-                    <input type="number" id="cajas" value="1" min="1" oninput="calcular()" style="width: 100%; padding: 12px; border: 1px solid #c8ddf0; border-radius: 8px; text-align: center;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; text-align: left;">
+                    <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
+                        <p style="font-size: 12px; color: rgba(255,255,255,0.7); margin-bottom: 5px;">CARACAS / VALENCIA / MARACAY</p>
+                        <p style="font-size: 24px; color: #ffffff; font-weight: bold; margin: 0;">$900 <span style="font-size: 14px;">/CBM</span></p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
+                        <p style="font-size: 12px; color: rgba(255,255,255,0.7); margin-bottom: 5px;">RESTO DEL PAÍS</p>
+                        <p style="font-size: 24px; color: #ffffff; font-weight: bold; margin: 0;">$1.200 <span style="font-size: 14px;">/CBM</span></p>
+                    </div>
                 </div>
 
-                <p style="font-size: 12px; color: #5a7a99; font-weight: bold; text-transform: uppercase; margin-bottom: 10px;">Destino</p>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
-                    <button class="sv-city" onclick="setCity(this, 900, 'Caracas / Valencia / Maracay')" style="padding: 15px; border: 2px solid #0b2545; background: #eef4fb; color: #0b2545; font-weight: bold; border-radius: 8px; cursor: pointer;">Caracas / Valencia / Maracay</button>
-                    <button class="sv-city" onclick="setCity(this, 1200, 'Resto del país')" style="padding: 15px; border: 1px solid #c8ddf0; background: #fff; color: #1a1a2e; border-radius: 8px; cursor: pointer;">Resto del país</button>
+                <ul style="list-style: none; padding: 0; margin: 0; text-align: left;">
+                    <li style="margin-bottom: 15px; font-size: 14px; color: rgba(255,255,255,0.9);">
+                        <i class="fas fa-check" style="color: #00ff00; margin-right: 8px;"></i> Salidas semanales
+                    </li>
+                    <li style="margin-bottom: 15px; font-size: 14px; color: rgba(255,255,255,0.9);">
+                        <i class="fas fa-check" style="color: #00ff00; margin-right: 8px;"></i> Ideal para carga pesada
+                    </li>
+                    <li style="font-size: 14px; color: rgba(255,255,255,0.9);">
+                        <i class="fas fa-check" style="color: #00ff00; margin-right: 8px;"></i> Sin límite de peso
+                    </li>
+                </ul>
+
+                <p style="font-size: 15px; color: #5a7a99; margin-top: 15px; font-style: italic; text-align: center;">* El precio varía según ciudad de destino y tipo de mercancía. Usa la calculadora para obtener tu estimado exacto.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Calculadora Marítima -->
+    <section id="calculadora" style="padding-top: 20px; padding-bottom: 20px; background-color: #f4f8fd;">
+        <div class="container">
+            <h2 class="section-title">Calcula tu envío marítimo</h2>
+            <p class="section-subtitle">Ingresa las dimensiones de tu caja y obtén un estimado al instante.</p>
+            <div style="max-width: 680px; margin: 0 auto; background: #fff; border-radius: 16px; padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+
+                <p style="font-size: 11px; color: #5a7a99; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;">Dimensiones de la caja</p>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 4px;">
+                    <div style="display:flex; flex-direction:column; gap:3px;">
+                        <div style="display:flex; align-items:center; border:1px solid #c8ddf0; border-radius:8px; overflow:hidden; background:#fff;">
+                            <input type="number" id="largo" min="0" step="0.1" placeholder="0" oninput="calcular()" style="border:none; background:transparent; padding:11px 10px; font-size:16px; color:#1a1a2e; width:100%; outline:none; text-align:center;">
+                            <span style="padding:0 9px; font-size:12px; color:#5a7a99; border-left:1px solid #c8ddf0; height:100%; display:flex; align-items:center; background:#f4f8fd;">cm</span>
+                        </div>
+                        <span style="font-size:11px; color:#5a7a99; text-align:center; margin-top:3px;">Largo</span>
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:3px;">
+                        <div style="display:flex; align-items:center; border:1px solid #c8ddf0; border-radius:8px; overflow:hidden; background:#fff;">
+                            <input type="number" id="alto" min="0" step="0.1" placeholder="0" oninput="calcular()" style="border:none; background:transparent; padding:11px 10px; font-size:16px; color:#1a1a2e; width:100%; outline:none; text-align:center;">
+                            <span style="padding:0 9px; font-size:12px; color:#5a7a99; border-left:1px solid #c8ddf0; height:100%; display:flex; align-items:center; background:#f4f8fd;">cm</span>
+                        </div>
+                        <span style="font-size:11px; color:#5a7a99; text-align:center; margin-top:3px;">Alto</span>
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:3px;">
+                        <div style="display:flex; align-items:center; border:1px solid #c8ddf0; border-radius:8px; overflow:hidden; background:#fff;">
+                            <input type="number" id="ancho" min="0" step="0.1" placeholder="0" oninput="calcular()" style="border:none; background:transparent; padding:11px 10px; font-size:16px; color:#1a1a2e; width:100%; outline:none; text-align:center;">
+                            <span style="padding:0 9px; font-size:12px; color:#5a7a99; border-left:1px solid #c8ddf0; height:100%; display:flex; align-items:center; background:#f4f8fd;">cm</span>
+                        </div>
+                        <span style="font-size:11px; color:#5a7a99; text-align:center; margin-top:3px;">Ancho</span>
+                    </div>
+                </div>
+                <div id="err-dims" style="font-size:12px; color:#e05c5c; margin-top:4px; min-height:16px;"></div>
+
+                <hr style="border:none; border-top:1px solid #c8ddf0; margin:1.25rem 0;">
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:1.25rem;">
+                    <div>
+                        <p style="font-size:11px; color:#5a7a99; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:6px;">Número de cajas</p>
+                        <div style="display:flex; align-items:center; border:1px solid #c8ddf0; border-radius:8px; overflow:hidden; background:#fff;">
+                            <input type="number" id="cajas" min="1" step="1" value="1" placeholder="1" oninput="calcular()" style="border:none; background:transparent; padding:11px 10px; font-size:16px; color:#1a1a2e; width:100%; outline:none;">
+                            <span style="padding:0 9px; font-size:12px; color:#5a7a99; border-left:1px solid #c8ddf0; height:100%; display:flex; align-items:center; background:#f4f8fd; white-space:nowrap;">cajas</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div id="result-box" style="display: none; background: #0b2545; color: #fff; padding: 20px; border-radius: 10px; text-align: center;">
-                    <p style="margin-bottom: 5px; color: #c8ddf0;">Volumen Total: <span id="res-cbm-total" style="font-weight: bold; color: #fff;">0 CBM</span></p>
-                    <p style="margin-bottom: 15px; color: #c8ddf0;">Destino: <span id="res-ciudad" style="font-weight: bold; color: #fff;">-</span></p>
-                    <div style="font-size: 2rem; font-weight: bold;" id="res-total">$0.00</div>
-                    <p id="note-min" style="display: none; font-size: 12px; color: #ff6b6b; margin-top: 10px;">Aplica tarifa mínima de $30</p>
+                <p style="font-size:11px; color:#5a7a99; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:8px;">Ciudad de entrega</p>
+                <div id="city-grid" style="display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-bottom:1.5rem;">
+                    <button class="sv-city" onclick="setCity(this,900,'Caracas / Valencia / Maracay')" style="padding:14px; font-size:14px; border:1px solid #0b2545; border-radius:8px; background:#eef4fb; color:#0b2545; cursor:pointer; text-align:left; font-weight:600;">
+                        Caracas / Valencia / Maracay <div style="font-size:11px; color:#1a6fbb; font-weight:400; margin-top:3px;">$900 / CBM</div>
+                    </button>
+                    <button class="sv-city" onclick="setCity(this,1200,'Resto del país')" style="padding:14px; font-size:14px; border:1px solid #c8ddf0; border-radius:8px; background:#fff; color:#1a1a2e; cursor:pointer; text-align:left; font-weight:500;">
+                        Resto del país <div style="font-size:11px; color:#5a7a99; font-weight:400; margin-top:3px;">$1.200 / CBM</div>
+                    </button>
+                </div>
+
+                <div id="result-box" style="display:none; background:#0b2545; border-radius:12px; padding:1.25rem 1.5rem;">
+                    <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.1);">
+                        <span style="font-size:13px; color:rgba(255,255,255,0.6);">Volumen por caja</span>
+                        <span style="font-size:13px; color:rgba(255,255,255,0.9); font-weight:500;" id="res-cbm-unit">—</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.1);">
+                        <span style="font-size:13px; color:rgba(255,255,255,0.6);">Volumen total</span>
+                        <span style="font-size:13px; color:rgba(255,255,255,0.9); font-weight:500;" id="res-cbm-total">—</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.1);">
+                        <span style="font-size:13px; color:rgba(255,255,255,0.6);">Tarifa aplicada</span>
+                        <span style="font-size:13px; color:rgba(255,255,255,0.9); font-weight:500;" id="res-tarifa">—</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; padding:6px 0;">
+                        <span style="font-size:13px; color:rgba(255,255,255,0.6);">Ciudad de entrega</span>
+                        <span style="font-size:13px; color:rgba(255,255,255,0.9); font-weight:500;" id="res-ciudad">—</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1rem; padding-top:1rem; border-top:1px solid rgba(255,255,255,0.2);">
+                        <span style="font-size:14px; font-weight:500; color:rgba(255,255,255,0.8);">Estimado total</span>
+                        <span style="font-size:32px; font-weight:700; color:#ffffff;" id="res-total">$0</span>
+                    </div>
+                    <div id="note-min" style="display:none; font-size:11px; color:rgba(255,255,255,0.5); margin-top:8px; line-height:1.5;">
+                        ⚠ Se aplica tarifa mínima de $30 para envíos pequeños.
+                    </div>
+                    <div style="font-size:11px; color:rgba(255,255,255,0.5); margin-top:6px; line-height:1.5;">
+                        ⚠ Estimación referencial. El flete terrestre nacional está incluido en envíos a partir de 0.1 CBM.
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Formulario de Registro Casillero -->
-    <section id="registro" style="padding: 60px 20px; background: #0b2545; color: #fff;">
-        <div style="max-width: 600px; margin: 0 auto;">
-            <h2 style="text-align: center; font-size: 2rem; margin-bottom: 10px;">Abre tu Casillero</h2>
-            <p style="text-align: center; color: #c8ddf0; margin-bottom: 30px;">Recibe tu código de usuario y la dirección de nuestros almacenes.</p>
+    <!-- Sección Rastreo de Envío -->
+    <section id="rastreo" class="rastreo-section">
+        <div class="container">
+            <h2 class="section-title">¿Dónde está tu paquete?</h2>
+            <p class="section-subtitle">Ingresa tu código de rastreo para ver el estado en tiempo real</p>
             
-            <form action="https://formsubmit.co/info.seavenimport@gmail.com" method="POST" style="background: #fff; padding: 30px; border-radius: 12px; color: #1a1a2e;">
+            <div style="max-width: 500px; margin: 0 auto; margin-bottom: 30px;">
+                <input type="text" id="codigo-rastreo" placeholder="Ej: SVN-2026-001" 
+                       style="width: 100%; padding: 12px; border: 1px solid #c8ddf0; border-radius: 8px; font-size: 1rem; box-sizing: border-box;">
+                <button onclick="buscarRastreo()" 
+                        style="width: 100%; margin-top: 12px; padding: 12px; background: #0b2545; color: #fff; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem;">
+                    🔍 Rastrear
+                </button>
+            </div>
+
+            <!-- Resultados -->
+            <div id="resultado-rastreo" style="display: none; max-width: 600px; margin: 0 auto;"></div>
+        </div>
+    </section>
+
+    <!-- Sección Registro de Casillero -->
+    <section id="casillero" class="register-section">
+        <div class="container">
+            <h2 class="section-title">Abre tu Casillero Internacional Gratis</h2>
+            <p class="section-subtitle">Completa tus datos para asignarte tu código de usuario y darte acceso a nuestros almacenes en China.</p>
+            <form action="https://formsubmit.co/info.seavenimport@gmail.com" method="POST" class="register-form">
                 <input type="hidden" name="_subject" value="Nuevo Registro de Casillero - SeaVen Import">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_next" value="https://seavenimport.com/gracias.html">
-                
-                <label style="font-weight: bold; display: block; margin-bottom: 5px;">Nombre Completo</label>
-                <input type="text" name="Nombre" required style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
-                
-                <label style="font-weight: bold; display: block; margin-bottom: 5px;">Cédula de Identidad</label>
-                <input type="text" name="Cedula" required style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
 
-                <label style="font-weight: bold; display: block; margin-bottom: 5px;">WhatsApp</label>
-                <input type="tel" name="Telefono" required style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
+                <div class="form-group">
+                    <label for="nombre">👤 Nombre</label>
+                    <input type="text" id="nombre" name="Nombre" placeholder="Ej. Diana" required>
+                </div>
 
-                <label style="font-weight: bold; display: block; margin-bottom: 5px;">Correo Electrónico</label>
-                <input type="email" name="Correo" required style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
+                <div class="form-group">
+                    <label for="apellido">👤 Apellido</label>
+                    <input type="text" id="apellido" name="Apellido" placeholder="Ej. Pérez" required>
+                </div>
 
-                <label style="font-weight: bold; display: block; margin-bottom: 5px;">Ciudad y Estado (Destino)</label>
-                <input type="text" name="Ciudad" required style="width: 100%; padding: 12px; margin-bottom: 30px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
+                <div class="form-group">
+                    <label for="email">📧 Correo Electrónico</label>
+                    <input type="email" id="email" name="Correo" placeholder="ejemplo@correo.com" required>
+                </div>
 
-                <button type="submit" style="width: 100%; background: #00d26a; color: #0b2545; padding: 15px; border: none; border-radius: 6px; font-size: 1.1rem; font-weight: bold; cursor: pointer;">Crear Casillero</button>
+                <div class="form-group">
+                    <label for="telefono">📱 Teléfono / WhatsApp</label>
+                    <input type="tel" id="telefono" name="Teléfono" placeholder="+58 412 1234567" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="estado">📍 Estado / Provincia</label>
+                    <input type="text" id="estado" name="Estado" placeholder="Tu estado de residencia" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="direccion">📍 Dirección de residencia</label>
+                    <input type="text" id="direccion" name="Dirección" placeholder="Ej. Calle 20 entre Carreras 15 y 16" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Solicitar mi Casillero</button>
             </form>
         </div>
     </section>
 
+    <!-- Sección Preguntas Frecuentes (FAQ) -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Preguntas Frecuentes</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>¿Cómo sé dónde está mi paquete?</h3>
+                    <p>Te ofrecemos seguimiento directo y te notificamos en cada etapa clave de la ruta.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>¿Qué necesito para importar si no sé nada?</h3>
+                    <p>Nuestras asesorías desde cero te guían paso a paso para hacer tus compras de forma segura.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>¿Cómo puedo empezar a importar hoy mismo?</h3>
+                    <p>Escríbenos directamente a nuestro WhatsApp para evaluar tu caso y darte la asesoría de tu preferencia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Métodos de pago confiables -->
+    <section style="padding: 30px 0; text-align: center; background-color: #fff;">
+        <div class="container">
+            <h3 style="font-size: 1.3rem; margin-bottom: 20px; color: #0b2545;">Métodos de pago confiables</h3>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <img src="binance.jpg" alt="Binance" style="height: 35px; width: auto; object-fit: contain; margin: 0 15px;">
+                <img src="zinli.png" alt="Zinli" style="height: 35px; width: auto; object-fit: contain; margin: 0 15px;">
+                <img src="pagomovil.png" alt="Pago Móvil" style="height: 35px; width: auto; object-fit: contain; margin: 0 15px;">
+                <img src="divisas.png" alt="Divisas" style="height: 35px; width: auto; object-fit: contain; margin: 0 15px;">
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="padding: 10px 0 20px 0; background-color: #fff; text-align: center;">
+        <div class="container">
+            <h2 style="font-size: 1.8rem; margin-bottom: 15px; color: #0b2545;">¿Listo para empezar a comprar en China?</h2>
+            <p style="font-size: 1rem; color: #666; margin-bottom: 20px;">Agenda tu asesoría o solicita una cotización personalizada hoy mismo.</p>
+            <a href="https://wa.me/584225007780" class="btn btn-primary" style="display: inline-block;">
+                <i class="fab fa-whatsapp"></i> Contáctanos por WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Redes sociales -->
+    <section style="padding: 15px 0; text-align: center; background-color: #f9f9f9;">
+        <div class="container">
+            <h3 style="font-size: 1.1rem; margin-bottom: 15px; color: #0b2545;">Síguenos en nuestras redes sociales</h3>
+            <div style="display: flex; justify-content: center; gap: 20px;">
+                <a href="https://facebook.com/seavenimport" target="_blank" style="color: #1877F2; font-size: 2rem;"><i class="fab fa-facebook"></i></a>
+                <a href="https://instagram.com/seavenimport" target="_blank" style="color: #E1306C; font-size: 2rem;"><i class="fab fa-instagram"></i></a>
+                <a href="https://tiktok.com/@seavenimport" target="_blank" style="color: #000; font-size: 2rem;"><i class="fab fa-tiktok"></i></a>
+                <a href="https://youtube.com/@seavenimport" target="_blank" style="color: #FF0000; font-size: 2rem;"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer style="background: #1a1a2e; color: #fff; text-align: center; padding: 20px;">
-        <p>© 2026 SeaVen Import. Todos los derechos reservados.</p>
+    <footer>
+        <div class="container" style="text-align: center;">
+            <p>📧 info.seavenimport@gmail.com</p>
+            <p>© 2026 SeaVen Import. Todos los derechos reservados.</p>
+        </div>
     </footer>
 
-    <!-- Scripts Calculadora -->
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/584225007780" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Supabase JS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Rastreo Script -->
     <script>
-        let svCityRate = 900;
-        let svCityName = 'Caracas / Valencia / Maracay';
-        
+        // Configuración de Supabase
+        const SUPABASE_URL = 'https://zfdnxzvuzrdgqjafctui.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpmZG54enZ1enJkZ3FqYWZjdHVpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzI2MzkyNDcsImV4cCI6MjA0ODIxNTI0N30.K6tAeF-2MZXXJx9T2OlBJ4RzZ9JlBdRlQZHjLjKo3Nw';
+
+        const { createClient } = supabase;
+        const client = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        async function buscarRastreo() {
+            const codigo = document.getElementById('codigo-rastreo').value.trim();
+            
+            if (!codigo) {
+                alert('Por favor ingresa un código de rastreo');
+                return;
+            }
+            
+            try {
+                const { data: envio, error } = await client
+                    .from('envios')
+                    .select('*')
+                    .eq('codigo_rastreo', codigo)
+                    .single();
+                
+                if (error || !envio) {
+                    alert('Código de rastreo no encontrado');
+                    return;
+                }
+                
+                const { data: historial } = await client
+                    .from('historial_estados')
+                    .select('*')
+                    .eq('envio_id', envio.id)
+                    .order('fecha', { ascending: true });
+                
+                mostrarResultado(envio, historial);
+                
+            } catch (err) {
+                console.error(err);
+                alert('Error al buscar. Intenta de nuevo.');
+            }
+        }
+
+        function mostrarResultado(envio, historial) {
+            const resultado = document.getElementById('resultado-rastreo');
+            
+            let html = `
+                <div style="background: #eef4fb; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid #0b2545;">
+                    <h3 style="color: #0b2545; margin: 0 0 10px;">Código: ${envio.codigo_rastreo}</h3>
+                    <p style="margin: 5px 0; color: #666;"><strong>Cliente:</strong> ${envio.cliente_nombre || 'No especificado'}</p>
+                    <p style="margin: 5px 0; color: #666;"><strong>Estado Actual:</strong> <span style="color: #0b2545; font-weight: bold;">${envio.estado}</span></p>
+                    <p style="margin: 5px 0; color: #999; font-size: 0.9rem;">Actualizado: ${new Date(envio.fecha_estado).toLocaleDateString('es-VE')}</p>
+                </div>
+                
+                <div style="border-left: 3px solid #0b2545; padding-left: 20px;">
+            `;
+            
+            if (historial && historial.length > 0) {
+                historial.forEach((h, index) => {
+                    const estaActivo = index === historial.length - 1;
+                    html += `
+                        <div style="margin-bottom: 25px; position: relative;">
+                            <div style="font-weight: bold; color: #0b2545; margin-bottom: 5px; font-size: 1rem;">
+                                ${estaActivo ? '🔄' : '✅'} ${h.estado}
+                            </div>
+                            <div style="font-size: 0.9rem; color: #666;">
+                                📍 ${h.ubicacion || 'Ubicación no especificada'} | 📅 ${new Date(h.fecha).toLocaleDateString('es-VE')}
+                            </div>
+                            <div style="font-size: 0.9rem; color: #999; margin-top: 5px;">
+                                ${h.detalles || 'Sin detalles adicionales'}
+                            </div>
+                            <hr style="border: none; border-top: 1px dashed #ddd; margin: 15px 0;">
+                        </div>
+                    `;
+                });
+            } else {
+                html += `<p style="color: #999;">No hay historial registrado aún.</p>`;
+            }
+            
+            html += `</div>`;
+            resultado.innerHTML = html;
+            resultado.style.display = 'block';
+        }
+
+        var svCityRate = 900;
+        var svCityName = 'Caracas / Valencia / Maracay';
+
         function setCity(el, rate, name) {
-            document.querySelectorAll('.sv-city').forEach(b => {
+            document.querySelectorAll('.sv-city').forEach(function(b){
                 b.style.border = '1px solid #c8ddf0';
                 b.style.background = '#fff';
                 b.style.color = '#1a1a2e';
+                b.style.fontWeight = '500';
             });
-            el.style.border = '2px solid #0b2545';
+            el.style.border = '1px solid #0b2545';
             el.style.background = '#eef4fb';
             el.style.color = '#0b2545';
+            el.style.fontWeight = '600';
             svCityRate = rate;
             svCityName = name;
             calcular();
         }
-        
+
         function calcular() {
-            let l = parseFloat(document.getElementById('largo').value) || 0;
-            let a = parseFloat(document.getElementById('alto').value) || 0;
-            let an = parseFloat(document.getElementById('ancho').value) || 0;
-            let c = parseInt(document.getElementById('cajas').value) || 1;
-            let resBox = document.getElementById('result-box');
-            
-            if (l <= 0 || a <= 0 || an <= 0) {
+            var largo = parseFloat(document.getElementById('largo').value) || 0;
+            var alto = parseFloat(document.getElementById('alto').value) || 0;
+            var ancho = parseFloat(document.getElementById('ancho').value) || 0;
+            var cajas = parseInt(document.getElementById('cajas').value) || 1;
+            var errEl = document.getElementById('err-dims');
+            var resBox = document.getElementById('result-box');
+
+            if (largo <= 0 || alto <= 0 || ancho <= 0) {
                 resBox.style.display = 'none';
+                errEl.textContent = (largo > 0 || alto > 0 || ancho > 0) ? 'Completa las tres dimensiones.' : '';
                 return;
             }
-            
-            let cbmTotal = ((l * a * an) / 1000000) * c;
-            let costo = cbmTotal * svCityRate;
-            let minimo = costo > 0 && costo < 30;
-            if (minimo) costo = 30;
-            
+            errEl.textContent = '';
+
+            var cbmUnit = (largo * alto * ancho) / 1000000;
+            var cbmTotal = cbmUnit * cajas;
+            var costo = cbmTotal * svCityRate;
+            var minimo = false;
+            if (costo < 30) { costo = 30; minimo = true; }
+
+            document.getElementById('res-cbm-unit').textContent = cbmUnit.toFixed(4) + ' CBM / caja';
             document.getElementById('res-cbm-total').textContent = cbmTotal.toFixed(4) + ' CBM';
+            document.getElementById('res-tarifa').textContent = '$' + svCityRate.toLocaleString() + ' / CBM';
             document.getElementById('res-ciudad').textContent = svCityName;
             document.getElementById('res-total').textContent = '$' + costo.toFixed(2);
             document.getElementById('note-min').style.display = minimo ? 'block' : 'none';
