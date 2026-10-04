@@ -5,467 +5,832 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SeaVen Import | Logística y Casillero Internacional</title>
     <link rel="icon" type="image/jpg" href="logo.jpg">
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <meta name="description" content="SeaVen Import: Importa desde China a Venezuela con casillero internacional marítimo. Barquisimeto y todo el país.">
+    <meta name="description" content="SeaVen Import: Casillero internacional y envíos marítimos desde China a Venezuela. Barquisimeto y todo el país.">
     <meta property="og:title" content="SeaVen Import | Logística y Casillero Internacional">
     <meta property="og:description" content="Importa desde China a Venezuela con casillero marítimo confiable.">
     <meta property="og:image" content="https://seavenimport.com/logo.jpg">
     <meta property="og:url" content="https://seavenimport.com">
     <meta property="og:type" content="website">
-    <meta name="google-site-verification" content="EqwwIpV5yya1Dh4OZ9y9pfdZykm7unchaN1n2m0zY" />
+    <meta name="google-site-verification" content="EqwwIpV5yya1Dh4OZ9y9pfdZykm7unchaN1n2m0zY">
+
+    <style>
+        :root {
+            --primary:   #0b2545;
+            --secondary: #134074;
+            --accent:    #1a6fbb;
+            --light-bg:  #f4f8fd;
+            --border:    #c8ddf0;
+            --text:      #1a1a2e;
+            --muted:     #5a7a99;
+            --white:     #ffffff;
+            --green:     #00d26a;
+            --radius:    12px;
+            --shadow:    0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.6;
+        }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        .container { width: 90%; max-width: 1100px; margin: 0 auto; }
+        .section-title { font-size: 2rem; color: var(--primary); margin-bottom: 10px; text-align: center; }
+        .section-subtitle { color: var(--muted); text-align: center; margin-bottom: 40px; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.2s, background 0.3s;
+            text-decoration: none;
+        }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-primary { background: var(--primary); color: var(--white); }
+        .btn-primary:hover { background: var(--secondary); }
+        .btn-green { background: var(--green); color: var(--primary); }
+        .btn-green:hover { background: #00b85a; }
+
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+        header.hidden { transform: translateY(-100%); }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+        }
+        .logo { display: flex; align-items: center; gap: 10px; }
+        .logo img { height: 48px; width: 48px; border-radius: 6px; object-fit: cover; }
+        .logo span { font-size: 1.3rem; font-weight: 700; color: var(--primary); }
+        nav ul { list-style: none; display: flex; gap: 24px; align-items: center; }
+        nav ul li a { font-weight: 600; font-size: 0.92rem; color: var(--text); transition: color 0.2s; }
+        nav ul li a:hover { color: var(--accent); }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .hamburger span { display: block; width: 25px; height: 3px; background: var(--primary); border-radius: 3px; transition: all 0.3s; }
+        .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+        .nav-mobile { display: none; flex-direction: column; background: var(--white); padding: 16px 20px; border-top: 1px solid var(--border); }
+        .nav-mobile.open { display: flex; }
+        .nav-mobile a { padding: 10px 0; border-bottom: 1px solid var(--light-bg); font-weight: 600; color: var(--text); }
+        .nav-mobile a:last-child { border-bottom: none; }
+
+        .hero {
+            background: linear-gradient(135deg, #0b2545 0%, #134074 50%, #1a6fbb 100%);
+            color: var(--white);
+            padding: 90px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60px; right: -60px;
+            width: 300px; height: 300px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -80px; left: -40px;
+            width: 250px; height: 250px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.03);
+        }
+        .hero-content { position: relative; z-index: 1; }
+        .hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 16px; line-height: 1.2; }
+        .hero p { font-size: 1.1rem; color: rgba(255,255,255,0.8); max-width: 560px; margin: 0 auto 32px; }
+        .hero-badges { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 36px; }
+        .hero-badge {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 30px;
+            padding: 8px 18px;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.9);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .why-section { padding: 70px 0; background: var(--light-bg); }
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 40px; }
+        .why-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 32px 24px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--accent);
+            transition: transform 0.3s;
+        }
+        .why-card:hover { transform: translateY(-4px); }
+        .why-card .icon {
+            width: 60px; height: 60px;
+            background: var(--light-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+        .why-card h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 8px; }
+        .why-card p { font-size: 0.92rem; color: var(--muted); }
+
+        .tarifas-section { padding: 70px 0; background: var(--white); }
+        .tarifas-card {
+            max-width: 640px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 20px;
+            padding: 48px 40px;
+            color: var(--white);
+            text-align: center;
+            box-shadow: 0 12px 40px rgba(11,37,69,0.25);
+        }
+        .tarifas-card .icon-barco { font-size: 52px; margin-bottom: 16px; opacity: 0.9; }
+        .tarifas-card h3 { font-size: 1.8rem; margin-bottom: 6px; }
+        .tarifas-card .tiempo { color: rgba(255,255,255,0.65); font-size: 0.95rem; margin-bottom: 32px; }
+        .tarifas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
+        .tarifa-item {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 10px;
+            padding: 18px 14px;
+            text-align: left;
+        }
+        .tarifa-item .ciudad { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(255,255,255,0.6); margin-bottom: 6px; }
+        .tarifa-item .precio { font-size: 1.6rem; font-weight: 700; }
+        .tarifa-item .precio span { font-size: 0.85rem; font-weight: 400; color: rgba(255,255,255,0.65); }
+        .tarifas-checks { list-style: none; text-align: left; margin-bottom: 20px; }
+        .tarifas-checks li { padding: 6px 0; font-size: 0.95rem; color: rgba(255,255,255,0.88); display: flex; align-items: center; gap: 10px; }
+        .tarifas-checks li i { color: var(--green); }
+        .tarifas-nota { font-size: 0.82rem; color: rgba(255,255,255,0.5); font-style: italic; margin-top: 16px; }
+
+        .calc-section { padding: 70px 0; background: var(--light-bg); }
+        .calc-box { max-width: 680px; margin: 0 auto; background: var(--white); border-radius: 20px; padding: 40px; box-shadow: var(--shadow); }
+        .calc-label { font-size: 11px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
+        .dims-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 6px; }
+        .dim-field { display: flex; flex-direction: column; gap: 4px; }
+        .input-wrap { display: flex; align-items: center; border: 1.5px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--white); transition: border-color 0.2s; }
+        .input-wrap:focus-within { border-color: var(--accent); }
+        .input-wrap input { border: none; background: transparent; padding: 11px 10px; font-size: 16px; color: var(--text); width: 100%; outline: none; text-align: center; }
+        .input-unit { padding: 0 10px; font-size: 12px; color: var(--muted); border-left: 1.5px solid var(--border); background: var(--light-bg); height: 100%; display: flex; align-items: center; white-space: nowrap; }
+        .dim-sublabel { font-size: 11px; color: var(--muted); text-align: center; }
+        .calc-err { font-size: 12px; color: #e05c5c; min-height: 18px; margin-bottom: 4px; }
+        .calc-divider { border: none; border-top: 1.5px solid var(--border); margin: 20px 0; }
+        .cajas-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+        .city-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        .city-btn { padding: 14px 12px; border: 1.5px solid var(--border); border-radius: 10px; background: var(--white); color: var(--text); cursor: pointer; text-align: left; font-size: 13px; font-weight: 500; transition: all 0.2s; line-height: 1.3; }
+        .city-btn:hover { border-color: var(--accent); background: var(--light-bg); }
+        .city-btn.active { border-color: var(--primary); background: #eef4fb; color: var(--primary); font-weight: 700; }
+        .city-btn .city-price { font-size: 11px; color: var(--muted); font-weight: 400; margin-top: 3px; }
+        .city-btn.active .city-price { color: var(--accent); }
+        .result-box { display: none; background: var(--primary); border-radius: var(--radius); padding: 24px; }
+        .result-row { display: flex; justify-content: space-between; align-items: baseline; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; }
+        .result-row:last-of-type { border-bottom: none; }
+        .result-row .key { color: rgba(255,255,255,0.6); }
+        .result-row .val { color: rgba(255,255,255,0.9); font-weight: 600; }
+        .result-total { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding-top: 16px; border-top: 1.5px solid rgba(255,255,255,0.2); }
+        .result-total .label { font-size: 15px; color: rgba(255,255,255,0.8); font-weight: 500; }
+        .result-total .amount { font-size: 2.2rem; font-weight: 700; color: var(--white); }
+        .result-note { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 10px; line-height: 1.5; }
+        #note-min { display: none; color: rgba(255,120,120,0.8); }
+
+        .rastreo-section { padding: 70px 0; background: var(--white); text-align: center; }
+        .rastreo-box { max-width: 520px; margin: 0 auto; }
+        .rastreo-input-wrap { display: flex; border: 2px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 20px; transition: border-color 0.2s; }
+        .rastreo-input-wrap:focus-within { border-color: var(--accent); }
+        .rastreo-input-wrap input { flex: 1; border: none; padding: 14px 16px; font-size: 1rem; outline: none; color: var(--text); }
+        .rastreo-input-wrap button { background: var(--primary); color: var(--white); border: none; padding: 14px 20px; font-weight: 700; cursor: pointer; font-size: 1rem; transition: background 0.2s; white-space: nowrap; }
+        .rastreo-input-wrap button:hover { background: var(--secondary); }
+        #resultado-rastreo { text-align: left; margin-top: 20px; }
+        .rastreo-card { background: var(--light-bg); border-left: 4px solid var(--primary); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 24px; }
+        .rastreo-card h3 { color: var(--primary); margin-bottom: 8px; }
+        .rastreo-card p { color: #555; font-size: 0.9rem; margin: 4px 0; }
+        .timeline { border-left: 3px solid var(--border); padding-left: 24px; }
+        .timeline-item { margin-bottom: 24px; position: relative; }
+        .timeline-item::before { content: ''; position: absolute; left: -31px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: var(--border); border: 3px solid var(--white); }
+        .timeline-item.done::before { background: var(--green); }
+        .timeline-item.active::before { background: var(--accent); }
+        .timeline-title { font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+        .timeline-meta { font-size: 0.85rem; color: var(--muted); }
+        .timeline-detail { font-size: 0.85rem; color: #888; margin-top: 4px; }
+
+        .casillero-section { padding: 70px 0; background: var(--light-bg); }
+        .casillero-form { max-width: 600px; margin: 0 auto; background: var(--white); border-radius: 20px; padding: 40px; box-shadow: var(--shadow); border-top: 5px solid var(--primary); }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 600; font-size: 0.9rem; color: var(--primary); margin-bottom: 6px; }
+        .form-group input { width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 0.95rem; color: var(--text); outline: none; transition: border-color 0.2s; font-family: inherit; }
+        .form-group input:focus { border-color: var(--accent); }
+        .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+        .faq-section { padding: 70px 0; background: var(--white); }
+        .faq-list { max-width: 760px; margin: 0 auto; }
+        .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); margin-bottom: 12px; overflow: hidden; }
+        .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 18px 22px; cursor: pointer; background: var(--white); transition: background 0.2s; gap: 12px; }
+        .faq-question:hover { background: var(--light-bg); }
+        .faq-question h3 { font-size: 1rem; color: var(--primary); font-weight: 600; flex: 1; }
+        .faq-icon { font-size: 1.1rem; color: var(--accent); transition: transform 0.3s; flex-shrink: 0; }
+        .faq-item.open .faq-icon { transform: rotate(45deg); }
+        .faq-answer { display: none; padding: 0 22px 18px; font-size: 0.92rem; color: #555; line-height: 1.6; border-top: 1px solid var(--border); }
+        .faq-item.open .faq-answer { display: block; }
+
+        .pagos-section { padding: 50px 0; background: var(--light-bg); text-align: center; }
+        .pagos-section h3 { font-size: 1.2rem; color: var(--primary); margin-bottom: 24px; font-weight: 700; }
+        .pagos-logos { display: flex; justify-content: center; align-items: center; gap: 24px; flex-wrap: wrap; }
+        .pagos-logos img { height: 34px; width: auto; object-fit: contain; }
+
+        .cta-section { padding: 70px 0; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); text-align: center; color: var(--white); }
+        .cta-section h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 12px; }
+        .cta-section p { color: rgba(255,255,255,0.75); margin-bottom: 28px; font-size: 1rem; }
+
+        .social-section { padding: 40px 0; text-align: center; background: var(--white); }
+        .social-section h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 20px; }
+        .social-icons { display: flex; justify-content: center; gap: 20px; }
+        .social-icons a { font-size: 1.8rem; transition: transform 0.2s, opacity 0.2s; }
+        .social-icons a:hover { transform: translateY(-3px); opacity: 0.8; }
+
+        footer { background: #051622; color: rgba(255,255,255,0.7); text-align: center; padding: 24px 0; font-size: 0.88rem; }
+        footer a { color: rgba(255,255,255,0.7); }
+        footer a:hover { color: var(--white); }
+        footer p { margin: 4px 0; }
+
+        .whatsapp-float { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.7rem; color: var(--white); box-shadow: 0 4px 16px rgba(0,0,0,0.2); z-index: 9999; transition: transform 0.3s, background 0.3s; }
+        .whatsapp-float:hover { transform: scale(1.1); background: #128c7e; }
+
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .header-inner .btn { display: none; }
+            .hamburger { display: flex; }
+            .hero { padding: 60px 0 50px; }
+            .hero h1 { font-size: 1.7rem; }
+            .tarifas-card { padding: 32px 20px; }
+            .tarifas-grid { grid-template-columns: 1fr; }
+            .calc-box { padding: 24px 18px; }
+            .dims-grid { gap: 8px; }
+            .cajas-row { grid-template-columns: 1fr; }
+            .city-grid { grid-template-columns: 1fr; }
+            .casillero-form { padding: 28px 20px; }
+            .form-grid-2 { grid-template-columns: 1fr; }
+            .section-title { font-size: 1.6rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-badges { gap: 8px; }
+            .hero-badge { font-size: 0.78rem; padding: 6px 12px; }
+            .result-total .amount { font-size: 1.8rem; }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header / Navegación -->
-    <header class="header">
-        <div class="container header-flex">
+
+    <header id="main-header">
+        <div class="container header-inner">
             <div class="logo">
-                <img src="logo.jpg" alt="SeaVen Import Logo" style="height: auto; border-radius: 8px; width: 50px;">
+                <img src="logo.jpg" alt="SeaVen Import Logo">
                 <span>SeaVen Import</span>
             </div>
-            <nav class="nav">
+            <nav>
                 <ul>
                     <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#tarifas">Tarifas de envíos</a></li>
+                    <li><a href="#tarifas">Tarifas</a></li>
                     <li><a href="#calculadora">Calculadora</a></li>
                     <li><a href="#rastreo">Rastreo</a></li>
                     <li><a href="#casillero">Casillero</a></li>
                     <li><a href="#faq">FAQ</a></li>
                 </ul>
             </nav>
-            <button class="btn btn-primary" onclick="window.location.href='https://wa.me/584225007780'">Contactar</button>
+            <a href="https://wa.me/584225007780" class="btn btn-primary" target="_blank" rel="noopener">
+                <i class="fab fa-whatsapp"></i> Contactar
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
         </div>
+        <nav class="nav-mobile" id="nav-mobile">
+            <a href="#inicio"      onclick="cerrarMenu()">Inicio</a>
+            <a href="#tarifas"     onclick="cerrarMenu()">Tarifas</a>
+            <a href="#calculadora" onclick="cerrarMenu()">Calculadora</a>
+            <a href="#rastreo"     onclick="cerrarMenu()">Rastreo</a>
+            <a href="#casillero"   onclick="cerrarMenu()">Casillero</a>
+            <a href="#faq"         onclick="cerrarMenu()">FAQ</a>
+            <a href="https://wa.me/584225007780" target="_blank" rel="noopener" style="color:#25d366;">
+                <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+            </a>
+        </nav>
     </header>
 
-    <!-- Hero Section -->
     <section id="inicio" class="hero">
-        <div class="container">
-            <h1>Importa desde China a Venezuela sin complicaciones</h1>
+        <div class="container hero-content">
+            <h1>Tu Casillero Internacional<br>en China, hasta Venezuela</h1>
+            <p>Recibe tus compras en nuestro almacén de Yiwu y las enviamos por vía marítima a todo el país.</p>
+            <a href="#casillero" class="btn btn-green">
+                <i class="fas fa-box-open"></i> Abrir mi Casillero Gratis
+            </a>
+            <div class="hero-badges">
+                <div class="hero-badge"><i class="fas fa-shield-alt"></i> Almacén en Yiwu, China</div>
+                <div class="hero-badge"><i class="fas fa-anchor"></i> Envíos Marítimos</div>
+                <div class="hero-badge"><i class="fas fa-map-marker-alt"></i> Entrega en toda Venezuela</div>
+                <div class="hero-badge"><i class="fas fa-lock"></i> Confidencialidad total</div>
+            </div>
         </div>
     </section>
 
-    <!-- Sección Servicios -->
-    <section class="services-section">
+    <section class="why-section">
         <div class="container">
-            <h2 class="section-title">¿Qué ofrecemos?</h2>
-            <div style="max-width: 400px; margin: 0 auto;">
-                <div class="service-card">
-                    <i class="fas fa-ship"></i>
-                    <h3>Envío Marítimo</h3>
-                    <p>Tarifas económicas para carga pesada. Entregas en 60 a 90 días.</p>
+            <h2 class="section-title">¿Por qué elegir SeaVen Import?</h2>
+            <p class="section-subtitle">Somos tu aliado logístico para importar desde China con tranquilidad</p>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="icon"><i class="fas fa-warehouse"></i></div>
+                    <h3>Almacén en Yiwu</h3>
+                    <p>Recibimos tu mercancía directamente en la provincia de Yiwu, China. Cada paquete es identificado con tu código de cliente.</p>
+                </div>
+                <div class="why-card">
+                    <div class="icon"><i class="fas fa-ship"></i></div>
+                    <h3>Flete Marítimo</h3>
+                    <p>Enviamos tu carga por vía marítima. Tarifas accesibles por CBM con entrega en 60 a 90 días hasta tu ciudad en Venezuela.</p>
+                </div>
+                <div class="why-card">
+                    <div class="icon"><i class="fas fa-user-shield"></i></div>
+                    <h3>Privacidad Total</h3>
+                    <p>Tus datos, proveedores y contenido de tu mercancía son manejados bajo estricta confidencialidad. No compartimos nada con terceros.</p>
+                </div>
+                <div class="why-card">
+                    <div class="icon"><i class="fas fa-search-location"></i></div>
+                    <h3>Rastreo en Tiempo Real</h3>
+                    <p>Desde que sale de China hasta que llega a Venezuela, puedes ver el estado de tu envío directamente en nuestra web.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sección Tarifas -->
-    <section id="tarifas" class="pricing-section">
-        <div class="container" style="max-width: 600px; margin: 0 auto; background: #fcfdfe; border: 2px solid #0b2545; border-radius: 16px; padding: 40px; text-align: center;">
-            <h2 class="section-title" style="text-align: center; margin-bottom: 40px; color: #0b2545;">Tarifas de envíos</h2>
-            
-            <div style="background: linear-gradient(135deg, #0b2545 0%, #134074 100%); border-radius: 12px; padding: 40px; text-align: center; margin-bottom: 30px;">
-                <i class="fas fa-anchor" style="font-size: 55px; color: #ffffff; margin-bottom: 15px; display: block;"></i>
-                <h3 style="font-size: 26px; color: #ffffff; margin-bottom: 5px;">Envío Marítimo</h3>
-                <p style="font-size: 14px; color: rgba(255,255,255,0.7); margin-bottom: 20px;">Entrega en 60 a 90 días</p>
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; text-align: left;">
-                    <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
-                        <p style="font-size: 12px; color: rgba(255,255,255,0.7); margin-bottom: 5px;">CARACAS / VALENCIA / MARACAY</p>
-                        <p style="font-size: 24px; color: #ffffff; font-weight: bold; margin: 0;">$900 <span style="font-size: 14px;">/CBM</span></p>
+    <section id="tarifas" class="tarifas-section">
+        <div class="container">
+            <h2 class="section-title">Tarifas de Envío</h2>
+            <p class="section-subtitle">Precios claros, sin costos ocultos</p>
+            <div class="tarifas-card">
+                <div class="icon-barco"><i class="fas fa-anchor"></i></div>
+                <h3>Envío Marítimo</h3>
+                <p class="tiempo"><i class="fas fa-clock"></i> Entrega en 60 a 90 días</p>
+                <div class="tarifas-grid">
+                    <div class="tarifa-item">
+                        <div class="ciudad">Caracas / Valencia / Maracay</div>
+                        <div class="precio">$900 <span>/ CBM</span></div>
                     </div>
-                    <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
-                        <p style="font-size: 12px; color: rgba(255,255,255,0.7); margin-bottom: 5px;">RESTO DEL PAÍS</p>
-                        <p style="font-size: 24px; color: #ffffff; font-weight: bold; margin: 0;">$1.200 <span style="font-size: 14px;">/CBM</span></p>
+                    <div class="tarifa-item">
+                        <div class="ciudad">Resto del País</div>
+                        <div class="precio">$1.200 <span>/ CBM</span></div>
                     </div>
                 </div>
-
-                <ul style="list-style: none; padding: 0; margin: 0; text-align: left;">
-                    <li style="margin-bottom: 15px; font-size: 14px; color: rgba(255,255,255,0.9);">
-                        <i class="fas fa-check" style="color: #00ff00; margin-right: 8px;"></i> Salidas semanales
-                    </li>
-                    <li style="margin-bottom: 15px; font-size: 14px; color: rgba(255,255,255,0.9);">
-                        <i class="fas fa-check" style="color: #00ff00; margin-right: 8px;"></i> Ideal para carga pesada
-                    </li>
-                    <li style="font-size: 14px; color: rgba(255,255,255,0.9);">
-                        <i class="fas fa-check" style="color: #00ff00; margin-right: 8px;"></i> Sin límite de peso
-                    </li>
+                <ul class="tarifas-checks">
+                    <li><i class="fas fa-check-circle"></i> Salidas frecuentes desde China</li>
+                    <li><i class="fas fa-check-circle"></i> Ideal para carga pesada y voluminosa</li>
+                    <li><i class="fas fa-check-circle"></i> Sin límite de peso</li>
+                    <li><i class="fas fa-check-circle"></i> Flete terrestre incluido para envíos desde 0.1 CBM</li>
+                    <li><i class="fas fa-check-circle"></i> Tarifa mínima de $30 por envío</li>
                 </ul>
-
-                <p style="font-size: 15px; color: #5a7a99; margin-top: 15px; font-style: italic; text-align: center;">* El precio varía según ciudad de destino. Usa la calculadora para obtener tu estimado exacto.</p>
+                <p class="tarifas-nota">* El precio varía según ciudad de destino. Usa la calculadora para obtener tu estimado exacto.</p>
             </div>
         </div>
     </section>
 
-    <!-- Sección Calculadora Marítima -->
-    <section id="calculadora" style="padding-top: 20px; padding-bottom: 20px; background-color: #f4f8fd;">
+    <section id="calculadora" class="calc-section">
         <div class="container">
-            <h2 class="section-title">Calcula tu envío marítimo</h2>
-            <p class="section-subtitle">Ingresa las dimensiones de tu caja y obtén un estimado al instante.</p>
-            <div style="max-width: 680px; margin: 0 auto; background: #fff; border-radius: 16px; padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
-
-                <p style="font-size: 11px; color: #5a7a99; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px;">Dimensiones de la caja</p>
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 4px;">
-                    <div style="display:flex; flex-direction:column; gap:3px;">
-                        <div style="display:flex; align-items:center; border:1px solid #c8ddf0; border-radius:8px; overflow:hidden; background:#fff;">
-                            <input type="number" id="largo" min="0" step="0.1" placeholder="0" oninput="calcular()" style="border:none; background:transparent; padding:11px 10px; font-size:16px; color:#1a1a2e; width:100%; outline:none; text-align:center;">
-                            <span style="padding:0 9px; font-size:12px; color:#5a7a99; border-left:1px solid #c8ddf0; height:100%; display:flex; align-items:center; background:#f4f8fd;">cm</span>
+            <h2 class="section-title">Calculadora de Flete</h2>
+            <p class="section-subtitle">Ingresa las dimensiones de tu caja y calcula el costo al instante</p>
+            <div class="calc-box">
+                <p class="calc-label">Dimensiones de la caja</p>
+                <div class="dims-grid">
+                    <div class="dim-field">
+                        <div class="input-wrap">
+                            <input type="number" id="largo" min="0" step="0.1" placeholder="0" oninput="calcular()">
+                            <span class="input-unit">cm</span>
                         </div>
-                        <span style="font-size:11px; color:#5a7a99; text-align:center; margin-top:3px;">Largo</span>
+                        <span class="dim-sublabel">Largo</span>
                     </div>
-                    <div style="display:flex; flex-direction:column; gap:3px;">
-                        <div style="display:flex; align-items:center; border:1px solid #c8ddf0; border-radius:8px; overflow:hidden; background:#fff;">
-                            <input type="number" id="alto" min="0" step="0.1" placeholder="0" oninput="calcular()" style="border:none; background:transparent; padding:11px 10px; font-size:16px; color:#1a1a2e; width:100%; outline:none; text-align:center;">
-                            <span style="padding:0 9px; font-size:12px; color:#5a7a99; border-left:1px solid #c8ddf0; height:100%; display:flex; align-items:center; background:#f4f8fd;">cm</span>
+                    <div class="dim-field">
+                        <div class="input-wrap">
+                            <input type="number" id="alto" min="0" step="0.1" placeholder="0" oninput="calcular()">
+                            <span class="input-unit">cm</span>
                         </div>
-                        <span style="font-size:11px; color:#5a7a99; text-align:center; margin-top:3px;">Alto</span>
+                        <span class="dim-sublabel">Alto</span>
                     </div>
-                    <div style="display:flex; flex-direction:column; gap:3px;">
-                        <div style="display:flex; align-items:center; border:1px solid #c8ddf0; border-radius:8px; overflow:hidden; background:#fff;">
-                            <input type="number" id="ancho" min="0" step="0.1" placeholder="0" oninput="calcular()" style="border:none; background:transparent; padding:11px 10px; font-size:16px; color:#1a1a2e; width:100%; outline:none; text-align:center;">
-                            <span style="padding:0 9px; font-size:12px; color:#5a7a99; border-left:1px solid #c8ddf0; height:100%; display:flex; align-items:center; background:#f4f8fd;">cm</span>
+                    <div class="dim-field">
+                        <div class="input-wrap">
+                            <input type="number" id="ancho" min="0" step="0.1" placeholder="0" oninput="calcular()">
+                            <span class="input-unit">cm</span>
                         </div>
-                        <span style="font-size:11px; color:#5a7a99; text-align:center; margin-top:3px;">Ancho</span>
+                        <span class="dim-sublabel">Ancho</span>
                     </div>
                 </div>
-                <div id="err-dims" style="font-size:12px; color:#e05c5c; margin-top:4px; min-height:16px;"></div>
-
-                <hr style="border:none; border-top:1px solid #c8ddf0; margin:1.25rem 0;">
-
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:1.25rem;">
+                <div class="calc-err" id="err-dims"></div>
+                <hr class="calc-divider">
+                <div class="cajas-row">
                     <div>
-                        <p style="font-size:11px; color:#5a7a99; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:6px;">Número de cajas</p>
-                        <div style="display:flex; align-items:center; border:1px solid #c8ddf0; border-radius:8px; overflow:hidden; background:#fff;">
-                            <input type="number" id="cajas" min="1" step="1" value="1" placeholder="1" oninput="calcular()" style="border:none; background:transparent; padding:11px 10px; font-size:16px; color:#1a1a2e; width:100%; outline:none;">
-                            <span style="padding:0 9px; font-size:12px; color:#5a7a99; border-left:1px solid #c8ddf0; height:100%; display:flex; align-items:center; background:#f4f8fd; white-space:nowrap;">cajas</span>
+                        <p class="calc-label">Número de cajas</p>
+                        <div class="input-wrap">
+                            <input type="number" id="cajas" min="1" step="1" value="1" oninput="calcular()">
+                            <span class="input-unit">cajas</span>
                         </div>
                     </div>
                 </div>
-
-                <p style="font-size:11px; color:#5a7a99; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:8px;">Ciudad de entrega</p>
-                <div id="city-grid" style="display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-bottom:1.5rem;">
-                    <button class="sv-city" onclick="setCity(this,900,'Caracas / Valencia / Maracay')" style="padding:14px; font-size:14px; border:1px solid #0b2545; border-radius:8px; background:#eef4fb; color:#0b2545; cursor:pointer; text-align:left; font-weight:600;">
-                        Caracas / Valencia / Maracay <div style="font-size:11px; color:#1a6fbb; font-weight:400; margin-top:3px;">$900 / CBM</div>
+                <p class="calc-label">Ciudad de entrega</p>
+                <div class="city-grid">
+                    <button class="city-btn active" onclick="setCity(this, 900, 'Caracas / Valencia / Maracay')">
+                        Caracas / Valencia / Maracay
+                        <div class="city-price">$900 / CBM</div>
                     </button>
-                    <button class="sv-city" onclick="setCity(this,1200,'Resto del país')" style="padding:14px; font-size:14px; border:1px solid #c8ddf0; border-radius:8px; background:#fff; color:#1a1a2e; cursor:pointer; text-align:left; font-weight:500;">
-                        Resto del país <div style="font-size:11px; color:#5a7a99; font-weight:400; margin-top:3px;">$1.200 / CBM</div>
+                    <button class="city-btn" onclick="setCity(this, 1200, 'Resto del país')">
+                        Resto del país
+                        <div class="city-price">$1.200 / CBM</div>
                     </button>
                 </div>
-
-                <div id="result-box" style="display:none; background:#0b2545; border-radius:12px; padding:1.25rem 1.5rem;">
-                    <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.1);">
-                        <span style="font-size:13px; color:rgba(255,255,255,0.6);">Volumen por caja</span>
-                        <span style="font-size:13px; color:rgba(255,255,255,0.9); font-weight:500;" id="res-cbm-unit">—</span>
+                <div class="result-box" id="result-box">
+                    <div class="result-row">
+                        <span class="key">Volumen por caja</span>
+                        <span class="val" id="res-cbm-unit">—</span>
                     </div>
-                    <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.1);">
-                        <span style="font-size:13px; color:rgba(255,255,255,0.6);">Volumen total</span>
-                        <span style="font-size:13px; color:rgba(255,255,255,0.9); font-weight:500;" id="res-cbm-total">—</span>
+                    <div class="result-row">
+                        <span class="key">Volumen total</span>
+                        <span class="val" id="res-cbm-total">—</span>
                     </div>
-                    <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.1);">
-                        <span style="font-size:13px; color:rgba(255,255,255,0.6);">Tarifa aplicada</span>
-                        <span style="font-size:13px; color:rgba(255,255,255,0.9); font-weight:500;" id="res-tarifa">—</span>
+                    <div class="result-row">
+                        <span class="key">Tarifa aplicada</span>
+                        <span class="val" id="res-tarifa">—</span>
                     </div>
-                    <div style="display:flex; justify-content:space-between; padding:6px 0;">
-                        <span style="font-size:13px; color:rgba(255,255,255,0.6);">Ciudad de entrega</span>
-                        <span style="font-size:13px; color:rgba(255,255,255,0.9); font-weight:500;" id="res-ciudad">—</span>
+                    <div class="result-row">
+                        <span class="key">Ciudad de entrega</span>
+                        <span class="val" id="res-ciudad">—</span>
                     </div>
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1rem; padding-top:1rem; border-top:1px solid rgba(255,255,255,0.2);">
-                        <span style="font-size:14px; font-weight:500; color:rgba(255,255,255,0.8);">Estimado total</span>
-                        <span style="font-size:32px; font-weight:700; color:#ffffff;" id="res-total">$0</span>
+                    <div class="result-total">
+                        <span class="label">Estimado total</span>
+                        <span class="amount" id="res-total">$0</span>
                     </div>
-                    <div id="note-min" style="display:none; font-size:11px; color:rgba(255,255,255,0.5); margin-top:8px; line-height:1.5;">
-                        ⚠ Se aplica tarifa mínima de $30 para envíos pequeños.
-                    </div>
-                    <div style="font-size:11px; color:rgba(255,255,255,0.5); margin-top:6px; line-height:1.5;">
-                        ⚠ Estimación referencial. El flete terrestre nacional está incluido en envíos a partir de 0.1 CBM.
-                    </div>
+                    <p class="result-note" id="note-min">⚠ Se aplica tarifa mínima de $30 para envíos pequeños.</p>
+                    <p class="result-note">⚠ Estimación referencial. El flete terrestre está incluido en envíos a partir de 0.1 CBM.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sección Rastreo de Envío -->
     <section id="rastreo" class="rastreo-section">
         <div class="container">
             <h2 class="section-title">¿Dónde está tu paquete?</h2>
-            <p class="section-subtitle">Ingresa tu código de rastreo para ver el estado en tiempo real</p>
-            
-            <div style="max-width: 500px; margin: 0 auto; margin-bottom: 30px;">
-                <input type="text" id="codigo-rastreo" placeholder="Ej: SVN-2026-001" 
-                       style="width: 100%; padding: 12px; border: 1px solid #c8ddf0; border-radius: 8px; font-size: 1rem; box-sizing: border-box;">
-                <button onclick="buscarRastreo()" 
-                        style="width: 100%; margin-top: 12px; padding: 12px; background: #0b2545; color: #fff; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem;">
-                    🔍 Rastrear
-                </button>
+            <p class="section-subtitle">Ingresa tu código de rastreo y ve el estado en tiempo real</p>
+            <div class="rastreo-box">
+                <div class="rastreo-input-wrap">
+                    <input type="text" id="codigo-rastreo" placeholder="Ej: SVN-2026-001" autocomplete="off">
+                    <button onclick="buscarRastreo()"><i class="fas fa-search"></i> Rastrear</button>
+                </div>
+                <div id="resultado-rastreo"></div>
             </div>
-
-            <!-- Resultados -->
-            <div id="resultado-rastreo" style="display: none; max-width: 600px; margin: 0 auto;"></div>
         </div>
     </section>
 
-    <!-- Sección Registro de Casillero -->
-    <section id="casillero" class="register-section">
+    <section id="casillero" class="casillero-section">
         <div class="container">
-            <h2 class="section-title">Abre tu Casillero Internacional Gratis</h2>
-            <p class="section-subtitle">Completa tus datos para asignarte tu código de usuario y darte acceso a nuestros almacenes en China.</p>
-            <form action="https://formsubmit.co/info.seavenimport@gmail.com" method="POST" class="register-form">
+            <h2 class="section-title">Abre tu Casillero Internacional</h2>
+            <p class="section-subtitle">Completa el formulario y te asignamos tu código de cliente con la dirección de nuestro almacén en China</p>
+            <form action="https://formsubmit.co/info.seavenimport@gmail.com" method="POST" class="casillero-form">
                 <input type="hidden" name="_subject" value="Nuevo Registro de Casillero - SeaVen Import">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_next" value="https://seavenimport.com/gracias.html">
-
-                <div class="form-group">
-                    <label for="nombre">👤 Nombre y Apellido</label>
-                    <input type="text" id="nombre" name="Nombre y Apellido" placeholder="Ej. Diana Pérez" required>
+                <input type="hidden" name="_template" value="table">
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label for="nombre"><i class="fas fa-user"></i> Nombre</label>
+                        <input type="text" id="nombre" name="Nombre" placeholder="Ej. Diana" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellido"><i class="fas fa-user"></i> Apellido</label>
+                        <input type="text" id="apellido" name="Apellido" placeholder="Ej. Pérez" required>
+                    </div>
                 </div>
-
                 <div class="form-group">
-                    <label for="documento">📋 Documento de Identidad</label>
-                    <input type="text" id="documento" name="Documento de Identidad" placeholder="Ej. V-12345678" required>
+                    <label for="documento"><i class="fas fa-id-card"></i> Documento de Identidad</label>
+                    <input type="text" id="documento" name="Documento" placeholder="Ej. V-12345678" required>
                 </div>
-
                 <div class="form-group">
-                    <label for="telefono">📱 Teléfono / WhatsApp</label>
+                    <label for="telefono"><i class="fab fa-whatsapp"></i> Teléfono / WhatsApp</label>
                     <input type="tel" id="telefono" name="Teléfono" placeholder="+58 412 1234567" required>
                 </div>
-
                 <div class="form-group">
-                    <label for="ciudad">📍 Ciudad</label>
+                    <label for="ciudad"><i class="fas fa-city"></i> Ciudad</label>
                     <input type="text" id="ciudad" name="Ciudad" placeholder="Ej. Barquisimeto" required>
                 </div>
-
                 <div class="form-group">
-                    <label for="direccion">📍 Dirección de residencia</label>
+                    <label for="direccion"><i class="fas fa-map-marker-alt"></i> Dirección de residencia</label>
                     <input type="text" id="direccion" name="Dirección" placeholder="Ej. Calle 20 entre Carreras 15 y 16" required>
                 </div>
-
                 <div class="form-group">
-                    <label for="email">📧 Correo Electrónico</label>
+                    <label for="email"><i class="fas fa-envelope"></i> Correo Electrónico</label>
                     <input type="email" id="email" name="Correo" placeholder="ejemplo@correo.com" required>
                 </div>
-
-                <button type="submit" class="btn btn-primary">Solicitar mi Casillero</button>
+                <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; border-radius:8px;">
+                    <i class="fas fa-paper-plane"></i> Solicitar mi Casillero
+                </button>
             </form>
         </div>
     </section>
 
-    <!-- Sección Preguntas Frecuentes (FAQ) -->
     <section id="faq" class="faq-section">
         <div class="container">
             <h2 class="section-title">Preguntas Frecuentes</h2>
-            <div class="faq-grid">
+            <p class="section-subtitle">Todo lo que necesitas saber sobre nuestro servicio</p>
+            <div class="faq-list">
                 <div class="faq-item">
-                    <h3>¿Cuánto tiempo tarda el envío marítimo?</h3>
-                    <p>El envío marítimo tiene un tiempo estimado de 60 a 90 días desde que sale de China hasta que llega a Venezuela, sujeto a procesos aduanales.</p>
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>¿Cuánto tiempo tarda el envío marítimo?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">El envío marítimo tiene un tiempo estimado de 60 a 90 días desde que la mercancía sale de China hasta que llega a Venezuela, sujeto a procesos aduanales y condiciones del puerto.</div>
                 </div>
                 <div class="faq-item">
-                    <h3>¿Puedo enviar cualquier tipo de mercancía?</h3>
-                    <p>Trabajamos únicamente con mercancía común: ropa, calzado, accesorios, juguetes y productos del hogar. No manejamos réplicas, productos de maquillaje ni artículos con batería.</p>
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>¿Qué tipo de mercancía puedo enviar?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">Trabajamos únicamente con mercancía común: ropa, calzado, accesorios, juguetes y productos del hogar. No manejamos réplicas, productos de maquillaje ni artículos con batería de litio.</div>
                 </div>
                 <div class="faq-item">
-                    <h3>¿Cómo sé dónde está mi paquete durante el envío?</h3>
-                    <p>Te ofrecemos un sistema de rastreo en tiempo real. Ingresa tu código de rastreo en nuestra web y podrás ver el estado de tu envío en cada etapa del proceso.</p>
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>¿Cómo sé dónde está mi paquete?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">Contamos con un sistema de rastreo en nuestra web. Ingresa tu código de rastreo y podrás ver el estado de tu envío en cada etapa del proceso, desde China hasta Venezuela.</div>
                 </div>
                 <div class="faq-item">
-                    <h3>¿Qué incluye el precio del flete marítimo?</h3>
-                    <p>El precio por CBM ya incluye el traslado interno hasta tu ciudad de destino. Solo aplica tarifa adicional para envíos menores a 0.15 CBM hacia el interior del país.</p>
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>¿Qué incluye el precio del flete?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">El precio por CBM ya incluye el traslado terrestre hasta tu ciudad de destino para envíos desde 0.1 CBM. Para envíos menores, el flete terrestre corre por cuenta del cliente mediante la empresa de encomiendas de su preferencia.</div>
                 </div>
                 <div class="faq-item">
-                    <h3>¿Hacen consolidación o reempaque de paquetes?</h3>
-                    <p>No, no realizamos consolidación ni reempaque de paquetes. Cada envío se tramita de forma individual tal como lo recibimos de nuestro almacén en China.</p>
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>¿Hacen consolidación o reempaque de paquetes?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">No. No realizamos consolidación ni reempaque. Cada envío se tramita de forma individual tal como lo recibimos del proveedor en nuestro almacén de Yiwu.</div>
                 </div>
                 <div class="faq-item">
-                    <h3>¿Qué documentos necesito para retirar mi paquete?</h3>
-                    <p>Te notificaremos cuando tu mercancía llegue a Venezuela. Coordinaremos contigo el pago pendiente y los detalles para retirar tu paquete en nuestras instalaciones.</p>
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>¿Cómo retiro mi mercancía cuando llega a Venezuela?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">Te notificamos por WhatsApp cuando tu mercancía llegue a Venezuela. Coordinamos contigo el pago pendiente y los detalles de entrega según tu ciudad de destino.</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Métodos de pago confiables -->
-    <section style="padding: 30px 0; text-align: center; background-color: #fff;">
+    <section class="pagos-section">
         <div class="container">
-            <h3 style="font-size: 1.3rem; margin-bottom: 20px; color: #0b2545;">Métodos de pago confiables</h3>
-            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                <img src="binance.jpg" alt="Binance" style="height: 35px; width: auto; object-fit: contain; margin: 0 15px;">
-                <img src="zinli.png" alt="Zinli" style="height: 35px; width: auto; object-fit: contain; margin: 0 15px;">
-                <img src="pagomovil.png" alt="Pago Móvil" style="height: 35px; width: auto; object-fit: contain; margin: 0 15px;">
-                <img src="divisas.png" alt="Divisas" style="height: 35px; width: auto; object-fit: contain; margin: 0 15px;">
+            <h3>Métodos de pago aceptados</h3>
+            <div class="pagos-logos">
+                <img src="binance.jpg" alt="Binance">
+                <img src="zinli.png" alt="Zinli">
+                <img src="pagomovil.png" alt="Pago Móvil">
+                <img src="divisas.png" alt="Divisas">
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section style="padding: 10px 0 20px 0; background-color: #fff; text-align: center;">
+    <section class="cta-section">
         <div class="container">
-            <h2 style="font-size: 1.8rem; margin-bottom: 15px; color: #0b2545;">¿Listo para empezar a importar desde China?</h2>
-            <p style="font-size: 1rem; color: #666; margin-bottom: 20px;">Contacta con nosotros para solicitar tu casillero o una cotización personalizada.</p>
-            <a href="https://wa.me/584225007780" class="btn btn-primary" style="display: inline-block;">
+            <h2>¿Listo para importar desde China?</h2>
+            <p>Escríbenos y te guiamos en cada paso del proceso</p>
+            <a href="https://wa.me/584225007780" class="btn btn-green" target="_blank" rel="noopener">
                 <i class="fab fa-whatsapp"></i> Contáctanos por WhatsApp
             </a>
         </div>
     </section>
 
-    <!-- Redes sociales -->
-    <section style="padding: 15px 0; text-align: center; background-color: #f9f9f9;">
+    <section class="social-section">
         <div class="container">
-            <h3 style="font-size: 1.1rem; margin-bottom: 15px; color: #0b2545;">Síguenos en nuestras redes sociales</h3>
-            <div style="display: flex; justify-content: center; gap: 20px;">
-                <a href="https://facebook.com/seavenimport" target="_blank" style="color: #1877F2; font-size: 2rem;"><i class="fab fa-facebook"></i></a>
-                <a href="https://instagram.com/seavenimport" target="_blank" style="color: #E1306C; font-size: 2rem;"><i class="fab fa-instagram"></i></a>
-                <a href="https://tiktok.com/@seavenimport" target="_blank" style="color: #000; font-size: 2rem;"><i class="fab fa-tiktok"></i></a>
-                <a href="https://youtube.com/@seavenimport" target="_blank" style="color: #FF0000; font-size: 2rem;"><i class="fab fa-youtube"></i></a>
+            <h3>Síguenos en redes sociales</h3>
+            <div class="social-icons">
+                <a href="https://facebook.com/seavenimport" target="_blank" style="color:#1877F2;"><i class="fab fa-facebook"></i></a>
+                <a href="https://instagram.com/seavenimport" target="_blank" style="color:#E1306C;"><i class="fab fa-instagram"></i></a>
+                <a href="https://tiktok.com/@seavenimport" target="_blank" style="color:#000;"><i class="fab fa-tiktok"></i></a>
+                <a href="https://youtube.com/@seavenimport" target="_blank" style="color:#FF0000;"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <div class="container" style="text-align: center;">
-            <p>📧 info.seavenimport@gmail.com</p>
-            <p>© 2026 SeaVen Import. Todos los derechos reservados.</p>
+        <div class="container">
+            <p><i class="fas fa-envelope"></i> <a href="mailto:info.seavenimport@gmail.com">info.seavenimport@gmail.com</a></p>
+            <p style="margin-top:6px;">© 2026 SeaVen Import. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/584225007780" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/584225007780?text=Hola,%20quisiera%20más%20información" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Supabase JS Library -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <!-- Rastreo Script -->
     <script>
-        // Configuración de Supabase
-        const SUPABASE_URL = 'https://zfdnxzvuzrdgqjafctui.supabase.co';
-        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpmZG54enZ1enJkZ3FqYWZjdHVpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzI2MzkyNDcsImV4cCI6MjA0ODIxNTI0N30.K6tAeF-2MZXXJx9T2OlBJ4RzZ9JlBdRlQZHjLjKo3Nw';
+    function sanitize(str) {
+        const d = document.createElement('div');
+        d.textContent = String(str || '');
+        return d.innerHTML;
+    }
 
-        const { createClient } = supabase;
-        const client = createClient(SUPABASE_URL, SUPABASE_KEY);
+    const hamburger = document.getElementById('hamburger');
+    const navMobile = document.getElementById('nav-mobile');
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        navMobile.classList.toggle('open');
+    });
+    function cerrarMenu() {
+        hamburger.classList.remove('open');
+        navMobile.classList.remove('open');
+    }
 
-        async function buscarRastreo() {
-            const codigo = document.getElementById('codigo-rastreo').value.trim();
-            
-            if (!codigo) {
-                alert('Por favor ingresa un código de rastreo');
+    let lastScroll = 0;
+    const mainHeader = document.getElementById('main-header');
+    window.addEventListener('scroll', () => {
+        const current = window.scrollY;
+        if (current > lastScroll && current > 80) {
+            mainHeader.classList.add('hidden');
+        } else {
+            mainHeader.classList.remove('hidden');
+        }
+        lastScroll = current <= 0 ? 0 : current;
+    });
+
+    function toggleFaq(questionEl) {
+        const item = questionEl.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+    }
+
+    let svCityRate = 900;
+    let svCityName = 'Caracas / Valencia / Maracay';
+
+    function setCity(el, rate, name) {
+        document.querySelectorAll('.city-btn').forEach(b => b.classList.remove('active'));
+        el.classList.add('active');
+        svCityRate = rate;
+        svCityName = name;
+        calcular();
+    }
+
+    function calcular() {
+        const largo = parseFloat(document.getElementById('largo').value) || 0;
+        const alto  = parseFloat(document.getElementById('alto').value)  || 0;
+        const ancho = parseFloat(document.getElementById('ancho').value) || 0;
+        const cajas = Math.max(1, parseInt(document.getElementById('cajas').value) || 1);
+        const errEl  = document.getElementById('err-dims');
+        const resBox = document.getElementById('result-box');
+
+        if (largo <= 0 || alto <= 0 || ancho <= 0) {
+            resBox.style.display = 'none';
+            errEl.textContent = (largo > 0 || alto > 0 || ancho > 0) ? 'Completa las tres dimensiones.' : '';
+            return;
+        }
+        errEl.textContent = '';
+
+        const cbmUnit  = (largo * alto * ancho) / 1000000;
+        const cbmTotal = cbmUnit * cajas;
+        let   costo    = cbmTotal * svCityRate;
+        let   minimo   = false;
+
+        if (costo < 30 && costo > 0) { costo = 30; minimo = true; }
+
+        document.getElementById('res-cbm-unit').textContent  = cbmUnit.toFixed(4)  + ' CBM / caja';
+        document.getElementById('res-cbm-total').textContent = cbmTotal.toFixed(4) + ' CBM';
+        document.getElementById('res-tarifa').textContent    = '$' + svCityRate.toLocaleString('es-VE') + ' / CBM';
+        document.getElementById('res-ciudad').textContent    = svCityName;
+        document.getElementById('res-total').textContent     = '$' + costo.toFixed(2);
+        document.getElementById('note-min').style.display    = minimo ? 'block' : 'none';
+        resBox.style.display = 'block';
+    }
+
+    const SUPABASE_URL = 'https://zfdnxzvuzrdgqjafctui.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpmZG54enZ1enJkZ3FqYWZjdHVpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzI2MzkyNDcsImV4cCI6MjA0ODIxNTI0N30.K6tAeF-2MZXXJx9T2OlBJ4RzZ9JlBdRlQZHjLjKo3Nw';
+    const { createClient } = supabase;
+    const sbClient = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    async function buscarRastreo() {
+        const codigo    = document.getElementById('codigo-rastreo').value.trim();
+        const resultDiv = document.getElementById('resultado-rastreo');
+
+        if (!codigo) { alert('Por favor ingresa un código de rastreo.'); return; }
+
+        resultDiv.innerHTML = '<p style="text-align:center;color:#5a7a99;padding:20px;">Buscando...</p>';
+
+        try {
+            const { data: envio, error: errEnvio } = await sbClient
+                .from('envios')
+                .select('*')
+                .eq('codigo_rastreo', codigo)
+                .single();
+
+            if (errEnvio || !envio) {
+                resultDiv.innerHTML = '<p style="text-align:center;color:#e05c5c;padding:20px;">Código no encontrado. Verifica e intenta de nuevo.</p>';
                 return;
             }
-            
-            try {
-                const { data: envio, error } = await client
-                    .from('envios')
-                    .select('*')
-                    .eq('codigo_rastreo', codigo)
-                    .single();
-                
-                if (error || !envio) {
-                    alert('Código de rastreo no encontrado');
-                    return;
-                }
-                
-                const { data: historial } = await client
-                    .from('historial_estados')
-                    .select('*')
-                    .eq('envio_id', envio.id)
-                    .order('fecha', { ascending: true });
-                
-                mostrarResultado(envio, historial);
-                
-            } catch (err) {
-                console.error(err);
-                alert('Error al buscar. Intenta de nuevo.');
-            }
+
+            const { data: historial } = await sbClient
+                .from('historial_estados')
+                .select('*')
+                .eq('envio_id', envio.id)
+                .order('fecha', { ascending: true });
+
+            mostrarResultado(envio, historial || []);
+
+        } catch (err) {
+            console.error('Error:', err);
+            resultDiv.innerHTML = '<p style="text-align:center;color:#e05c5c;padding:20px;">Error de conexión. Intenta nuevamente.</p>';
         }
+    }
 
-        function mostrarResultado(envio, historial) {
-            const resultado = document.getElementById('resultado-rastreo');
-            
-            let html = `
-                <div style="background: #eef4fb; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid #0b2545;">
-                    <h3 style="color: #0b2545; margin: 0 0 10px;">Código: ${envio.codigo_rastreo}</h3>
-                    <p style="margin: 5px 0; color: #666;"><strong>Cliente:</strong> ${envio.cliente_nombre || 'No especificado'}</p>
-                    <p style="margin: 5px 0; color: #666;"><strong>Estado Actual:</strong> <span style="color: #0b2545; font-weight: bold;">${envio.estado}</span></p>
-                    <p style="margin: 5px 0; color: #999; font-size: 0.9rem;">Actualizado: ${new Date(envio.fecha_estado).toLocaleDateString('es-VE')}</p>
-                </div>
-                
-                <div style="border-left: 3px solid #0b2545; padding-left: 20px;">
-            `;
-            
-            if (historial && historial.length > 0) {
-                historial.forEach((h, index) => {
-                    const estaActivo = index === historial.length - 1;
-                    html += `
-                        <div style="margin-bottom: 25px; position: relative;">
-                            <div style="font-weight: bold; color: #0b2545; margin-bottom: 5px; font-size: 1rem;">
-                                ${estaActivo ? '🔄' : '✅'} ${h.estado}
-                            </div>
-                            <div style="font-size: 0.9rem; color: #666;">
-                                📍 ${h.ubicacion || 'Ubicación no especificada'} | 📅 ${new Date(h.fecha).toLocaleDateString('es-VE')}
-                            </div>
-                            <div style="font-size: 0.9rem; color: #999; margin-top: 5px;">
-                                ${h.detalles || 'Sin detalles adicionales'}
-                            </div>
-                            <hr style="border: none; border-top: 1px dashed #ddd; margin: 15px 0;">
-                        </div>
-                    `;
-                });
-            } else {
-                html += `<p style="color: #999;">No hay historial registrado aún.</p>`;
-            }
-            
-            html += `</div>`;
-            resultado.innerHTML = html;
-            resultado.style.display = 'block';
-        }
+    function mostrarResultado(envio, historial) {
+        const resultDiv = document.getElementById('resultado-rastreo');
 
-        var svCityRate = 900;
-        var svCityName = 'Caracas / Valencia / Maracay';
+        const codigo        = sanitize(envio.codigo_rastreo);
+        const clienteNombre = sanitize(envio.cliente_nombre || 'No especificado');
+        const estado        = sanitize(envio.estado);
+        const fechaActual   = envio.fecha_estado ? new Date(envio.fecha_estado).toLocaleDateString('es-VE') : '—';
 
-        function setCity(el, rate, name) {
-            document.querySelectorAll('.sv-city').forEach(function(b){
-                b.style.border = '1px solid #c8ddf0';
-                b.style.background = '#fff';
-                b.style.color = '#1a1a2e';
-                b.style.fontWeight = '500';
+        let html = `
+            <div class="rastreo-card">
+                <h3>📦 Código: ${codigo}</h3>
+                <p><strong>Cliente:</strong> ${clienteNombre}</p>
+                <p><strong>Estado actual:</strong> <span style="color:var(--primary);font-weight:700;">${estado}</span></p>
+                <p style="color:#999;font-size:0.85rem;">Última actualización: ${fechaActual}</p>
+            </div>
+            <div class="timeline">
+        `;
+
+        if (historial.length > 0) {
+            historial.forEach((h, i) => {
+                const isLast   = i === historial.length - 1;
+                const clase    = isLast ? 'active' : 'done';
+                const icono    = isLast ? '🔄' : '✅';
+                const hEstado  = sanitize(h.estado);
+                const hUbic    = sanitize(h.ubicacion  || 'Ubicación no especificada');
+                const hDetalle = sanitize(h.detalles   || '');
+                const hFecha   = h.fecha ? new Date(h.fecha).toLocaleDateString('es-VE') : '—';
+
+                html += `
+                    <div class="timeline-item ${clase}">
+                        <div class="timeline-title">${icono} ${hEstado}</div>
+                        <div class="timeline-meta">📍 ${hUbic} &nbsp;|&nbsp; 📅 ${hFecha}</div>
+                        ${hDetalle ? `<div class="timeline-detail">${hDetalle}</div>` : ''}
+                    </div>
+                `;
             });
-            el.style.border = '1px solid #0b2545';
-            el.style.background = '#eef4fb';
-            el.style.color = '#0b2545';
-            el.style.fontWeight = '600';
-            svCityRate = rate;
-            svCityName = name;
-            calcular();
+        } else {
+            html += '<p style="color:#999;font-size:0.9rem;">No hay historial registrado aún.</p>';
         }
 
-        function calcular() {
-            var largo = parseFloat(document.getElementById('largo').value) || 0;
-            var alto = parseFloat(document.getElementById('alto').value) || 0;
-            var ancho = parseFloat(document.getElementById('ancho').value) || 0;
-            var cajas = parseInt(document.getElementById('cajas').value) || 1;
-            var errEl = document.getElementById('err-dims');
-            var resBox = document.getElementById('result-box');
+        html += '</div>';
+        resultDiv.innerHTML = html;
+    }
 
-            if (largo <= 0 || alto <= 0 || ancho <= 0) {
-                resBox.style.display = 'none';
-                errEl.textContent = (largo > 0 || alto > 0 || ancho > 0) ? 'Completa las tres dimensiones.' : '';
-                return;
-            }
-            errEl.textContent = '';
-
-            var cbmUnit = (largo * alto * ancho) / 1000000;
-            var cbmTotal = cbmUnit * cajas;
-            var costo = cbmTotal * svCityRate;
-            var minimo = false;
-            if (costo < 30) { costo = 30; minimo = true; }
-
-            document.getElementById('res-cbm-unit').textContent = cbmUnit.toFixed(4) + ' CBM / caja';
-            document.getElementById('res-cbm-total').textContent = cbmTotal.toFixed(4) + ' CBM';
-            document.getElementById('res-tarifa').textContent = '$' + svCityRate.toLocaleString() + ' / CBM';
-            document.getElementById('res-ciudad').textContent = svCityName;
-            document.getElementById('res-total').textContent = '$' + costo.toFixed(2);
-            document.getElementById('note-min').style.display = minimo ? 'block' : 'none';
-            resBox.style.display = 'block';
-        }
+    document.getElementById('codigo-rastreo').addEventListener('keydown', e => {
+        if (e.key === 'Enter') buscarRastreo();
+    });
     </script>
+
 </body>
 </html>
