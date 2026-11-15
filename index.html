@@ -1,836 +1,689 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SeaVen Import | Logística y Casillero Internacional</title>
-    <link rel="icon" type="image/jpg" href="logo.jpg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <meta name="description" content="SeaVen Import: Casillero internacional y envíos marítimos desde China a Venezuela. Barquisimeto y todo el país.">
-    <meta property="og:title" content="SeaVen Import | Logística y Casillero Internacional">
-    <meta property="og:description" content="Importa desde China a Venezuela con casillero marítimo confiable.">
-    <meta property="og:image" content="https://seavenimport.com/logo.jpg">
-    <meta property="og:url" content="https://seavenimport.com">
-    <meta property="og:type" content="website">
-    <meta name="google-site-verification" content="EqwwIpV5yya1Dh4OZ9y9pfdZykm7unchaN1n2m0zY">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SeaVen Import — Importación Marítima China a Venezuela</title>
+  <meta name="description" content="Importa desde China a Venezuela sin complicaciones. Casillero marítimo en China, envío a toda Venezuela, asesoría y tarifas claras." />
 
-    <style>
-        :root {
-            --primary:   #0b2545;
-            --secondary: #134074;
-            --accent:    #1a6fbb;
-            --light-bg:  #f4f8fd;
-            --border:    #c8ddf0;
-            --text:      #1a1a2e;
-            --muted:     #5a7a99;
-            --white:     #ffffff;
-            --green:     #00d26a;
-            --radius:    12px;
-            --shadow:    0 4px 20px rgba(0,0,0,0.08);
-        }
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome (iconos) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Fuente Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: var(--text);
-            background: var(--white);
-            line-height: 1.6;
-        }
-        img { max-width: 100%; display: block; }
-        a { text-decoration: none; color: inherit; }
-        .container { width: 90%; max-width: 1100px; margin: 0 auto; }
-        .section-title { font-size: 2rem; color: var(--primary); margin-bottom: 10px; text-align: center; }
-        .section-subtitle { color: var(--muted); text-align: center; margin-bottom: 40px; }
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 28px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            border: none;
-            transition: transform 0.2s, background 0.3s;
-            text-decoration: none;
-        }
-        .btn:hover { transform: translateY(-2px); }
-        .btn-primary { background: var(--primary); color: var(--white); }
-        .btn-primary:hover { background: var(--secondary); }
-        .btn-green { background: var(--green); color: var(--primary); }
-        .btn-green:hover { background: #00b85a; }
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+    .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
 
-        header {
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            transition: transform 0.3s ease;
-        }
-        header.hidden { transform: translateY(-100%); }
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 0;
-        }
-        .logo { display: flex; align-items: center; gap: 10px; }
-        .logo img { height: 48px; width: 48px; border-radius: 6px; object-fit: cover; }
-        .logo span { font-size: 1.3rem; font-weight: 700; color: var(--primary); }
-        nav ul { list-style: none; display: flex; gap: 24px; align-items: center; }
-        nav ul li a { font-weight: 600; font-size: 0.92rem; color: var(--text); transition: color 0.2s; }
-        nav ul li a:hover { color: var(--accent); }
+    @keyframes pulse-green {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0, 210, 106, 0.5); }
+      50% { box-shadow: 0 0 0 12px rgba(0, 210, 106, 0); }
+    }
+    .animate-pulse-green { animation: pulse-green 2s ease-in-out infinite; }
 
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 4px;
-        }
-        .hamburger span { display: block; width: 25px; height: 3px; background: var(--primary); border-radius: 3px; transition: all 0.3s; }
-        .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-        .hamburger.open span:nth-child(2) { opacity: 0; }
-        .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
-        .nav-mobile { display: none; flex-direction: column; background: var(--white); padding: 16px 20px; border-top: 1px solid var(--border); }
-        .nav-mobile.open { display: flex; }
-        .nav-mobile a { padding: 10px 0; border-bottom: 1px solid var(--light-bg); font-weight: 600; color: var(--text); }
-        .nav-mobile a:last-child { border-bottom: none; }
-
-        .hero {
-            background: linear-gradient(135deg, #0b2545 0%, #134074 50%, #1a6fbb 100%);
-            color: var(--white);
-            padding: 90px 0 80px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -60px; right: -60px;
-            width: 300px; height: 300px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.04);
-        }
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -80px; left: -40px;
-            width: 250px; height: 250px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.03);
-        }
-        .hero-content { position: relative; z-index: 1; }
-        .hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 16px; line-height: 1.2; }
-        .hero p { font-size: 1.1rem; color: rgba(255,255,255,0.8); max-width: 560px; margin: 0 auto 32px; }
-        .hero-badges { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 36px; }
-        .hero-badge {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 30px;
-            padding: 8px 18px;
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.9);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .why-section { padding: 70px 0; background: var(--light-bg); }
-        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 40px; }
-        .why-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 32px 24px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            border-top: 4px solid var(--accent);
-            transition: transform 0.3s;
-        }
-        .why-card:hover { transform: translateY(-4px); }
-        .why-card .icon {
-            width: 60px; height: 60px;
-            background: var(--light-bg);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 16px;
-            font-size: 1.5rem;
-            color: var(--accent);
-        }
-        .why-card h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 8px; }
-        .why-card p { font-size: 0.92rem; color: var(--muted); }
-
-        .tarifas-section { padding: 70px 0; background: var(--white); }
-        .tarifas-card {
-            max-width: 640px;
-            margin: 0 auto;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            border-radius: 20px;
-            padding: 48px 40px;
-            color: var(--white);
-            text-align: center;
-            box-shadow: 0 12px 40px rgba(11,37,69,0.25);
-        }
-        .tarifas-card .icon-barco { font-size: 52px; margin-bottom: 16px; opacity: 0.9; }
-        .tarifas-card h3 { font-size: 1.8rem; margin-bottom: 6px; }
-        .tarifas-card .tiempo { color: rgba(255,255,255,0.65); font-size: 0.95rem; margin-bottom: 32px; }
-        .tarifas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
-        .tarifa-item {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 10px;
-            padding: 18px 14px;
-            text-align: left;
-        }
-        .tarifa-item .ciudad { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(255,255,255,0.6); margin-bottom: 6px; }
-        .tarifa-item .precio { font-size: 1.6rem; font-weight: 700; }
-        .tarifa-item .precio span { font-size: 0.85rem; font-weight: 400; color: rgba(255,255,255,0.65); }
-        .tarifas-checks { list-style: none; text-align: left; margin-bottom: 20px; }
-        .tarifas-checks li { padding: 6px 0; font-size: 0.95rem; color: rgba(255,255,255,0.88); display: flex; align-items: center; gap: 10px; }
-        .tarifas-checks li i { color: var(--green); }
-        .tarifas-nota { font-size: 0.82rem; color: rgba(255,255,255,0.5); font-style: italic; margin-top: 16px; }
-
-        .calc-section { padding: 70px 0; background: var(--light-bg); }
-        .calc-box { max-width: 680px; margin: 0 auto; background: var(--white); border-radius: 20px; padding: 40px; box-shadow: var(--shadow); }
-        .calc-label { font-size: 11px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
-        .dims-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 6px; }
-        .dim-field { display: flex; flex-direction: column; gap: 4px; }
-        .input-wrap { display: flex; align-items: center; border: 1.5px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--white); transition: border-color 0.2s; }
-        .input-wrap:focus-within { border-color: var(--accent); }
-        .input-wrap input { border: none; background: transparent; padding: 11px 10px; font-size: 16px; color: var(--text); width: 100%; outline: none; text-align: center; }
-        .input-unit { padding: 0 10px; font-size: 12px; color: var(--muted); border-left: 1.5px solid var(--border); background: var(--light-bg); height: 100%; display: flex; align-items: center; white-space: nowrap; }
-        .dim-sublabel { font-size: 11px; color: var(--muted); text-align: center; }
-        .calc-err { font-size: 12px; color: #e05c5c; min-height: 18px; margin-bottom: 4px; }
-        .calc-divider { border: none; border-top: 1.5px solid var(--border); margin: 20px 0; }
-        .cajas-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
-        .city-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-        .city-btn { padding: 14px 12px; border: 1.5px solid var(--border); border-radius: 10px; background: var(--white); color: var(--text); cursor: pointer; text-align: left; font-size: 13px; font-weight: 500; transition: all 0.2s; line-height: 1.3; }
-        .city-btn:hover { border-color: var(--accent); background: var(--light-bg); }
-        .city-btn.active { border-color: var(--primary); background: #eef4fb; color: var(--primary); font-weight: 700; }
-        .city-btn .city-price { font-size: 11px; color: var(--muted); font-weight: 400; margin-top: 3px; }
-        .city-btn.active .city-price { color: var(--accent); }
-        .result-box { display: none; background: var(--primary); border-radius: var(--radius); padding: 24px; }
-        .result-row { display: flex; justify-content: space-between; align-items: baseline; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; }
-        .result-row:last-of-type { border-bottom: none; }
-        .result-row .key { color: rgba(255,255,255,0.6); }
-        .result-row .val { color: rgba(255,255,255,0.9); font-weight: 600; }
-        .result-total { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding-top: 16px; border-top: 1.5px solid rgba(255,255,255,0.2); }
-        .result-total .label { font-size: 15px; color: rgba(255,255,255,0.8); font-weight: 500; }
-        .result-total .amount { font-size: 2.2rem; font-weight: 700; color: var(--white); }
-        .result-note { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 10px; line-height: 1.5; }
-        #note-min { display: none; color: rgba(255,120,120,0.8); }
-
-        .rastreo-section { padding: 70px 0; background: var(--white); text-align: center; }
-        .rastreo-box { max-width: 520px; margin: 0 auto; }
-        .rastreo-input-wrap { display: flex; border: 2px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 20px; transition: border-color 0.2s; }
-        .rastreo-input-wrap:focus-within { border-color: var(--accent); }
-        .rastreo-input-wrap input { flex: 1; border: none; padding: 14px 16px; font-size: 1rem; outline: none; color: var(--text); }
-        .rastreo-input-wrap button { background: var(--primary); color: var(--white); border: none; padding: 14px 20px; font-weight: 700; cursor: pointer; font-size: 1rem; transition: background 0.2s; white-space: nowrap; }
-        .rastreo-input-wrap button:hover { background: var(--secondary); }
-        #resultado-rastreo { text-align: left; margin-top: 20px; }
-        .rastreo-card { background: var(--light-bg); border-left: 4px solid var(--primary); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 24px; }
-        .rastreo-card h3 { color: var(--primary); margin-bottom: 8px; }
-        .rastreo-card p { color: #555; font-size: 0.9rem; margin: 4px 0; }
-        .timeline { border-left: 3px solid var(--border); padding-left: 24px; }
-        .timeline-item { margin-bottom: 24px; position: relative; }
-        .timeline-item::before { content: ''; position: absolute; left: -31px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: var(--border); border: 3px solid var(--white); }
-        .timeline-item.done::before { background: var(--green); }
-        .timeline-item.active::before { background: var(--accent); }
-        .timeline-title { font-weight: 700; color: var(--primary); margin-bottom: 4px; }
-        .timeline-meta { font-size: 0.85rem; color: var(--muted); }
-        .timeline-detail { font-size: 0.85rem; color: #888; margin-top: 4px; }
-
-        .casillero-section { padding: 70px 0; background: var(--light-bg); }
-        .casillero-form { max-width: 600px; margin: 0 auto; background: var(--white); border-radius: 20px; padding: 40px; box-shadow: var(--shadow); border-top: 5px solid var(--primary); }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-weight: 600; font-size: 0.9rem; color: var(--primary); margin-bottom: 6px; }
-        .form-group input { width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 0.95rem; color: var(--text); outline: none; transition: border-color 0.2s; font-family: inherit; }
-        .form-group input:focus { border-color: var(--accent); }
-        .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
-        .faq-section { padding: 70px 0; background: var(--white); }
-        .faq-list { max-width: 760px; margin: 0 auto; }
-        .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); margin-bottom: 12px; overflow: hidden; }
-        .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 18px 22px; cursor: pointer; background: var(--white); transition: background 0.2s; gap: 12px; }
-        .faq-question:hover { background: var(--light-bg); }
-        .faq-question h3 { font-size: 1rem; color: var(--primary); font-weight: 600; flex: 1; }
-        .faq-icon { font-size: 1.1rem; color: var(--accent); transition: transform 0.3s; flex-shrink: 0; }
-        .faq-item.open .faq-icon { transform: rotate(45deg); }
-        .faq-answer { display: none; padding: 0 22px 18px; font-size: 0.92rem; color: #555; line-height: 1.6; border-top: 1px solid var(--border); }
-        .faq-item.open .faq-answer { display: block; }
-
-        .pagos-section { padding: 50px 0; background: var(--light-bg); text-align: center; }
-        .pagos-section h3 { font-size: 1.2rem; color: var(--primary); margin-bottom: 24px; font-weight: 700; }
-        .pagos-logos { display: flex; justify-content: center; align-items: center; gap: 24px; flex-wrap: wrap; }
-        .pagos-logos img { height: 34px; width: auto; object-fit: contain; }
-
-        .cta-section { padding: 70px 0; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); text-align: center; color: var(--white); }
-        .cta-section h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 12px; }
-        .cta-section p { color: rgba(255,255,255,0.75); margin-bottom: 28px; font-size: 1rem; }
-
-        .social-section { padding: 40px 0; text-align: center; background: var(--white); }
-        .social-section h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 20px; }
-        .social-icons { display: flex; justify-content: center; gap: 20px; }
-        .social-icons a { font-size: 1.8rem; transition: transform 0.2s, opacity 0.2s; }
-        .social-icons a:hover { transform: translateY(-3px); opacity: 0.8; }
-
-        footer { background: #051622; color: rgba(255,255,255,0.7); text-align: center; padding: 24px 0; font-size: 0.88rem; }
-        footer a { color: rgba(255,255,255,0.7); }
-        footer a:hover { color: var(--white); }
-        footer p { margin: 4px 0; }
-
-        .whatsapp-float { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.7rem; color: var(--white); box-shadow: 0 4px 16px rgba(0,0,0,0.2); z-index: 9999; transition: transform 0.3s, background 0.3s; }
-        .whatsapp-float:hover { transform: scale(1.1); background: #128c7e; }
-
-        @media (max-width: 768px) {
-            nav { display: none; }
-            .header-inner .btn { display: none; }
-            .hamburger { display: flex; }
-            .hero { padding: 60px 0 50px; }
-            .hero h1 { font-size: 1.7rem; }
-            .tarifas-card { padding: 32px 20px; }
-            .tarifas-grid { grid-template-columns: 1fr; }
-            .calc-box { padding: 24px 18px; }
-            .dims-grid { gap: 8px; }
-            .cajas-row { grid-template-columns: 1fr; }
-            .city-grid { grid-template-columns: 1fr; }
-            .casillero-form { padding: 28px 20px; }
-            .form-grid-2 { grid-template-columns: 1fr; }
-            .section-title { font-size: 1.6rem; }
-        }
-
-        @media (max-width: 480px) {
-            .hero-badges { gap: 8px; }
-            .hero-badge { font-size: 0.78rem; padding: 6px 12px; }
-            .result-total .amount { font-size: 1.8rem; }
-        }
-    </style>
+    @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
+    .animate-pulse-dot { animation: pulse-dot 1.5s ease-in-out infinite; }
+  </style>
 </head>
-<body>
 
-    <header id="main-header">
-        <div class="container header-inner">
-            <div class="logo">
-                <img src="logo.jpg" alt="SeaVen Import Logo">
-                <span>SeaVen Import</span>
+<body class="bg-[#f0f4f8] text-[#0b2545]">
+
+  <!-- ========================= HEADER ========================= -->
+  <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#0b2545]">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+      <!-- Logo / Marca -->
+      <a href="#hero" class="flex items-center shrink-0">
+        <img src="https://cdn.abacus.ai/images/65b9ca4c-5584-4d03-92f8-eae2ce2bccee.png" alt="SeaVen Import" class="h-11 w-auto" />
+      </a>
+
+      <!-- Menú de escritorio -->
+      <nav class="hidden lg:flex items-center gap-7">
+        <a href="#hero" class="text-white/80 hover:text-[#00d26a] text-sm font-medium whitespace-nowrap transition-colors">Inicio</a>
+        <a href="#como-funciona" class="text-white/80 hover:text-[#00d26a] text-sm font-medium whitespace-nowrap transition-colors">Cómo funciona</a>
+        <a href="#asesorias" class="text-white/80 hover:text-[#00d26a] text-sm font-medium whitespace-nowrap transition-colors">Asesorías</a>
+        <a href="#tarifas" class="text-white/80 hover:text-[#00d26a] text-sm font-medium whitespace-nowrap transition-colors">Tarifas</a>
+        <a href="#calculadora" class="text-white/80 hover:text-[#00d26a] text-sm font-medium whitespace-nowrap transition-colors">Calculadora</a>
+        <a href="#rastreo" class="text-white/80 hover:text-[#00d26a] text-sm font-medium whitespace-nowrap transition-colors">Rastreo</a>
+        <a href="#faq" class="text-white/80 hover:text-[#00d26a] text-sm font-medium whitespace-nowrap transition-colors">FAQ</a>
+      </nav>
+
+      <!-- WhatsApp + hamburguesa -->
+      <div class="flex items-center gap-3">
+        <a href="https://wa.me/584225007780?text=Hola%2C%20necesito%20informaci%C3%B3n%20sobre%20SeaVen%20Import" target="_blank" rel="noopener noreferrer"
+           class="flex items-center gap-2 bg-[#00d26a] hover:bg-[#00b85c] text-[#0b2545] font-bold text-sm px-4 py-2 rounded-lg transition-all hover:scale-105">
+          <i class="fab fa-whatsapp text-lg"></i>
+          <span class="hidden sm:inline">WhatsApp</span>
+        </a>
+        <button id="menu-btn" class="lg:hidden text-white p-2" aria-label="Menú">
+          <i id="menu-icon" class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú móvil -->
+    <nav id="mobile-menu" class="hidden lg:hidden bg-[#0b2545] border-t border-white/10 pb-4">
+      <a href="#hero" class="mobile-link block px-6 py-3 text-white/80 hover:text-[#00d26a] hover:bg-white/5 text-sm font-medium transition-colors">Inicio</a>
+      <a href="#como-funciona" class="mobile-link block px-6 py-3 text-white/80 hover:text-[#00d26a] hover:bg-white/5 text-sm font-medium transition-colors">Cómo funciona</a>
+      <a href="#asesorias" class="mobile-link block px-6 py-3 text-white/80 hover:text-[#00d26a] hover:bg-white/5 text-sm font-medium transition-colors">Asesorías</a>
+      <a href="#tarifas" class="mobile-link block px-6 py-3 text-white/80 hover:text-[#00d26a] hover:bg-white/5 text-sm font-medium transition-colors">Tarifas</a>
+      <a href="#calculadora" class="mobile-link block px-6 py-3 text-white/80 hover:text-[#00d26a] hover:bg-white/5 text-sm font-medium transition-colors">Calculadora</a>
+      <a href="#rastreo" class="mobile-link block px-6 py-3 text-white/80 hover:text-[#00d26a] hover:bg-white/5 text-sm font-medium transition-colors">Rastreo</a>
+      <a href="#faq" class="mobile-link block px-6 py-3 text-white/80 hover:text-[#00d26a] hover:bg-white/5 text-sm font-medium transition-colors">FAQ</a>
+    </nav>
+  </header>
+
+  <!-- ========================= HERO ========================= -->
+  <section id="hero" class="relative pt-16 overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="https://cdn.abacus.ai/images/a6373b6a-c321-418e-bb31-fa347ad241db.png" alt="Puerto marítimo de contenedores con barcos de carga y grúas" class="absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-br from-[#0b2545]/95 via-[#0b2545]/80 to-[#134074]/75"></div>
+    </div>
+
+    <div class="relative max-w-[1200px] mx-auto px-4 sm:px-6 pt-10 pb-16 md:pt-14 md:pb-24">
+      <div class="max-w-2xl">
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur rounded-full px-4 py-2 mb-6">
+          <span class="w-2 h-2 rounded-full bg-[#00d26a] animate-pulse-dot"></span>
+          <span class="text-white/90 text-sm font-medium">Casillero marítimo activo en China</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight tracking-tight mb-6">
+          Importa desde China a Venezuela <span class="text-[#00d26a]">sin complicaciones</span>
+        </h1>
+
+        <p class="text-lg sm:text-xl text-white/80 mb-8 leading-relaxed max-w-xl">
+          Recibe tus paquetes en nuestro almacén en China, compra a tus proveedores y nosotros enviamos tu mercancía por vía marítima a toda Venezuela.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 mb-12">
+          <a href="https://wa.me/584225007780?text=Hola%2C%20quiero%20asesor%C3%ADa%20para%20importar%20desde%20China" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center justify-center gap-3 bg-[#00d26a] hover:bg-[#00b85c] text-[#0b2545] font-bold text-lg px-8 py-4 rounded-xl transition-all hover:scale-105 shadow-lg shadow-[#00d26a]/25 animate-pulse-green">
+            <i class="fab fa-whatsapp text-2xl"></i> Quiero importar
+          </a>
+          <a href="#como-funciona" class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold text-lg px-8 py-4 rounded-xl transition-all border border-white/20">
+            ¿Cómo funciona? <i class="fas fa-arrow-down text-sm"></i>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div class="flex items-center gap-2 bg-white/10 backdrop-blur rounded-lg px-3 py-2"><i class="fas fa-warehouse text-[#00d26a]"></i><span class="text-white/90 text-xs sm:text-sm font-medium">Almacén en China</span></div>
+          <div class="flex items-center gap-2 bg-white/10 backdrop-blur rounded-lg px-3 py-2"><i class="fas fa-ship text-[#00d26a]"></i><span class="text-white/90 text-xs sm:text-sm font-medium">Envío marítimo</span></div>
+          <div class="flex items-center gap-2 bg-white/10 backdrop-blur rounded-lg px-3 py-2"><i class="fas fa-clock text-[#00d26a]"></i><span class="text-white/90 text-xs sm:text-sm font-medium">60 – 90 días</span></div>
+          <div class="flex items-center gap-2 bg-white/10 backdrop-blur rounded-lg px-3 py-2"><i class="fas fa-map-marked-alt text-[#00d26a]"></i><span class="text-white/90 text-xs sm:text-sm font-medium">Toda Venezuela</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= CÓMO FUNCIONA ========================= -->
+  <section id="como-funciona" class="py-14 md:py-20 bg-white">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <span class="inline-block bg-[#0b2545]/5 text-[#0b2545] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">Proceso simple</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0b2545] tracking-tight">¿Cómo funciona?</h2>
+        <p class="mt-4 text-gray-500 max-w-xl mx-auto">En 4 simples pasos importas desde China a Venezuela</p>
+      </div>
+
+      <div class="relative">
+        <div class="hidden md:block absolute top-24 left-[12.5%] right-[12.5%] h-1 bg-gradient-to-r from-[#00d26a] via-[#1a6fbb] to-[#00d26a] rounded-full opacity-30"></div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div class="fade-in-section relative text-center group">
+            <div class="relative z-10 w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-[#0b2545] to-[#134074] rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
+              <i class="fas fa-user-plus text-[#00d26a] text-2xl"></i>
+              <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#00d26a] text-[#0b2545] rounded-full flex items-center justify-center text-xs font-extrabold shadow">1</span>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#tarifas">Tarifas</a></li>
-                    <li><a href="#calculadora">Calculadora</a></li>
-                    <li><a href="#rastreo">Rastreo</a></li>
-                    <li><a href="#casillero">Casillero</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                </ul>
-            </nav>
-            <a href="https://wa.me/584225007780" class="btn btn-primary" target="_blank" rel="noopener">
-                <i class="fab fa-whatsapp"></i> Contactar
-            </a>
-            <button class="hamburger" id="hamburger" aria-label="Menú">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-        <nav class="nav-mobile" id="nav-mobile">
-            <a href="#inicio"      onclick="cerrarMenu()">Inicio</a>
-            <a href="#tarifas"     onclick="cerrarMenu()">Tarifas</a>
-            <a href="#calculadora" onclick="cerrarMenu()">Calculadora</a>
-            <a href="#rastreo"     onclick="cerrarMenu()">Rastreo</a>
-            <a href="#casillero"   onclick="cerrarMenu()">Casillero</a>
-            <a href="#faq"         onclick="cerrarMenu()">FAQ</a>
-            <a href="https://wa.me/584225007780" target="_blank" rel="noopener" style="color:#25d366;">
-                <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
-            </a>
-        </nav>
-    </header>
-
-    <section id="inicio" class="hero">
-        <div class="container hero-content">
-            <h1>Tu Casillero Internacional<br>en China, hasta Venezuela</h1>
-            <p>Recibe tus compras en nuestro almacén de Yiwu y las enviamos por vía marítima a todo el país.</p>
-            <a href="#casillero" class="btn btn-green">
-                <i class="fas fa-box-open"></i> Abrir mi Casillero Gratis
-            </a>
-            <div class="hero-badges">
-                <div class="hero-badge"><i class="fas fa-shield-alt"></i> Almacén en Yiwu, China</div>
-                <div class="hero-badge"><i class="fas fa-anchor"></i> Envíos Marítimos</div>
-                <div class="hero-badge"><i class="fas fa-map-marker-alt"></i> Entrega en toda Venezuela</div>
-                <div class="hero-badge"><i class="fas fa-lock"></i> Confidencialidad total</div>
+            <h3 class="text-lg font-bold text-[#0b2545] mb-2">Regístrate y obtén tu dirección en China</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Te asignamos una dirección única en nuestro almacén en China para que recibas tus compras.</p>
+          </div>
+          <div class="fade-in-section relative text-center group">
+            <div class="relative z-10 w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-[#0b2545] to-[#134074] rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
+              <i class="fas fa-shopping-cart text-[#00d26a] text-2xl"></i>
+              <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#00d26a] text-[#0b2545] rounded-full flex items-center justify-center text-xs font-extrabold shadow">2</span>
             </div>
-        </div>
-    </section>
-
-    <section class="why-section">
-        <div class="container">
-            <h2 class="section-title">¿Por qué elegir SeaVen Import?</h2>
-            <p class="section-subtitle">Somos tu aliado logístico para importar desde China con tranquilidad</p>
-            <div class="why-grid">
-                <div class="why-card">
-                    <div class="icon"><i class="fas fa-warehouse"></i></div>
-                    <h3>Almacén en Yiwu</h3>
-                    <p>Recibimos tu mercancía directamente en la provincia de Yiwu, China. Cada paquete es identificado con tu código de cliente.</p>
-                </div>
-                <div class="why-card">
-                    <div class="icon"><i class="fas fa-ship"></i></div>
-                    <h3>Flete Marítimo</h3>
-                    <p>Enviamos tu carga por vía marítima. Tarifas accesibles por CBM con entrega en 60 a 90 días hasta tu ciudad en Venezuela.</p>
-                </div>
-                <div class="why-card">
-                    <div class="icon"><i class="fas fa-user-shield"></i></div>
-                    <h3>Privacidad Total</h3>
-                    <p>Tus datos, proveedores y contenido de tu mercancía son manejados bajo estricta confidencialidad. No compartimos nada con terceros.</p>
-                </div>
-                <div class="why-card">
-                    <div class="icon"><i class="fas fa-search-location"></i></div>
-                    <h3>Rastreo en Tiempo Real</h3>
-                    <p>Desde que sale de China hasta que llega a Venezuela, puedes ver el estado de tu envío directamente en nuestra web.</p>
-                </div>
+            <h3 class="text-lg font-bold text-[#0b2545] mb-2">Compra a tus proveedores</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Compra en Alibaba, 1688 o tu proveedor de confianza y envía a tu dirección en China.</p>
+          </div>
+          <div class="fade-in-section relative text-center group">
+            <div class="relative z-10 w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-[#0b2545] to-[#134074] rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
+              <i class="fas fa-box-open text-[#00d26a] text-2xl"></i>
+              <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#00d26a] text-[#0b2545] rounded-full flex items-center justify-center text-xs font-extrabold shadow">3</span>
             </div>
-        </div>
-    </section>
-
-    <section id="tarifas" class="tarifas-section">
-        <div class="container">
-            <h2 class="section-title">Tarifas de Envío</h2>
-            <p class="section-subtitle">Precios claros, sin costos ocultos</p>
-            <div class="tarifas-card">
-                <div class="icon-barco"><i class="fas fa-anchor"></i></div>
-                <h3>Envío Marítimo</h3>
-                <p class="tiempo"><i class="fas fa-clock"></i> Entrega en 60 a 90 días</p>
-                <div class="tarifas-grid">
-                    <div class="tarifa-item">
-                        <div class="ciudad">Caracas / Valencia / Maracay</div>
-                        <div class="precio">$900 <span>/ CBM</span></div>
-                    </div>
-                    <div class="tarifa-item">
-                        <div class="ciudad">Resto del País</div>
-                        <div class="precio">$1.200 <span>/ CBM</span></div>
-                    </div>
-                </div>
-                <ul class="tarifas-checks">
-                    <li><i class="fas fa-check-circle"></i> Salidas frecuentes desde China</li>
-                    <li><i class="fas fa-check-circle"></i> Ideal para carga pesada y voluminosa</li>
-                    <li><i class="fas fa-check-circle"></i> Sin límite de peso</li>
-                    <li><i class="fas fa-check-circle"></i> Flete terrestre incluido para envíos desde 0.1 CBM</li>
-                    <li><i class="fas fa-check-circle"></i> Tarifa mínima de $30 por envío</li>
-                </ul>
-                <p class="tarifas-nota">* El precio varía según ciudad de destino. Usa la calculadora para obtener tu estimado exacto.</p>
+            <h3 class="text-lg font-bold text-[#0b2545] mb-2">Nosotros recibimos y enviamos</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Recibimos tu mercancía debidamente identificada y la enviamos por vía marítima. No hacemos consolidación ni reempaque.</p>
+          </div>
+          <div class="fade-in-section relative text-center group">
+            <div class="relative z-10 w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-[#0b2545] to-[#134074] rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
+              <i class="fas fa-check-circle text-[#00d26a] text-2xl"></i>
+              <span class="absolute -top-2 -right-2 w-7 h-7 bg-[#00d26a] text-[#0b2545] rounded-full flex items-center justify-center text-xs font-extrabold shadow">4</span>
             </div>
+            <h3 class="text-lg font-bold text-[#0b2545] mb-2">Recibes en Venezuela</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Tu mercancía llega a Venezuela y te notificamos para coordinar el pago y la entrega.</p>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section id="calculadora" class="calc-section">
-        <div class="container">
-            <h2 class="section-title">Calculadora de Flete</h2>
-            <p class="section-subtitle">Ingresa las dimensiones de tu caja y calcula el costo al instante</p>
-            <div class="calc-box">
-                <p class="calc-label">Dimensiones de la caja</p>
-                <div class="dims-grid">
-                    <div class="dim-field">
-                        <div class="input-wrap">
-                            <input type="number" id="largo" min="0" step="0.1" placeholder="0" oninput="calcular()">
-                            <span class="input-unit">cm</span>
-                        </div>
-                        <span class="dim-sublabel">Largo</span>
-                    </div>
-                    <div class="dim-field">
-                        <div class="input-wrap">
-                            <input type="number" id="alto" min="0" step="0.1" placeholder="0" oninput="calcular()">
-                            <span class="input-unit">cm</span>
-                        </div>
-                        <span class="dim-sublabel">Alto</span>
-                    </div>
-                    <div class="dim-field">
-                        <div class="input-wrap">
-                            <input type="number" id="ancho" min="0" step="0.1" placeholder="0" oninput="calcular()">
-                            <span class="input-unit">cm</span>
-                        </div>
-                        <span class="dim-sublabel">Ancho</span>
-                    </div>
-                </div>
-                <div class="calc-err" id="err-dims"></div>
-                <hr class="calc-divider">
-                <div class="cajas-row">
-                    <div>
-                        <p class="calc-label">Número de cajas</p>
-                        <div class="input-wrap">
-                            <input type="number" id="cajas" min="1" step="1" value="1" oninput="calcular()">
-                            <span class="input-unit">cajas</span>
-                        </div>
-                    </div>
-                </div>
-                <p class="calc-label">Ciudad de entrega</p>
-                <div class="city-grid">
-                    <button class="city-btn active" onclick="setCity(this, 900, 'Caracas / Valencia / Maracay')">
-                        Caracas / Valencia / Maracay
-                        <div class="city-price">$900 / CBM</div>
-                    </button>
-                    <button class="city-btn" onclick="setCity(this, 1200, 'Resto del país')">
-                        Resto del país
-                        <div class="city-price">$1.200 / CBM</div>
-                    </button>
-                </div>
-                <div class="result-box" id="result-box">
-                    <div class="result-row">
-                        <span class="key">Volumen por caja</span>
-                        <span class="val" id="res-cbm-unit">—</span>
-                    </div>
-                    <div class="result-row">
-                        <span class="key">Volumen total</span>
-                        <span class="val" id="res-cbm-total">—</span>
-                    </div>
-                    <div class="result-row">
-                        <span class="key">Tarifa aplicada</span>
-                        <span class="val" id="res-tarifa">—</span>
-                    </div>
-                    <div class="result-row">
-                        <span class="key">Ciudad de entrega</span>
-                        <span class="val" id="res-ciudad">—</span>
-                    </div>
-                    <div class="result-total">
-                        <span class="label">Estimado total</span>
-                        <span class="amount" id="res-total">$0</span>
-                    </div>
-                    <p class="result-note" id="note-min">⚠ Se aplica tarifa mínima de $30 para envíos pequeños.</p>
-                    <p class="result-note">⚠ Estimación referencial. El flete terrestre está incluido en envíos a partir de 0.1 CBM.</p>
-                </div>
+  <!-- ========================= POR QUÉ ELEGIRNOS ========================= -->
+  <section class="py-14 md:py-20 bg-[#f0f4f8]">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <span class="inline-block bg-[#00d26a]/10 text-[#00d26a] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">Ventajas</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0b2545] tracking-tight">¿Por qué elegirnos?</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="fade-in-section bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100">
+          <div class="w-14 h-14 bg-gradient-to-br from-[#0b2545] to-[#1a6fbb] rounded-xl flex items-center justify-center mb-5"><i class="fas fa-user-shield text-[#00d26a] text-xl"></i></div>
+          <h3 class="text-lg font-bold text-[#0b2545] mb-2">Confidencialidad total</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Tus datos personales son totalmente confidenciales. No compartimos nada con terceros.</p>
+        </div>
+        <div class="fade-in-section bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100">
+          <div class="w-14 h-14 bg-gradient-to-br from-[#0b2545] to-[#1a6fbb] rounded-xl flex items-center justify-center mb-5"><i class="fas fa-dollar-sign text-[#00d26a] text-xl"></i></div>
+          <h3 class="text-lg font-bold text-[#0b2545] mb-2">Precios claros</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Tarifas transparentes según tu ciudad de destino, sin sorpresas ni cargos adicionales inesperados.</p>
+        </div>
+        <div class="fade-in-section bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100">
+          <div class="w-14 h-14 bg-gradient-to-br from-[#0b2545] to-[#1a6fbb] rounded-xl flex items-center justify-center mb-5"><i class="fas fa-headset text-[#00d26a] text-xl"></i></div>
+          <h3 class="text-lg font-bold text-[#0b2545] mb-2">Asesoría personalizada</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Asesoría de importación directa por WhatsApp. Te acompañamos en cada paso, desde tu primera compra hasta recibir tu mercancía.</p>
+        </div>
+        <div class="fade-in-section bg-white rounded-xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100">
+          <div class="w-14 h-14 bg-gradient-to-br from-[#0b2545] to-[#1a6fbb] rounded-xl flex items-center justify-center mb-5"><i class="fas fa-truck text-[#00d26a] text-xl"></i></div>
+          <h3 class="text-lg font-bold text-[#0b2545] mb-2">Entrega a toda Venezuela</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Cobertura nacional. Flete terrestre incluido en envíos desde 0.15 CBM.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= ASESORÍA ========================= -->
+  <section id="asesorias" class="py-14 md:py-20 bg-gradient-to-br from-[#0b2545] to-[#134074]">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <span class="inline-block bg-[#00d26a]/15 text-[#00d26a] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">Asesoría</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Asesoría de importación</h2>
+        <p class="mt-4 text-white/70 max-w-2xl mx-auto">¿Quieres importar desde China pero no sabes por dónde empezar? Te guiamos paso a paso para que compres con seguridad y traigas tu mercancía sin complicaciones.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div class="fade-in-section bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300">
+          <div class="w-14 h-14 bg-[#00d26a]/15 rounded-xl flex items-center justify-center mb-5"><i class="fas fa-magnifying-glass-dollar text-[#00d26a] text-xl"></i></div>
+          <h3 class="text-lg font-bold text-white mb-2">Búsqueda de proveedores</h3>
+          <p class="text-white/60 text-sm leading-relaxed">Te orientamos para encontrar proveedores confiables en China y evaluar precios y calidad.</p>
+        </div>
+        <div class="fade-in-section bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300">
+          <div class="w-14 h-14 bg-[#00d26a]/15 rounded-xl flex items-center justify-center mb-5"><i class="fas fa-comments-dollar text-[#00d26a] text-xl"></i></div>
+          <h3 class="text-lg font-bold text-white mb-2">Compra y negociación</h3>
+          <p class="text-white/60 text-sm leading-relaxed">Te acompañamos en el proceso de compra en Alibaba y 1688.</p>
+        </div>
+        <div class="fade-in-section bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300">
+          <div class="w-14 h-14 bg-[#00d26a]/15 rounded-xl flex items-center justify-center mb-5"><i class="fas fa-clipboard-check text-[#00d26a] text-xl"></i></div>
+          <h3 class="text-lg font-bold text-white mb-2">Qué puedes importar</h3>
+          <p class="text-white/60 text-sm leading-relaxed">Te asesoramos sobre productos permitidos, empaque, identificación y cálculo de tu envío.</p>
+        </div>
+      </div>
+      <div class="text-center">
+        <a href="https://wa.me/584225007780?text=Hola%2C%20quiero%20una%20asesor%C3%ADa%20de%20importaci%C3%B3n" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 bg-[#00d26a] text-[#0b2545] font-bold px-8 py-4 rounded-full shadow-lg hover:bg-[#00bd5f] hover:scale-105 transition-all duration-300">
+          <i class="fab fa-whatsapp text-xl"></i> Solicitar asesoría por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= TARIFAS ========================= -->
+  <section id="tarifas" class="py-14 md:py-20 bg-white">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <span class="inline-block bg-[#0b2545]/5 text-[#0b2545] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">Transparentes</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0b2545] tracking-tight">Nuestras tarifas</h2>
+        <p class="mt-4 text-gray-500 max-w-xl mx-auto">Precios claros según tu ciudad de destino. Flete terrestre incluido.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+        <div class="fade-in-section relative bg-gradient-to-br from-[#0b2545] to-[#134074] rounded-2xl p-8 text-white overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-[#00d26a]/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+          <div class="relative">
+            <div class="inline-flex items-center gap-1 bg-[#00d26a]/20 text-[#00d26a] text-xs font-bold px-3 py-1 rounded-full mb-4"><i class="fas fa-star text-[10px]"></i> MÁS POPULAR</div>
+            <h3 class="text-xl font-bold mb-2">Caracas / Valencia / Maracay</h3>
+            <div class="flex items-baseline gap-1 mb-4"><span class="text-5xl font-extrabold text-[#00d26a]">$900</span><span class="text-white/60 text-lg">/ CBM</span></div>
+            <ul class="space-y-2 text-white/80 text-sm">
+              <li class="flex items-center gap-2"><i class="fas fa-check text-[#00d26a] text-xs"></i> Flete terrestre incluido desde 0.15 CBM</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-[#00d26a] text-xs"></i> Salidas frecuentes desde China</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check text-[#00d26a] text-xs"></i> 60 a 90 días de tránsito</li>
+            </ul>
+          </div>
+        </div>
+        <div class="fade-in-section bg-white border-2 border-[#0b2545]/10 rounded-2xl p-8 hover:border-[#1a6fbb]/30 transition-colors">
+          <h3 class="text-xl font-bold text-[#0b2545] mb-2">Resto del País</h3>
+          <div class="flex items-baseline gap-1 mb-4"><span class="text-5xl font-extrabold text-[#0b2545]">$1.200</span><span class="text-gray-400 text-lg">/ CBM</span></div>
+          <ul class="space-y-2 text-gray-500 text-sm">
+            <li class="flex items-center gap-2"><i class="fas fa-check text-[#00d26a] text-xs"></i> Flete terrestre incluido desde 0.15 CBM</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-[#00d26a] text-xs"></i> Salidas frecuentes desde China</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-[#00d26a] text-xs"></i> 60 a 90 días de tránsito</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8 max-w-3xl mx-auto space-y-2 text-center">
+        <p class="text-gray-500 text-sm"><i class="fas fa-info-circle text-[#1a6fbb] mr-1"></i> Tarifa mínima por envío: <strong class="text-[#0b2545]">$30</strong></p>
+        <p class="text-gray-500 text-sm"><i class="fas fa-truck text-[#1a6fbb] mr-1"></i> En envíos al interior del país con volumen menor a 0.15 CBM se aplica un adicional de transporte según la localidad (excepto Valencia).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= CALCULADORA ========================= -->
+  <section id="calculadora" class="py-14 md:py-20 bg-[#f0f4f8]">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <span class="inline-block bg-[#00d26a]/10 text-[#00d26a] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">Herramienta</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0b2545] tracking-tight">Calculadora de flete</h2>
+        <p class="mt-4 text-gray-500 max-w-xl mx-auto">Ingresa las medidas de tus cajas y calcula el volumen y el costo al instante. ¿No tienes las medidas? Usa tu CBM directamente.</p>
+      </div>
+      <div class="fade-in-section max-w-lg mx-auto bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+        <div class="space-y-5">
+          <div>
+            <label class="block text-sm font-semibold text-[#0b2545] mb-2">Medidas de la caja (cm)</label>
+            <div class="grid grid-cols-3 gap-3">
+              <input id="calc-largo" type="number" step="0.1" min="0" placeholder="Largo" class="calc-input w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#1a6fbb] focus:ring-2 focus:ring-[#1a6fbb]/20 outline-none transition-all text-[#0b2545]" />
+              <input id="calc-ancho" type="number" step="0.1" min="0" placeholder="Ancho" class="calc-input w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#1a6fbb] focus:ring-2 focus:ring-[#1a6fbb]/20 outline-none transition-all text-[#0b2545]" />
+              <input id="calc-alto" type="number" step="0.1" min="0" placeholder="Alto" class="calc-input w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#1a6fbb] focus:ring-2 focus:ring-[#1a6fbb]/20 outline-none transition-all text-[#0b2545]" />
             </div>
-        </div>
-    </section>
-
-    <section id="rastreo" class="rastreo-section">
-        <div class="container">
-            <h2 class="section-title">¿Dónde está tu paquete?</h2>
-            <p class="section-subtitle">Ingresa tu código de rastreo y ve el estado en tiempo real</p>
-            <div class="rastreo-box">
-                <div class="rastreo-input-wrap">
-                    <input type="text" id="codigo-rastreo" placeholder="Ej: SVN-2026-001" autocomplete="off">
-                    <button onclick="buscarRastreo()"><i class="fas fa-search"></i> Rastrear</button>
-                </div>
-                <div id="resultado-rastreo"></div>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-[#0b2545] mb-2">Número de cajas</label>
+            <input id="calc-cajas" type="number" step="1" min="1" value="1" placeholder="1" class="calc-input w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#1a6fbb] focus:ring-2 focus:ring-[#1a6fbb]/20 outline-none transition-all text-[#0b2545]" />
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="flex-1 h-px bg-gray-200"></div>
+            <span class="text-gray-400 text-xs font-medium">¿No tienes las medidas?</span>
+            <div class="flex-1 h-px bg-gray-200"></div>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-[#0b2545] mb-2">Volumen en CBM (opcional)</label>
+            <input id="calc-cbm" type="number" step="0.001" min="0" placeholder="Ej: 0.5" class="calc-input w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#1a6fbb] focus:ring-2 focus:ring-[#1a6fbb]/20 outline-none transition-all text-[#0b2545]" />
+            <p class="text-gray-400 text-xs mt-1">Si ya conoces tu CBM, escríbelo aquí y te damos el costo. Las medidas tienen prioridad si las completas.</p>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-[#0b2545] mb-2">Ciudad de destino</label>
+            <select id="calc-zona" class="calc-input w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#1a6fbb] focus:ring-2 focus:ring-[#1a6fbb]/20 outline-none transition-all text-[#0b2545] bg-white">
+              <option value="caracas">Caracas / Valencia / Maracay</option>
+              <option value="resto">Resto del País</option>
+            </select>
+          </div>
+          <div id="calc-resultado" class="hidden bg-gradient-to-r from-[#0b2545] to-[#134074] rounded-xl p-6">
+            <div class="flex items-center justify-between pb-3 mb-3 border-b border-white/10">
+              <span class="text-white/70 text-sm">Volumen total</span>
+              <span id="calc-vol" class="text-white font-bold text-lg">0 CBM</span>
             </div>
-        </div>
-    </section>
-
-    <section id="casillero" class="casillero-section">
-        <div class="container">
-            <h2 class="section-title">Abre tu Casillero Internacional</h2>
-            <p class="section-subtitle">Completa el formulario y te asignamos tu código de cliente con la dirección de nuestro almacén en China</p>
-            <form action="https://formsubmit.co/info.seavenimport@gmail.com" method="POST" class="casillero-form">
-                <input type="hidden" name="_subject" value="Nuevo Registro de Casillero - SeaVen Import">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://seavenimport.com/gracias.html">
-                <input type="hidden" name="_template" value="table">
-                <div class="form-grid-2">
-                    <div class="form-group">
-                        <label for="nombre"><i class="fas fa-user"></i> Nombre</label>
-                        <input type="text" id="nombre" name="Nombre" placeholder="Ej. Diana" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="apellido"><i class="fas fa-user"></i> Apellido</label>
-                        <input type="text" id="apellido" name="Apellido" placeholder="Ej. Pérez" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="documento"><i class="fas fa-id-card"></i> Documento de Identidad</label>
-                    <input type="text" id="documento" name="Documento" placeholder="Ej. V-12345678" required>
-                </div>
-                <div class="form-group">
-                    <label for="telefono"><i class="fab fa-whatsapp"></i> Teléfono / WhatsApp</label>
-                    <input type="tel" id="telefono" name="Teléfono" placeholder="+58 412 1234567" required>
-                </div>
-                <div class="form-group">
-                    <label for="ciudad"><i class="fas fa-city"></i> Ciudad</label>
-                    <input type="text" id="ciudad" name="Ciudad" placeholder="Ej. Barquisimeto" required>
-                </div>
-                <div class="form-group">
-                    <label for="direccion"><i class="fas fa-map-marker-alt"></i> Dirección de residencia</label>
-                    <input type="text" id="direccion" name="Dirección" placeholder="Ej. Calle 20 entre Carreras 15 y 16" required>
-                </div>
-                <div class="form-group">
-                    <label for="email"><i class="fas fa-envelope"></i> Correo Electrónico</label>
-                    <input type="email" id="email" name="Correo" placeholder="ejemplo@correo.com" required>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; border-radius:8px;">
-                    <i class="fas fa-paper-plane"></i> Solicitar mi Casillero
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <section id="faq" class="faq-section">
-        <div class="container">
-            <h2 class="section-title">Preguntas Frecuentes</h2>
-            <p class="section-subtitle">Todo lo que necesitas saber sobre nuestro servicio</p>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <h3>¿Cuánto tiempo tarda el envío marítimo?</h3>
-                        <i class="fas fa-plus faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">El envío marítimo tiene un tiempo estimado de 60 a 90 días desde que la mercancía sale de China hasta que llega a Venezuela, sujeto a procesos aduanales y condiciones del puerto.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <h3>¿Qué tipo de mercancía puedo enviar?</h3>
-                        <i class="fas fa-plus faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">Trabajamos únicamente con mercancía común: ropa, calzado, accesorios, juguetes y productos del hogar. No manejamos réplicas, productos de maquillaje ni artículos con batería de litio.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <h3>¿Cómo sé dónde está mi paquete?</h3>
-                        <i class="fas fa-plus faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">Contamos con un sistema de rastreo en nuestra web. Ingresa tu código de rastreo y podrás ver el estado de tu envío en cada etapa del proceso, desde China hasta Venezuela.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <h3>¿Qué incluye el precio del flete?</h3>
-                        <i class="fas fa-plus faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">El precio por CBM ya incluye el traslado terrestre hasta tu ciudad de destino para envíos desde 0.1 CBM. Para envíos menores, el flete terrestre corre por cuenta del cliente mediante la empresa de encomiendas de su preferencia.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <h3>¿Hacen consolidación o reempaque de paquetes?</h3>
-                        <i class="fas fa-plus faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">No. No realizamos consolidación ni reempaque. Cada envío se tramita de forma individual tal como lo recibimos del proveedor en nuestro almacén de Yiwu.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        <h3>¿Cómo retiro mi mercancía cuando llega a Venezuela?</h3>
-                        <i class="fas fa-plus faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">Te notificamos por WhatsApp cuando tu mercancía llegue a Venezuela. Coordinamos contigo el pago pendiente y los detalles de entrega según tu ciudad de destino.</div>
-                </div>
+            <div class="text-center">
+              <p class="text-white/70 text-sm mb-1">Costo estimado de envío</p>
+              <p id="calc-costo" class="text-[#00d26a] text-4xl font-extrabold">$0</p>
+              <p class="text-white/50 text-xs mt-1">Tarifa mínima por envío: $30</p>
             </div>
+          </div>
+          <a id="calc-wa" href="#" target="_blank" rel="noopener noreferrer"
+             class="w-full flex items-center justify-center gap-3 bg-[#00d26a] hover:bg-[#00b85c] text-[#0b2545] font-bold text-base px-6 py-4 rounded-xl transition-all hover:scale-[1.02] shadow-md opacity-50 pointer-events-none">
+            <i class="fab fa-whatsapp text-xl"></i> Cotizar por WhatsApp
+          </a>
+          <p class="text-gray-400 text-xs text-center">Estimación referencial. El costo final puede variar según la ciudad y el volumen real de tu mercancía.</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section class="pagos-section">
-        <div class="container">
-            <h3>Métodos de pago aceptados</h3>
-            <div class="pagos-logos">
-                <img src="binance.jpg" alt="Binance">
-                <img src="zinli.png" alt="Zinli">
-                <img src="pagomovil.png" alt="Pago Móvil">
-                <img src="divisas.png" alt="Divisas">
-            </div>
+  <!-- ========================= RASTREO ========================= -->
+  <section id="rastreo" class="py-14 md:py-20 bg-white">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <span class="inline-block bg-[#0b2545]/5 text-[#0b2545] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">Seguimiento SeaVen</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0b2545] tracking-tight">Rastrea tu envío</h2>
+        <p class="mt-4 text-gray-500 max-w-xl mx-auto">Ingresa tu código de rastreo para ver por dónde va tu mercancía</p>
+      </div>
+      <div class="fade-in-section max-w-xl mx-auto">
+        <div class="flex gap-3">
+          <input id="track-code" type="text" placeholder="Ingresa tu código de rastreo"
+                 class="flex-1 px-4 py-3 rounded-xl border border-gray-200 focus:border-[#1a6fbb] focus:ring-2 focus:ring-[#1a6fbb]/20 outline-none transition-all text-[#0b2545]" />
+          <button id="track-btn" class="bg-[#0b2545] hover:bg-[#134074] text-white font-bold px-6 py-3 rounded-xl transition-all hover:scale-105 disabled:opacity-50">
+            <i class="fas fa-search"></i>
+          </button>
         </div>
-    </section>
+        <div id="track-output" class="mt-6"></div>
+      </div>
+    </div>
+  </section>
 
-    <section class="cta-section">
-        <div class="container">
-            <h2>¿Listo para importar desde China?</h2>
-            <p>Escríbenos y te guiamos en cada paso del proceso</p>
-            <a href="https://wa.me/584225007780" class="btn btn-green" target="_blank" rel="noopener">
-                <i class="fab fa-whatsapp"></i> Contáctanos por WhatsApp
-            </a>
+  <!-- ========================= MERCANCÍA PERMITIDA ========================= -->
+  <section class="py-14 md:py-20 bg-[#f0f4f8]">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <span class="inline-block bg-[#0b2545]/5 text-[#0b2545] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">Importante</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0b2545] tracking-tight">Mercancía permitida</h2>
+        <p class="mt-4 text-gray-500 max-w-xl mx-auto">Solo mercancía común. Revisa qué puedes y qué no puedes enviar.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+        <div class="fade-in-section bg-white rounded-2xl p-8 border-2 border-[#00d26a]/20">
+          <div class="flex items-center gap-3 mb-6"><div class="w-10 h-10 bg-[#00d26a]/10 rounded-full flex items-center justify-center"><i class="fas fa-check text-[#00d26a] text-lg"></i></div><h3 class="text-xl font-bold text-[#0b2545]">Sí aceptamos</h3></div>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3 text-gray-700"><div class="w-8 h-8 bg-[#00d26a]/10 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-tshirt text-[#00d26a] text-sm"></i></div><span class="text-sm font-medium">Ropa</span></li>
+            <li class="flex items-center gap-3 text-gray-700"><div class="w-8 h-8 bg-[#00d26a]/10 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-shoe-prints text-[#00d26a] text-sm"></i></div><span class="text-sm font-medium">Calzado</span></li>
+            <li class="flex items-center gap-3 text-gray-700"><div class="w-8 h-8 bg-[#00d26a]/10 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-gem text-[#00d26a] text-sm"></i></div><span class="text-sm font-medium">Accesorios</span></li>
+            <li class="flex items-center gap-3 text-gray-700"><div class="w-8 h-8 bg-[#00d26a]/10 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-puzzle-piece text-[#00d26a] text-sm"></i></div><span class="text-sm font-medium">Juguetes</span></li>
+            <li class="flex items-center gap-3 text-gray-700"><div class="w-8 h-8 bg-[#00d26a]/10 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-home text-[#00d26a] text-sm"></i></div><span class="text-sm font-medium">Productos del hogar</span></li>
+          </ul>
         </div>
-    </section>
-
-    <section class="social-section">
-        <div class="container">
-            <h3>Síguenos en redes sociales</h3>
-            <div class="social-icons">
-                <a href="https://facebook.com/seavenimport" target="_blank" style="color:#1877F2;"><i class="fab fa-facebook"></i></a>
-                <a href="https://instagram.com/seavenimport" target="_blank" style="color:#E1306C;"><i class="fab fa-instagram"></i></a>
-                <a href="https://tiktok.com/@seavenimport" target="_blank" style="color:#000;"><i class="fab fa-tiktok"></i></a>
-                <a href="https://youtube.com/@seavenimport" target="_blank" style="color:#FF0000;"><i class="fab fa-youtube"></i></a>
-            </div>
+        <div class="fade-in-section bg-white rounded-2xl p-8 border-2 border-red-200/50">
+          <div class="flex items-center gap-3 mb-6"><div class="w-10 h-10 bg-red-50 rounded-full flex items-center justify-center"><i class="fas fa-times text-red-500 text-lg"></i></div><h3 class="text-xl font-bold text-[#0b2545]">No aceptamos</h3></div>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3 text-gray-700"><div class="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-copy text-red-400 text-sm"></i></div><span class="text-sm font-medium">Réplicas de marcas</span></li>
+            <li class="flex items-center gap-3 text-gray-700"><div class="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-paint-brush text-red-400 text-sm"></i></div><span class="text-sm font-medium">Maquillaje</span></li>
+            <li class="flex items-center gap-3 text-gray-700"><div class="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-battery-full text-red-400 text-sm"></i></div><span class="text-sm font-medium">Artículos con batería</span></li>
+          </ul>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <div class="container">
-            <p><i class="fas fa-envelope"></i> <a href="mailto:info.seavenimport@gmail.com">info.seavenimport@gmail.com</a></p>
-            <p style="margin-top:6px;">© 2026 SeaVen Import. Todos los derechos reservados.</p>
+  <!-- ========================= CONDICIONES IMPORTANTES ========================= -->
+  <section class="py-14 md:py-20 bg-white">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <span class="inline-block bg-[#0b2545]/5 text-[#0b2545] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">Debes saber</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0b2545] tracking-tight">Condiciones importantes</h2>
+        <p class="mt-4 text-gray-500 max-w-xl mx-auto">Para que tu importación salga perfecta, ten en cuenta lo siguiente.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        <div class="fade-in-section flex gap-4 bg-[#f0f4f8] rounded-2xl p-6"><div class="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-[#0b2545] to-[#1a6fbb] rounded-xl flex items-center justify-center"><i class="fas fa-tag text-[#00d26a] text-lg"></i></div><div><h3 class="text-base font-bold text-[#0b2545] mb-1">Identifica cada paquete</h3><p class="text-gray-500 text-sm leading-relaxed">Cada paquete debe llegar debidamente identificado con tu código a nuestro almacén. Si no está identificado, será rechazado.</p></div></div>
+        <div class="fade-in-section flex gap-4 bg-[#f0f4f8] rounded-2xl p-6"><div class="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-[#0b2545] to-[#1a6fbb] rounded-xl flex items-center justify-center"><i class="fas fa-bell text-[#00d26a] text-lg"></i></div><div><h3 class="text-base font-bold text-[#0b2545] mb-1">Pago y entrega</h3><p class="text-gray-500 text-sm leading-relaxed">Cuando tu mercancía llegue a Venezuela te notificaremos por WhatsApp para coordinar el pago pendiente y la entrega.</p></div></div>
+        <div class="fade-in-section flex gap-4 bg-[#f0f4f8] rounded-2xl p-6"><div class="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-[#0b2545] to-[#1a6fbb] rounded-xl flex items-center justify-center"><i class="fas fa-clock text-[#00d26a] text-lg"></i></div><div><h3 class="text-base font-bold text-[#0b2545] mb-1">Tiempos del proceso</h3><p class="text-gray-500 text-sm leading-relaxed">Salidas frecuentes desde China. El proceso completo toma de 60 a 90 días, sujeto a procesos y a cambios por imprevistos aduanales.</p></div></div>
+        <div class="fade-in-section flex gap-4 bg-[#f0f4f8] rounded-2xl p-6"><div class="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-[#0b2545] to-[#1a6fbb] rounded-xl flex items-center justify-center"><i class="fas fa-user-shield text-[#00d26a] text-lg"></i></div><div><h3 class="text-base font-bold text-[#0b2545] mb-1">Confidencialidad</h3><p class="text-gray-500 text-sm leading-relaxed">Tu información personal se maneja con total confidencialidad, sin compartirse con terceros.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= REGISTRO / CASILLERO ========================= -->
+  <section id="registro" class="py-14 md:py-20 bg-white">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <span class="inline-block bg-[#00d26a]/10 text-[#00d26a] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">Comienza ahora</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0b2545] tracking-tight">Abre tu casillero</h2>
+        <p class="mt-4 text-gray-500 max-w-xl mx-auto">Regístrate y recibe tu dirección en nuestro almacén en China en minutos</p>
+      </div>
+      <div class="fade-in-section max-w-lg mx-auto bg-gradient-to-br from-[#0b2545] to-[#134074] rounded-2xl p-8 shadow-xl">
+        <form action="https://formsubmit.co/info.seavenimport@gmail.com" method="POST" class="space-y-4">
+          <input type="hidden" name="_subject" value="Nuevo registro de casillero - SeaVen Import" />
+          <input type="hidden" name="_next" value="https://seavenimport.com/gracias.html" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <div><label class="block text-white/80 text-sm font-medium mb-1">Nombre y Apellido</label><input type="text" name="Nombre y Apellido" required placeholder="Ej. Diana Pérez" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 focus:border-[#00d26a] focus:ring-2 focus:ring-[#00d26a]/20 outline-none transition-all" /></div>
+          <div><label class="block text-white/80 text-sm font-medium mb-1">Cédula</label><input type="text" name="Cédula" required placeholder="Ej. V-12345678" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 focus:border-[#00d26a] focus:ring-2 focus:ring-[#00d26a]/20 outline-none transition-all" /></div>
+          <div><label class="block text-white/80 text-sm font-medium mb-1">Teléfono / WhatsApp</label><input type="tel" name="Teléfono" required placeholder="+58 412 000 0000" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 focus:border-[#00d26a] focus:ring-2 focus:ring-[#00d26a]/20 outline-none transition-all" /></div>
+          <div><label class="block text-white/80 text-sm font-medium mb-1">Ciudad</label><input type="text" name="Ciudad" required placeholder="Ej. Barquisimeto" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 focus:border-[#00d26a] focus:ring-2 focus:ring-[#00d26a]/20 outline-none transition-all" /></div>
+          <div><label class="block text-white/80 text-sm font-medium mb-1">Dirección de residencia</label><input type="text" name="Dirección de residencia" required placeholder="Ej. Calle 20 entre Carreras 15 y 16" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 focus:border-[#00d26a] focus:ring-2 focus:ring-[#00d26a]/20 outline-none transition-all" /></div>
+          <div><label class="block text-white/80 text-sm font-medium mb-1">Correo electrónico</label><input type="email" name="Correo" required placeholder="ejemplo@correo.com" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 focus:border-[#00d26a] focus:ring-2 focus:ring-[#00d26a]/20 outline-none transition-all" /></div>
+          <button type="submit" class="w-full bg-[#00d26a] hover:bg-[#00b85c] text-[#0b2545] font-bold text-base px-6 py-4 rounded-xl transition-all hover:scale-[1.02] shadow-lg mt-2"><i class="fas fa-paper-plane mr-2"></i> Quiero mi casillero</button>
+        </form>
+        <div class="mt-4 text-center">
+          <p class="text-white/40 text-xs">o escríbenos directamente</p>
+          <a href="https://wa.me/584225007780?text=Hola%2C%20quiero%20abrir%20mi%20casillero%20en%20SeaVen%20Import" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-[#00d26a] hover:text-[#00b85c] text-sm font-semibold mt-2 transition-colors"><i class="fab fa-whatsapp"></i> Abrir casillero por WhatsApp</a>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <a href="https://wa.me/584225007780?text=Hola,%20quisiera%20más%20información" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+  <!-- ========================= FAQ ========================= -->
+  <section id="faq" class="py-14 md:py-20 bg-white">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <span class="inline-block bg-[#0b2545]/5 text-[#0b2545] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">Dudas</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0b2545] tracking-tight">Preguntas frecuentes</h2>
+      </div>
+      <div class="max-w-2xl mx-auto space-y-3" id="faq-list">
+        <div class="faq-item"><button class="faq-q w-full flex items-center justify-between bg-[#f0f4f8] hover:bg-[#e8edf3] rounded-xl px-6 py-4 text-left transition-colors"><span class="font-semibold text-[#0b2545] text-sm sm:text-base pr-4">¿Qué es un casillero internacional?</span><i class="fas fa-chevron-down text-[#1a6fbb] text-sm transition-transform duration-300"></i></button><div class="faq-a hidden px-6 py-4 text-gray-600 text-sm leading-relaxed">Es una dirección asignada en nuestro almacén en China, donde recibes tus compras de cualquier proveedor. Nosotros nos encargamos de enviar tu mercancía a Venezuela por vía marítima.</div></div>
+        <div class="faq-item"><button class="faq-q w-full flex items-center justify-between bg-[#f0f4f8] hover:bg-[#e8edf3] rounded-xl px-6 py-4 text-left transition-colors"><span class="font-semibold text-[#0b2545] text-sm sm:text-base pr-4">¿Cuánto tiempo tarda el envío?</span><i class="fas fa-chevron-down text-[#1a6fbb] text-sm transition-transform duration-300"></i></button><div class="faq-a hidden px-6 py-4 text-gray-600 text-sm leading-relaxed">El tiempo de tránsito marítimo es de 60 a 90 días desde que tu mercancía sale de nuestro almacén en China hasta la entrega en Venezuela.</div></div>
+        <div class="faq-item"><button class="faq-q w-full flex items-center justify-between bg-[#f0f4f8] hover:bg-[#e8edf3] rounded-xl px-6 py-4 text-left transition-colors"><span class="font-semibold text-[#0b2545] text-sm sm:text-base pr-4">¿Cómo calculo el volumen (CBM) de mi envío?</span><i class="fas fa-chevron-down text-[#1a6fbb] text-sm transition-transform duration-300"></i></button><div class="faq-a hidden px-6 py-4 text-gray-600 text-sm leading-relaxed">El CBM se calcula multiplicando largo × ancho × alto de tu paquete en metros. Por ejemplo: un paquete de 50cm × 40cm × 30cm = 0.5 × 0.4 × 0.3 = 0.06 CBM.</div></div>
+        <div class="faq-item"><button class="faq-q w-full flex items-center justify-between bg-[#f0f4f8] hover:bg-[#e8edf3] rounded-xl px-6 py-4 text-left transition-colors"><span class="font-semibold text-[#0b2545] text-sm sm:text-base pr-4">¿Hay un mínimo de envío?</span><i class="fas fa-chevron-down text-[#1a6fbb] text-sm transition-transform duration-300"></i></button><div class="faq-a hidden px-6 py-4 text-gray-600 text-sm leading-relaxed">Sí, la tarifa mínima por envío es de $30. El flete terrestre está incluido desde 0.15 CBM. En envíos al interior del país menores a 0.15 CBM se aplica un adicional de transporte según la localidad (excepto Valencia).</div></div>
+        <div class="faq-item"><button class="faq-q w-full flex items-center justify-between bg-[#f0f4f8] hover:bg-[#e8edf3] rounded-xl px-6 py-4 text-left transition-colors"><span class="font-semibold text-[#0b2545] text-sm sm:text-base pr-4">¿Qué tipo de mercancía puedo enviar?</span><i class="fas fa-chevron-down text-[#1a6fbb] text-sm transition-transform duration-300"></i></button><div class="faq-a hidden px-6 py-4 text-gray-600 text-sm leading-relaxed">Solo aceptamos mercancía común: ropa, calzado, accesorios, juguetes y productos del hogar, entre otros. No se aceptan réplicas, maquillaje ni artículos con batería.</div></div>
+        <div class="faq-item"><button class="faq-q w-full flex items-center justify-between bg-[#f0f4f8] hover:bg-[#e8edf3] rounded-xl px-6 py-4 text-left transition-colors"><span class="font-semibold text-[#0b2545] text-sm sm:text-base pr-4">¿Cómo puedo rastrear mi envío?</span><i class="fas fa-chevron-down text-[#1a6fbb] text-sm transition-transform duration-300"></i></button><div class="faq-a hidden px-6 py-4 text-gray-600 text-sm leading-relaxed">Te proporcionamos un código de rastreo que puedes ingresar en nuestra sección de rastreo en la página web para ver el estado actualizado de tu mercancía.</div></div>
+        <div class="faq-item"><button class="faq-q w-full flex items-center justify-between bg-[#f0f4f8] hover:bg-[#e8edf3] rounded-xl px-6 py-4 text-left transition-colors"><span class="font-semibold text-[#0b2545] text-sm sm:text-base pr-4">¿Hacen consolidación o reempaque de paquetes?</span><i class="fas fa-chevron-down text-[#1a6fbb] text-sm transition-transform duration-300"></i></button><div class="faq-a hidden px-6 py-4 text-gray-600 text-sm leading-relaxed">No. No realizamos consolidación ni reempaque. Cada paquete debe llegar debidamente identificado a nuestro almacén en China; de lo contrario, será rechazado.</div></div>
+      </div>
+    </div>
+  </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- ========================= MÉTODOS DE PAGO ========================= -->
+  <section class="py-14 md:py-20 bg-[#f0f4f8]">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <span class="inline-block bg-[#00d26a]/10 text-[#00d26a] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">Flexibles</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0b2545] tracking-tight">Métodos de pago</h2>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
+        <div class="fade-in-section bg-white rounded-xl p-6 text-center shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-gray-100"><div class="w-14 h-14 rounded-xl mx-auto mb-3 flex items-center justify-center" style="background-color:#F0B90B15"><i class="fab fa-bitcoin text-2xl" style="color:#F0B90B"></i></div><p class="font-semibold text-[#0b2545] text-sm">Binance</p></div>
+        <div class="fade-in-section bg-white rounded-xl p-6 text-center shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-gray-100"><div class="w-14 h-14 rounded-xl mx-auto mb-3 flex items-center justify-center" style="background-color:#6C5CE715"><i class="fas fa-wallet text-2xl" style="color:#6C5CE7"></i></div><p class="font-semibold text-[#0b2545] text-sm">Zinli</p></div>
+        <div class="fade-in-section bg-white rounded-xl p-6 text-center shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-gray-100"><div class="w-14 h-14 rounded-xl mx-auto mb-3 flex items-center justify-center" style="background-color:#00B89415"><i class="fas fa-mobile-alt text-2xl" style="color:#00B894"></i></div><p class="font-semibold text-[#0b2545] text-sm">Pago Móvil</p></div>
+        <div class="fade-in-section bg-white rounded-xl p-6 text-center shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-gray-100"><div class="w-14 h-14 rounded-xl mx-auto mb-3 flex items-center justify-center" style="background-color:#0984E315"><i class="fas fa-dollar-sign text-2xl" style="color:#0984E3"></i></div><p class="font-semibold text-[#0b2545] text-sm">Divisas</p></div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-    function sanitize(str) {
-        const d = document.createElement('div');
-        d.textContent = String(str || '');
-        return d.innerHTML;
-    }
+  <!-- ========================= CTA FINAL ========================= -->
+  <section class="py-14 md:py-20 bg-gradient-to-br from-[#0b2545] via-[#134074] to-[#1a6fbb] relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <svg class="w-full h-full" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice">
+        <path d="M0,200 Q300,50 600,200 T1200,200" stroke="white" stroke-width="2" fill="none" />
+        <path d="M0,250 Q300,100 600,250 T1200,250" stroke="white" stroke-width="1" fill="none" />
+      </svg>
+    </div>
+    <div class="relative max-w-[1200px] mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-6">¿Listo para importar?</h2>
+      <p class="text-white/70 text-lg max-w-xl mx-auto mb-8">Únete a cientos de emprendedores que ya importan desde China con SeaVen Import.</p>
+      <a href="https://wa.me/584225007780?text=Hola%2C%20quiero%20empezar%20a%20importar%20con%20SeaVen%20Import" target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center gap-3 bg-[#00d26a] hover:bg-[#00b85c] text-[#0b2545] font-bold text-lg px-10 py-5 rounded-xl transition-all hover:scale-105 shadow-xl shadow-[#00d26a]/25 animate-pulse-green">
+        <i class="fab fa-whatsapp text-2xl"></i> Comenzar ahora
+      </a>
+    </div>
+  </section>
 
-    const hamburger = document.getElementById('hamburger');
-    const navMobile = document.getElementById('nav-mobile');
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('open');
-        navMobile.classList.toggle('open');
+  <!-- ========================= REDES SOCIALES ========================= -->
+  <section class="py-12 bg-white">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6 text-center">
+      <p class="text-gray-500 text-sm mb-4">Síguenos en redes sociales</p>
+      <div class="flex items-center justify-center gap-4">
+        <a href="https://facebook.com/seavenimport" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110 hover:shadow-lg" style="background-color:#1877F215"><i class="fab fa-facebook-f text-lg" style="color:#1877F2"></i></a>
+        <a href="https://instagram.com/seavenimport" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110 hover:shadow-lg" style="background-color:#E4405F15"><i class="fab fa-instagram text-lg" style="color:#E4405F"></i></a>
+        <a href="https://tiktok.com/@seavenimport" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110 hover:shadow-lg" style="background-color:#00000015"><i class="fab fa-tiktok text-lg" style="color:#000000"></i></a>
+        <a href="https://youtube.com/@seavenimport" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110 hover:shadow-lg" style="background-color:#FF000015"><i class="fab fa-youtube text-lg" style="color:#FF0000"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= FOOTER ========================= -->
+  <footer class="bg-[#0b2545] py-8">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+          <span class="w-7 h-7 rounded-md bg-[#00d26a] flex items-center justify-center"><i class="fas fa-ship text-[#0b2545] text-sm"></i></span>
+          <span class="text-sm font-bold tracking-tight"><span class="text-white">SeaVen</span> <span class="text-[#00d26a]">Import</span></span>
+        </div>
+        <div class="flex items-center gap-4 text-white/50 text-xs">
+          <a href="/cdn-cgi/l/email-protection#7d14131b12530e181c0b181314100d120f093d1a101c1411531e1210" class="hover:text-[#00d26a] transition-colors"><i class="fas fa-envelope mr-1"></i> <span class="__cf_email__" data-cfemail="f59c9b939adb86909483909b9c98859a8781b59298949c99db969a98">[email&#160;protected]</span></a>
+        </div>
+        <p class="text-white/30 text-xs">© 2026 SeaVen Import. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================= BOTÓN FLOTANTE WHATSAPP ========================= -->
+  <a href="https://wa.me/584225007780?text=Hola%2C%20necesito%20informaci%C3%B3n%20sobre%20SeaVen%20Import" target="_blank" rel="noopener noreferrer"
+     class="fixed bottom-6 right-6 z-50 w-16 h-16 bg-[#25D366] hover:bg-[#20BD5A] rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-all animate-pulse-green" aria-label="Contactar por WhatsApp">
+    <i class="fab fa-whatsapp text-white text-3xl"></i>
+  </a>
+
+  <!-- ========================= JAVASCRIPT ========================= -->
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // === CONFIG RASTREO ===
+    // El rastreo necesita el servidor + base de datos (donde está tu panel /admin).
+    // Si tu panel vive en otra dirección, escríbela aquí (ej: 'https://tu-panel.abacusai.app').
+    // Déjalo vacío ('') si esta misma página tiene el servidor.
+    const API_BASE = '';
+
+    const WA = '584225007780';
+    const ETAPAS = [
+      { label: 'Recibido en almacén China', icon: 'fa-warehouse' },
+      { label: 'En tránsito marítimo', icon: 'fa-ship' },
+      { label: 'En aduana Venezuela', icon: 'fa-clipboard-check' },
+      { label: 'Disponible para entrega', icon: 'fa-box-open' },
+      { label: 'Entregado', icon: 'fa-circle-check' },
+    ];
+
+    // --- Menú móvil ---
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    menuBtn.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('hidden') === false;
+      menuIcon.className = open ? 'fas fa-times text-xl' : 'fas fa-bars text-xl';
     });
-    function cerrarMenu() {
-        hamburger.classList.remove('open');
-        navMobile.classList.remove('open');
-    }
+    document.querySelectorAll('.mobile-link').forEach((a) => a.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      menuIcon.className = 'fas fa-bars text-xl';
+    }));
 
-    let lastScroll = 0;
-    const mainHeader = document.getElementById('main-header');
+    // --- Header con sombra al hacer scroll ---
+    const header = document.getElementById('site-header');
     window.addEventListener('scroll', () => {
-        const current = window.scrollY;
-        if (current > lastScroll && current > 80) {
-            mainHeader.classList.add('hidden');
-        } else {
-            mainHeader.classList.remove('hidden');
-        }
-        lastScroll = current <= 0 ? 0 : current;
+      if (window.scrollY > 20) header.className = header.className.replace('bg-[#0b2545]','bg-[#0b2545]/95') ;
+    });
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) { header.classList.add('shadow-lg','backdrop-blur-md'); }
+      else { header.classList.remove('shadow-lg','backdrop-blur-md'); }
     });
 
-    function toggleFaq(questionEl) {
-        const item = questionEl.parentElement;
-        const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-        if (!isOpen) item.classList.add('open');
-    }
+    // --- Fade in al hacer scroll ---
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in-section').forEach((el) => io.observe(el));
 
-    let svCityRate = 900;
-    let svCityName = 'Caracas / Valencia / Maracay';
+    // --- FAQ acordeón ---
+    document.querySelectorAll('.faq-item').forEach((item) => {
+      const q = item.querySelector('.faq-q');
+      const a = item.querySelector('.faq-a');
+      const chev = item.querySelector('i');
+      q.addEventListener('click', () => {
+        const isOpen = !a.classList.contains('hidden');
+        // cerrar todas
+        document.querySelectorAll('.faq-a').forEach((x) => x.classList.add('hidden'));
+        document.querySelectorAll('.faq-q i').forEach((x) => x.classList.remove('rotate-180'));
+        if (!isOpen) { a.classList.remove('hidden'); chev.classList.add('rotate-180'); }
+      });
+    });
 
-    function setCity(el, rate, name) {
-        document.querySelectorAll('.city-btn').forEach(b => b.classList.remove('active'));
-        el.classList.add('active');
-        svCityRate = rate;
-        svCityName = name;
-        calcular();
-    }
-
+    // --- Calculadora de flete ---
+    const el = (id) => document.getElementById(id);
+    const calcInputs = ['calc-largo','calc-ancho','calc-alto','calc-cajas','calc-cbm','calc-zona'];
     function calcular() {
-        const largo = parseFloat(document.getElementById('largo').value) || 0;
-        const alto  = parseFloat(document.getElementById('alto').value)  || 0;
-        const ancho = parseFloat(document.getElementById('ancho').value) || 0;
-        const cajas = Math.max(1, parseInt(document.getElementById('cajas').value) || 1);
-        const errEl  = document.getElementById('err-dims');
-        const resBox = document.getElementById('result-box');
-
-        if (largo <= 0 || alto <= 0 || ancho <= 0) {
-            resBox.style.display = 'none';
-            errEl.textContent = (largo > 0 || alto > 0 || ancho > 0) ? 'Completa las tres dimensiones.' : '';
-            return;
-        }
-        errEl.textContent = '';
-
-        const cbmUnit  = (largo * alto * ancho) / 1000000;
-        const cbmTotal = cbmUnit * cajas;
-        let   costo    = cbmTotal * svCityRate;
-        let   minimo   = false;
-
-        if (costo < 30 && costo > 0) { costo = 30; minimo = true; }
-
-        document.getElementById('res-cbm-unit').textContent  = cbmUnit.toFixed(4)  + ' CBM / caja';
-        document.getElementById('res-cbm-total').textContent = cbmTotal.toFixed(4) + ' CBM';
-        document.getElementById('res-tarifa').textContent    = '$' + svCityRate.toLocaleString('es-VE') + ' / CBM';
-        document.getElementById('res-ciudad').textContent    = svCityName;
-        document.getElementById('res-total').textContent     = '$' + costo.toFixed(2);
-        document.getElementById('note-min').style.display    = minimo ? 'block' : 'none';
-        resBox.style.display = 'block';
+      const l = parseFloat(el('calc-largo').value);
+      const w = parseFloat(el('calc-ancho').value);
+      const h = parseFloat(el('calc-alto').value);
+      const n = Math.max(1, parseInt(el('calc-cajas').value) || 1);
+      const directo = parseFloat(el('calc-cbm').value);
+      const zona = el('calc-zona').value;
+      let volumen = null;
+      if (!isNaN(l) && l > 0 && !isNaN(w) && w > 0 && !isNaN(h) && h > 0) {
+        volumen = (l * w * h / 1000000) * n;
+      } else if (!isNaN(directo) && directo > 0) {
+        volumen = directo;
+      }
+      const resBox = el('calc-resultado');
+      const waBtn = el('calc-wa');
+      if (volumen === null || volumen <= 0) {
+        resBox.classList.add('hidden');
+        waBtn.classList.add('opacity-50','pointer-events-none');
+        return;
+      }
+      const rate = zona === 'caracas' ? 900 : 1200;
+      const costo = Math.max(volumen * rate, 30);
+      const zoneName = zona === 'caracas' ? 'Caracas / Valencia / Maracay' : 'Resto del País';
+      el('calc-vol').textContent = volumen.toFixed(3) + ' CBM';
+      el('calc-costo').textContent = '$' + costo.toLocaleString('en-US');
+      resBox.classList.remove('hidden');
+      waBtn.classList.remove('opacity-50','pointer-events-none');
+      const msg = 'Hola, calculé mi flete en la web: ' + volumen.toFixed(3) + ' CBM a ' + zoneName + ' = $' + costo.toLocaleString('en-US') + '. Quiero avanzar con SeaVen Import';
+      waBtn.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg);
     }
+    calcInputs.forEach((id) => el(id).addEventListener('input', calcular));
+    calcInputs.forEach((id) => el(id).addEventListener('change', calcular));
 
-    const SUPABASE_URL = 'https://zfdnxzvuzrdgqjafctui.supabase.co';
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpmZG54enZ1enJkZ3FqYWZjdHVpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzI2MzkyNDcsImV4cCI6MjA0ODIxNTI0N30.K6tAeF-2MZXXJx9T2OlBJ4RzZ9JlBdRlQZHjLjKo3Nw';
-    const { createClient } = supabase;
-    const sbClient = createClient(SUPABASE_URL, SUPABASE_KEY);
-
-    async function buscarRastreo() {
-        const codigo    = document.getElementById('codigo-rastreo').value.trim();
-        const resultDiv = document.getElementById('resultado-rastreo');
-
-        if (!codigo) { alert('Por favor ingresa un código de rastreo.'); return; }
-
-        resultDiv.innerHTML = '<p style="text-align:center;color:#5a7a99;padding:20px;">Buscando...</p>';
-
-        try {
-            const { data: envio, error: errEnvio } = await sbClient
-                .from('envios')
-                .select('*')
-                .eq('codigo_rastreo', codigo)
-                .single();
-
-            if (errEnvio || !envio) {
-                resultDiv.innerHTML = '<p style="text-align:center;color:#e05c5c;padding:20px;">Código no encontrado. Verifica e intenta de nuevo.</p>';
-                return;
-            }
-
-            const { data: historial } = await sbClient
-                .from('historial_estados')
-                .select('*')
-                .eq('envio_id', envio.id)
-                .order('fecha', { ascending: true });
-
-            mostrarResultado(envio, historial || []);
-
-        } catch (err) {
-            console.error('Error:', err);
-            resultDiv.innerHTML = '<p style="text-align:center;color:#e05c5c;padding:20px;">Error de conexión. Intenta nuevamente.</p>';
-        }
-    }
-
-    function mostrarResultado(envio, historial) {
-        const resultDiv = document.getElementById('resultado-rastreo');
-
-        const codigo        = sanitize(envio.codigo_rastreo);
-        const clienteNombre = sanitize(envio.cliente_nombre || 'No especificado');
-        const estado        = sanitize(envio.estado);
-        const fechaActual   = envio.fecha_estado ? new Date(envio.fecha_estado).toLocaleDateString('es-VE') : '—';
-
-        let html = `
-            <div class="rastreo-card">
-                <h3>📦 Código: ${codigo}</h3>
-                <p><strong>Cliente:</strong> ${clienteNombre}</p>
-                <p><strong>Estado actual:</strong> <span style="color:var(--primary);font-weight:700;">${estado}</span></p>
-                <p style="color:#999;font-size:0.85rem;">Última actualización: ${fechaActual}</p>
-            </div>
-            <div class="timeline">
-        `;
-
-        if (historial.length > 0) {
-            historial.forEach((h, i) => {
-                const isLast   = i === historial.length - 1;
-                const clase    = isLast ? 'active' : 'done';
-                const icono    = isLast ? '🔄' : '✅';
-                const hEstado  = sanitize(h.estado);
-                const hUbic    = sanitize(h.ubicacion  || 'Ubicación no especificada');
-                const hDetalle = sanitize(h.detalles   || '');
-                const hFecha   = h.fecha ? new Date(h.fecha).toLocaleDateString('es-VE') : '—';
-
-                html += `
-                    <div class="timeline-item ${clase}">
-                        <div class="timeline-title">${icono} ${hEstado}</div>
-                        <div class="timeline-meta">📍 ${hUbic} &nbsp;|&nbsp; 📅 ${hFecha}</div>
-                        ${hDetalle ? `<div class="timeline-detail">${hDetalle}</div>` : ''}
-                    </div>
-                `;
-            });
+    // --- Rastreo ---
+    const trackBtn = el('track-btn');
+    const trackCode = el('track-code');
+    const trackOut = el('track-output');
+    async function rastrear() {
+      const code = (trackCode.value || '').trim();
+      if (!code) return;
+      trackBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+      trackOut.innerHTML = '';
+      try {
+        const res = await fetch(API_BASE + '/api/track?codigo=' + encodeURIComponent(code));
+        const data = res.ok ? await res.json() : null;
+        if (data && data.found) {
+          renderTracking(data);
         } else {
-            html += '<p style="color:#999;font-size:0.9rem;">No hay historial registrado aún.</p>';
+          trackOut.innerHTML = errorBox('No se encontró un envío con ese código. Verifica e intenta nuevamente.');
         }
-
-        html += '</div>';
-        resultDiv.innerHTML = html;
+      } catch (e) {
+        trackOut.innerHTML = errorBox('Error de conexión. Intenta más tarde.');
+      } finally {
+        trackBtn.innerHTML = '<i class="fas fa-search"></i>';
+      }
     }
-
-    document.getElementById('codigo-rastreo').addEventListener('keydown', e => {
-        if (e.key === 'Enter') buscarRastreo();
-    });
-    </script>
-
+    function errorBox(t) {
+      return '<div class="bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl p-4"><i class="fas fa-exclamation-circle mr-2"></i>' + t + '</div>';
+    }
+    function renderTracking(r) {
+      const etapaActual = Math.min(5, Math.max(1, r.etapa));
+      const progreso = ((etapaActual - 1) / (ETAPAS.length - 1)) * 100;
+      let fecha = '';
+      if (r.updatedAt) {
+        try { fecha = new Date(r.updatedAt).toLocaleDateString('es-VE', { day: '2-digit', month: 'long', year: 'numeric' }); } catch (e) {}
+      }
+      let etapasHtml = '';
+      ETAPAS.forEach((etapa, i) => {
+        const num = i + 1;
+        const completado = num < etapaActual;
+        const actual = num === etapaActual;
+        const circle = completado ? 'bg-[#00d26a] text-[#0b2545]' : actual ? 'bg-white text-[#0b2545] ring-4 ring-[#00d26a]/40' : 'bg-white/10 text-white/60';
+        const icon = completado ? 'fa-check' : etapa.icon;
+        const txt = actual ? 'font-bold text-white' : completado ? 'font-medium text-white/90' : 'text-white/70';
+        etapasHtml += '<div class="flex items-center gap-4 py-2.5 ' + ((!completado && !actual) ? 'opacity-40' : '') + '">' +
+          '<div class="w-9 h-9 rounded-full flex items-center justify-center shrink-0 ' + circle + '"><i class="fas ' + icon + ' text-sm"></i></div>' +
+          '<div class="flex-1"><p class="text-sm ' + txt + '">' + etapa.label + '</p>' + (actual ? '<p class="text-[#00d26a] text-xs font-semibold">Etapa actual</p>' : '') + '</div></div>';
+      });
+      const notaHtml = r.nota ? '<div class="mt-5 pt-5 border-t border-white/10"><p class="text-white/50 text-xs mb-1">Nota</p><p class="text-sm">' + r.nota + '</p></div>' : '';
+      const fechaHtml = fecha ? '<p class="text-white/40 text-xs mt-5 text-right">Última actualización: ' + fecha + '</p>' : '';
+      trackOut.innerHTML =
+        '<div class="bg-gradient-to-br from-[#0b2545] to-[#134074] rounded-2xl p-6 sm:p-8 text-white">' +
+          '<div class="flex items-center justify-between gap-3 pb-5 mb-6 border-b border-white/10">' +
+            '<div class="flex items-center gap-3"><div class="w-11 h-11 bg-[#00d26a]/20 rounded-full flex items-center justify-center"><i class="fas fa-box text-[#00d26a]"></i></div>' +
+            '<div><p class="font-bold text-lg">' + r.codigo + '</p><p class="text-white/60 text-sm">' + r.cliente + '</p></div></div>' +
+            '<span class="bg-[#00d26a] text-[#0b2545] text-xs font-bold px-3 py-1 rounded-full text-center">' + (ETAPAS[etapaActual-1] ? ETAPAS[etapaActual-1].label : '') + '</span>' +
+          '</div>' +
+          '<div class="relative mb-8 px-2"><div class="h-1.5 bg-white/15 rounded-full"><div class="h-1.5 bg-[#00d26a] rounded-full transition-all duration-700" style="width:' + progreso + '%"></div></div>' +
+          '<div class="absolute -top-2.5 transition-all duration-700" style="left:calc(' + progreso + '% - 10px)"><i class="fas fa-ship text-[#00d26a] text-lg"></i></div></div>' +
+          '<div class="space-y-1">' + etapasHtml + '</div>' + notaHtml + fechaHtml +
+        '</div>';
+    }
+    trackBtn.addEventListener('click', rastrear);
+    trackCode.addEventListener('keydown', (e) => { if (e.key === 'Enter') rastrear(); });
+  </script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"b65758fa712b480a9be8dc29d45a31fb","spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
