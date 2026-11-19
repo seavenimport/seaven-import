@@ -522,10 +522,9 @@
   <!-- ========================= JAVASCRIPT ========================= -->
   <script>
     // === CONFIG RASTREO ===
-    // El rastreo necesita el servidor + base de datos (donde está tu panel /admin).
-    // Si tu panel vive en otra dirección, escríbela aquí (ej: 'https://tu-panel.abacusai.app').
-    // Déjalo vacío ('') si esta misma página tiene el servidor.
-    const API_BASE = '';
+    // El rastreo lee directamente la hoja de Google Sheets publicada como CSV.
+    // Columnas: Codigo, Cliente, Etapa (1-5), FechaEstimada, Notas
+    const SHEET_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTZzknDnyoyhmeHvEFdhAMN-9WmFs_C_XBflHDLxusAeNBbyFXgP2JU0iBGnFxv6Q/pub?gid=2059736552&single=true&output=csv';
 
     const WA = '584225007780';
     const ETAPAS = [
@@ -619,15 +618,33 @@
     const trackCode = el('track-code');
     const trackOut = el('track-output');
     async function rastrear() {
-      const code = (trackCode.value || '').trim();
+      const code = (trackCode.value || '').trim().toUpperCase();
       if (!code) return;
       trackBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
       trackOut.innerHTML = '';
       try {
-        const res = await fetch(API_BASE + '/api/track?codigo=' + encodeURIComponent(code));
-        const data = res.ok ? await res.json() : null;
-        if (data && data.found) {
-          renderTracking(data);
+        const res = await fetch(SHEET_CSV);
+        const text = await res.text();
+        const rows = text.replace(/\r/g, '').split('\n').map(line => {
+          const cols = []; let cur = '', inQ = false;
+          for (let i = 0; i < line.length; i++) {
+            if (line[i] === '"') { inQ = !inQ; }
+            else if (line[i] === ',' && !inQ) { cols.push(cur.trim()); cur = ''; }
+            else { cur += line[i]; }
+          }
+          cols.push(cur.trim());
+          return cols;
+        });
+        const found = rows.slice(1).find(r => r[0] && r[0].toUpperCase() === code);
+        if (found) {
+          renderTracking({
+            found: true,
+            codigo: found[0].toUpperCase(),
+            cliente: found[1] || '',
+            etapa: Math.min(Math.max(parseInt(found[2]) || 1, 1), 5),
+            updatedAt: found[3] ? new Date().toISOString() : null,
+            nota: found[4] || ''
+          });
         } else {
           trackOut.innerHTML = errorBox('No se encontró un envío con ese código. Verifica e intenta nuevamente.');
         }
@@ -689,5 +706,6 @@
       }
     })();
   </script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"f0f03d0605bf45f1a3b17cf7d5e6861f","spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
