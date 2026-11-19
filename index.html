@@ -40,7 +40,7 @@
     .animate-pulse-dot { animation: pulse-dot 1.5s ease-in-out infinite; }
 
     /* Sombra para que el texto del hero se lea sobre la foto */
-    .texto-sombra { text-shadow: 0 2px 12px rgba(0,0,0,1), 0 0 4px rgba(0,0,0,0.9); }
+    .texto-sombra { text-shadow: 0 2px 14px rgba(0,0,0,1), 0 0 6px rgba(0,0,0,1), 0 0 2px rgba(0,0,0,1); }
   </style>
 </head>
 
@@ -57,9 +57,9 @@
       <!-- Menú de escritorio -->
       <nav class="hidden lg:flex items-center gap-5">
         <a href="#hero" class="text-white/80 hover:text-[#00d26a] text-sm font-medium whitespace-nowrap transition-colors">Inicio</a>
-        <a href="#registro" class="text-white/80 hover:text-[#00d26a] text-sm font-medium whitespace-nowrap transition-colors">Casillero</a>
         <a href="#como-funciona" class="text-white/80 hover:text-[#00d26a] text-sm font-medium whitespace-nowrap transition-colors">Cómo funciona</a>
         <a href="#asesorias" class="text-white/80 hover:text-[#00d26a] text-sm font-medium whitespace-nowrap transition-colors">Asesorías</a>
+        <a href="#registro" class="text-white/80 hover:text-[#00d26a] text-sm font-medium whitespace-nowrap transition-colors">Casillero</a>
         <a href="#tarifas" class="text-white/80 hover:text-[#00d26a] text-sm font-medium whitespace-nowrap transition-colors">Tarifas</a>
         <a href="#calculadora" class="text-white/80 hover:text-[#00d26a] text-sm font-medium whitespace-nowrap transition-colors">Calculadora</a>
         <a href="#rastreo" class="text-white/80 hover:text-[#00d26a] text-sm font-medium whitespace-nowrap transition-colors">Rastreo</a>
@@ -82,9 +82,9 @@
     <!-- Menú móvil -->
     <nav id="mobile-menu" class="hidden lg:hidden bg-[#0b2545] border-t border-white/10 pb-4">
       <a href="#hero" class="mobile-link block px-6 py-3 text-white/80 hover:text-[#00d26a] hover:bg-white/5 text-sm font-medium transition-colors">Inicio</a>
-      <a href="#registro" class="mobile-link block px-6 py-3 text-white/80 hover:text-[#00d26a] hover:bg-white/5 text-sm font-medium transition-colors">Casillero</a>
       <a href="#como-funciona" class="mobile-link block px-6 py-3 text-white/80 hover:text-[#00d26a] hover:bg-white/5 text-sm font-medium transition-colors">Cómo funciona</a>
       <a href="#asesorias" class="mobile-link block px-6 py-3 text-white/80 hover:text-[#00d26a] hover:bg-white/5 text-sm font-medium transition-colors">Asesorías</a>
+      <a href="#registro" class="mobile-link block px-6 py-3 text-white/80 hover:text-[#00d26a] hover:bg-white/5 text-sm font-medium transition-colors">Casillero</a>
       <a href="#tarifas" class="mobile-link block px-6 py-3 text-white/80 hover:text-[#00d26a] hover:bg-white/5 text-sm font-medium transition-colors">Tarifas</a>
       <a href="#calculadora" class="mobile-link block px-6 py-3 text-white/80 hover:text-[#00d26a] hover:bg-white/5 text-sm font-medium transition-colors">Calculadora</a>
       <a href="#rastreo" class="mobile-link block px-6 py-3 text-white/80 hover:text-[#00d26a] hover:bg-white/5 text-sm font-medium transition-colors">Rastreo</a>
@@ -247,6 +247,37 @@
            class="inline-flex items-center gap-2 bg-[#00d26a] text-[#0b2545] font-bold px-8 py-4 rounded-full shadow-lg hover:bg-[#00bd5f] hover:scale-105 transition-all duration-300">
           <i class="fab fa-whatsapp text-xl"></i> Solicitar asesoría por WhatsApp
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= REGISTRO / CASILLERO ========================= -->
+  <section id="registro" class="py-10 md:py-14 bg-white scroll-mt-16">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6">
+      <div class="text-center mb-8">
+        <span class="inline-block bg-[#00d26a]/10 text-[#00d26a] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">Comienza ahora</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0b2545] tracking-tight">Abre tu casillero</h2>
+        <p class="mt-4 text-gray-500 max-w-xl mx-auto">Regístrate y recibe tu dirección en nuestro almacén en China en minutos</p>
+      </div>
+      <div class="fade-in-section max-w-lg mx-auto bg-gradient-to-br from-[#0b2545] to-[#134074] rounded-2xl p-8 shadow-xl">
+        <form action="https://formsubmit.co/info.seavenimport@gmail.com" method="POST" class="space-y-4">
+          <input type="hidden" name="_subject" value="Nuevo registro de casillero - SeaVen Import" />
+          <input type="hidden" name="_next" value="https://seavenimport.com/gracias.html" />
+          <input type="hidden" name="_captcha" value="true" />
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+          <input type="hidden" name="_template" value="table" />
+          <div><label class="block text-white/80 text-sm font-medium mb-1">Nombre y apellido</label><input type="text" name="Nombre y apellido" required placeholder="Ej. Diana Pérez" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 focus:border-[#00d26a] focus:ring-2 focus:ring-[#00d26a]/20 outline-none transition-all" /></div>
+          <div><label class="block text-white/80 text-sm font-medium mb-1">Cédula</label><input type="text" name="Cédula" required placeholder="Ej. V-12345678" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 focus:border-[#00d26a] focus:ring-2 focus:ring-[#00d26a]/20 outline-none transition-all" /></div>
+          <div><label class="block text-white/80 text-sm font-medium mb-1">Teléfono / WhatsApp</label><input type="tel" name="Teléfono" required placeholder="+58 412 000 0000" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 focus:border-[#00d26a] focus:ring-2 focus:ring-[#00d26a]/20 outline-none transition-all" /></div>
+          <div><label class="block text-white/80 text-sm font-medium mb-1">Ciudad</label><input type="text" name="Ciudad" required placeholder="Ej. Barquisimeto" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 focus:border-[#00d26a] focus:ring-2 focus:ring-[#00d26a]/20 outline-none transition-all" /></div>
+          <div><label class="block text-white/80 text-sm font-medium mb-1">Dirección de residencia</label><input type="text" name="Dirección de residencia" required placeholder="Ej. Calle 20 entre Carreras 15 y 16" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 focus:border-[#00d26a] focus:ring-2 focus:ring-[#00d26a]/20 outline-none transition-all" /></div>
+          <div><label class="block text-white/80 text-sm font-medium mb-1">Correo electrónico</label><input type="email" name="Correo" required placeholder="ejemplo@correo.com" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 focus:border-[#00d26a] focus:ring-2 focus:ring-[#00d26a]/20 outline-none transition-all" /></div>
+          <button type="submit" class="w-full bg-[#00d26a] hover:bg-[#00b85c] text-[#0b2545] font-bold text-base px-6 py-4 rounded-xl transition-all hover:scale-[1.02] shadow-lg mt-2"><i class="fas fa-paper-plane mr-2"></i> Quiero mi casillero</button>
+        </form>
+        <div class="mt-4 text-center">
+          <p class="text-white/40 text-xs">o escríbenos directamente</p>
+          <a href="https://wa.me/584225007780?text=Hola%2C%20quiero%20abrir%20mi%20casillero%20en%20SeaVen%20Import" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-[#00d26a] hover:text-[#00b85c] text-sm font-semibold mt-2 transition-colors"><i class="fab fa-whatsapp"></i> Abrir casillero por WhatsApp</a>
+        </div>
       </div>
     </div>
   </section>
@@ -415,36 +446,6 @@
         <div class="fade-in-section flex gap-4 bg-[#f0f4f8] rounded-2xl p-6"><div class="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-[#0b2545] to-[#1a6fbb] rounded-xl flex items-center justify-center"><i class="fas fa-bell text-[#00d26a] text-lg"></i></div><div><h3 class="text-base font-bold text-[#0b2545] mb-1">Pago y entrega</h3><p class="text-gray-500 text-sm leading-relaxed">Cuando tu mercancía llegue a Venezuela te notificaremos por WhatsApp para coordinar el pago pendiente y la entrega.</p></div></div>
         <div class="fade-in-section flex gap-4 bg-[#f0f4f8] rounded-2xl p-6"><div class="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-[#0b2545] to-[#1a6fbb] rounded-xl flex items-center justify-center"><i class="fas fa-clock text-[#00d26a] text-lg"></i></div><div><h3 class="text-base font-bold text-[#0b2545] mb-1">Tiempos del proceso</h3><p class="text-gray-500 text-sm leading-relaxed">Salidas frecuentes desde China. El proceso completo toma de 60 a 90 días, sujeto a procesos y a cambios por imprevistos aduanales.</p></div></div>
         <div class="fade-in-section flex gap-4 bg-[#f0f4f8] rounded-2xl p-6"><div class="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-[#0b2545] to-[#1a6fbb] rounded-xl flex items-center justify-center"><i class="fas fa-user-shield text-[#00d26a] text-lg"></i></div><div><h3 class="text-base font-bold text-[#0b2545] mb-1">Confidencialidad</h3><p class="text-gray-500 text-sm leading-relaxed">Tu información personal se maneja con total confidencialidad, sin compartirse con terceros.</p></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================= REGISTRO / CASILLERO ========================= -->
-  <section id="registro" class="py-10 md:py-14 bg-white scroll-mt-16">
-    <div class="max-w-[1200px] mx-auto px-4 sm:px-6">
-      <div class="text-center mb-8">
-        <span class="inline-block bg-[#00d26a]/10 text-[#00d26a] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">Comienza ahora</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0b2545] tracking-tight">Abre tu casillero</h2>
-        <p class="mt-4 text-gray-500 max-w-xl mx-auto">Regístrate y recibe tu dirección en nuestro almacén en China en minutos</p>
-      </div>
-      <div class="fade-in-section max-w-lg mx-auto bg-gradient-to-br from-[#0b2545] to-[#134074] rounded-2xl p-8 shadow-xl">
-        <form action="https://formsubmit.co/info.seavenimport@gmail.com" method="POST" class="space-y-4">
-          <input type="hidden" name="_subject" value="Nuevo registro de casillero - SeaVen Import" />
-          <input type="hidden" name="_next" value="https://seavenimport.com/gracias.html" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_template" value="table" />
-          <div><label class="block text-white/80 text-sm font-medium mb-1">Nombre y apellido</label><input type="text" name="Nombre y apellido" required placeholder="Ej. Diana Pérez" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 focus:border-[#00d26a] focus:ring-2 focus:ring-[#00d26a]/20 outline-none transition-all" /></div>
-          <div><label class="block text-white/80 text-sm font-medium mb-1">Cédula</label><input type="text" name="Cédula" required placeholder="Ej. V-12345678" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 focus:border-[#00d26a] focus:ring-2 focus:ring-[#00d26a]/20 outline-none transition-all" /></div>
-          <div><label class="block text-white/80 text-sm font-medium mb-1">Teléfono / WhatsApp</label><input type="tel" name="Teléfono" required placeholder="+58 412 000 0000" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 focus:border-[#00d26a] focus:ring-2 focus:ring-[#00d26a]/20 outline-none transition-all" /></div>
-          <div><label class="block text-white/80 text-sm font-medium mb-1">Ciudad</label><input type="text" name="Ciudad" required placeholder="Ej. Barquisimeto" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 focus:border-[#00d26a] focus:ring-2 focus:ring-[#00d26a]/20 outline-none transition-all" /></div>
-          <div><label class="block text-white/80 text-sm font-medium mb-1">Dirección de residencia</label><input type="text" name="Dirección de residencia" required placeholder="Ej. Calle 20 entre Carreras 15 y 16" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 focus:border-[#00d26a] focus:ring-2 focus:ring-[#00d26a]/20 outline-none transition-all" /></div>
-          <div><label class="block text-white/80 text-sm font-medium mb-1">Correo electrónico</label><input type="email" name="Correo" required placeholder="ejemplo@correo.com" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 focus:border-[#00d26a] focus:ring-2 focus:ring-[#00d26a]/20 outline-none transition-all" /></div>
-          <button type="submit" class="w-full bg-[#00d26a] hover:bg-[#00b85c] text-[#0b2545] font-bold text-base px-6 py-4 rounded-xl transition-all hover:scale-[1.02] shadow-lg mt-2"><i class="fas fa-paper-plane mr-2"></i> Quiero mi casillero</button>
-        </form>
-        <div class="mt-4 text-center">
-          <p class="text-white/40 text-xs">o escríbenos directamente</p>
-          <a href="https://wa.me/584225007780?text=Hola%2C%20quiero%20abrir%20mi%20casillero%20en%20SeaVen%20Import" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-[#00d26a] hover:text-[#00b85c] text-sm font-semibold mt-2 transition-colors"><i class="fab fa-whatsapp"></i> Abrir casillero por WhatsApp</a>
-        </div>
       </div>
     </div>
   </section>
